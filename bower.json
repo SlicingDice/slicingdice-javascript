@@ -1,0 +1,26 @@
+{
+  "name": "slicerjs",
+  "description": "Official JavaScript client for SlicingDice, Data Warehouse and Analytics Database as a Service.",
+  "main": "dist/slicer.js",
+  "authors": [
+    "SlicingDice LLC <help@slicingdice.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "slicingdice",
+    "slicing",
+    "dice",
+    "data",
+    "analysis",
+    "business",
+    "intelligence"
+  ],
+  "homepage": "https://github.com/SlicingDice/slicingdice-javascript",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

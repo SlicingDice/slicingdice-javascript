@@ -1,0 +1,18 @@
+# Reference: https://blog.scottnonnenberg.com/hands-on-with-circleci-and-node-js/
+
+machine:
+  node:
+    version: 6.1.0
+
+dependencies:
+  pre:
+    - rm -rf ./node_modules
+  cache_directories:
+    - ~/.npm
+  override:
+    - nvm install 6 && npm install
+
+test:
+  override:
+    - mv tests_and_examples/examples/ .
+    - nvm use 6 && node tests_and_examples/runQueryTests.js

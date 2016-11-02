@@ -1,0 +1,36 @@
+{
+  "name": "slicerjs",
+  "version": "1.0.0",
+  "description": "Official JavaScript client for SlicingDice, Data Warehouse and Analytics Database as a Service.",
+  "main": "dist/slicer.js",
+  "scripts": {
+    "test": "node tests_and_examples/runQueryTests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SlicingDice/slicingdice-javascript.git"
+  },
+  "keywords": [
+    "slicingdice",
+    "slicing",
+    "dice",
+    "data",
+    "analysis",
+    "business",
+    "intelligence"
+  ],
+  "author": "SlicingDice LLC <help@slicingdice.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SlicingDice/slicingdice-javascript/issues"
+  },
+  "homepage": "https://github.com/SlicingDice/slicingdice-javascript",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.13.2",
+    "async": "^2.0.1",
+    "sleep": "^4.0.0"
+  },
+  "dependencies": {
+  }
+}
