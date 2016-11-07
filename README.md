@@ -1,4 +1,5 @@
 # SlicingDice Official JavaScript Client (v1.0)
+![](https://circleci.com/gh/SlicingDice/slicingdice-javascript/tree/master.svg?style=shield)
 
 Official JavaScript client for [SlicingDice](http://www.slicingdice.com/), Data Warehouse and Analytics Database as a Service.
 
