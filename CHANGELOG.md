@@ -4,3 +4,4 @@
 ### Added
 - Thin layers around SlicingDice API endpoints
 - Automatic regression test script runQueryTests.js with its JSON data
+- Test for data extraction
