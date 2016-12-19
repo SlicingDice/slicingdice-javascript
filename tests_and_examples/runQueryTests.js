@@ -192,7 +192,8 @@ class SlicingDiceTester {
             'count_event': 'countEvent',
             'top_values': 'topValues',
             'aggregation': 'aggregation',
-            'result': 'result'
+            'result': 'result',
+            'score': 'score'
         };
 
         this.client[queryTypeMethodMap[queryType]](queryData, true).then((resp) =>{
