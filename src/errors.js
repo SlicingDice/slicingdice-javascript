@@ -48,6 +48,12 @@ class AuthInvalidRemoteAddrError extends SlicingDiceError {
   }
 }
 
+class CustomkeyInvalidFieldCreationError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
 class CustomKeyInvalidPermissionForFieldError extends SlicingDiceError {
   constructor(m) {   
     super(m);
@@ -67,6 +73,12 @@ class CustomKeyRouteNotPermittedError extends SlicingDiceError {
 }
 
 class CustomKeyNotPermittedError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
+class DemoApiInvalidEndpointError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -92,6 +104,30 @@ class RequestRateLimitError extends SlicingDiceError {
 }
 
 class RequestInvalidJsonError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
+class RequestInvalidHttpMethodError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
+class RequestInvalidEndpointError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
+class RequestIncorrectHttpError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
+class RequestExceedLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -195,6 +231,12 @@ class FieldInvalidDescriptionError extends SlicingDiceError {
   }
 }
 
+class FieldExceedDescriptionlengthError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
 class FieldInvalidCardinalityError extends SlicingDiceError {
   constructor(m) {   
     super(m);
@@ -213,8 +255,32 @@ class FieldRangeLimitError extends SlicingDiceError {
   }
 }
 
+class FieldExceededMaxNameLenghtError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
+class FieldExceededMaxApiNameLenghtError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
+class FieldEmptyEntityIdError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
+class FieldExceededPermitedValueError extends SlicingDiceError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
 // INDEX ERRORS
-class IndexEntityKeyTypeError extends SlicingDiceError {
+class IndexInvalidDecimalPlacesError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -250,7 +316,7 @@ class IndexFieldValueTooBigError extends SlicingDiceError {
   }
 }
 
-class IndexDateFormatError extends SlicingDiceError {
+class IndexTimeSeriesDateFormatError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -266,6 +332,12 @@ class IndexFieldLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
+}
+
+class IndexDateFormatError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
 }
 
 class IndexIdLimitError extends SlicingDiceError {
@@ -314,6 +386,18 @@ class QueryTimeSeriesInvalidPrecisionHoursError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
+}
+
+class QueryDateFormatError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
+}
+
+class QueryRelativeIntervalError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
 }
 
 // QUERY ERRORS
@@ -377,7 +461,7 @@ class QueryEventCountQueryError extends SlicingDiceError {
   }
 }
 
-class QueryDateFormatError extends SlicingDiceError {
+class QueryInvalidMetricError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -396,18 +480,6 @@ class QueryLevelLimitError extends SlicingDiceError {
 }
 
 class QueryBadAggsFormationError extends SlicingDiceError {
-  constructor(m) {   
-    super(m);
-  }
-}
-
-class QueryInvalidAggFilterError extends SlicingDiceError {
-  constructor(m) {   
-    super(m);
-  }
-}
-
-class QueryBadAggsFormation extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -450,12 +522,6 @@ class QueryExistsEntityLimitError extends SlicingDiceError {
 }
 
 class QueryMultipleFiltersError extends SlicingDiceError {
-  constructor(m) {   
-    super(m);
-  }
-}
-
-class QueryContainsValueTypeError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -581,6 +647,42 @@ class QueryAggregationInvalidFilterQueryError extends SlicingDiceError {
   }
 }
 
+class QueryInvalidMinfreqError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
+}
+
+class QueryExceededMaxNumberQuerysError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
+}
+
+class QueryInvalidOperatorUsageError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
+}
+
+class QueryInvalidParameterUsageError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
+}
+
+class QueryParameterInvalidFieldUsageError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
+}
+
+class QueryInvalidFieldUsageError extends SlicingDiceError {
+    constructor(m) {
+        super(m);
+    }
+}
+
 
 class FieldCreateInternalError extends ExtendableError {
   constructor(m) {   
@@ -662,15 +764,21 @@ module.exports = {
     "AuthInvalidAPIKeyError": AuthInvalidAPIKeyError,
     "AuthIncorrectPermissionError": AuthIncorrectPermissionError,
     "AuthInvalidRemoteAddrError": AuthInvalidRemoteAddrError,
+    "CustomKeyInvalidFieldCreationError": CustomkeyInvalidFieldCreationError,
     "CustomKeyInvalidPermissionForFieldError": CustomKeyInvalidPermissionForFieldError,
     "CustomKeyInvalidOperationError": CustomKeyInvalidOperationError,
     "CustomKeyNotPermittedError": CustomKeyNotPermittedError,
     "CustomKeyRouteNotPermittedError": CustomKeyRouteNotPermittedError,
-    // Request validations (20 - 29)
+    "DemoApiInvalidEndpointError": DemoApiInvalidEndpointError,
+    // Request validations (21 - 29)
     "RequestMissingContentTypeError": RequestMissingContentTypeError,
     "RequestIncorrectContentTypeValueError": RequestIncorrectContentTypeValueError,
     "RequestRateLimitError": RequestRateLimitError,
     "RequestInvalidJsonError": RequestInvalidJsonError,
+    "RequestInvalidHttpMethodError": RequestInvalidHttpMethodError,
+    "RequestInvalidEndpointError": RequestInvalidEndpointError,
+    "RequestIncorrectHttpError": RequestIncorrectHttpError,
+    "RequestExceedLimitError": RequestExceedLimitError,
     // Account Errors (30 - 39)
     "AccountMissingPaymentMethodError": AccountMissingPaymentMethodError,
     "AccountPaymentRequiredError": AccountPaymentRequiredError,
@@ -689,20 +797,26 @@ module.exports = {
     "FieldInvalidApiNameError": FieldInvalidApiNameError,
     "FieldInvalidNameError": FieldInvalidNameError,
     "FieldInvalidDescriptionError": FieldInvalidDescriptionError,
+    "FieldExceedDescriptionlengthError": FieldExceedDescriptionlengthError,
     "FieldInvalidCardinalityError": FieldInvalidCardinalityError,
     "FieldDecimalLimitError": FieldDecimalLimitError,
     "FieldRangeLimitError": FieldRangeLimitError,
+    "FieldExceededMaxNameLenghtError": FieldExceededMaxNameLenghtError,
+    "FieldExceededMaxApiNameLenghtError": FieldExceededMaxApiNameLenghtError,
+    "FieldEmptyEntityIdError": FieldEmptyEntityIdError,
+    "FieldExceededPermitedValueError": FieldExceededPermitedValueError,
     // Index errors (60 - 79)
-    "IndexEntityKeyTypeError": IndexEntityKeyTypeError,
+    "IndexInvalidDecimalPlacesError": IndexInvalidDecimalPlacesError,
     "IndexEntityValueTypeError": IndexEntityValueTypeError,
     "IndexFieldNameTypeError": IndexFieldNameTypeError,
     "IndexFieldTypeError": IndexFieldTypeError,
     "IndexEntityNameTooBigError": IndexEntityNameTooBigError,
     "IndexFieldValueTooBigError": IndexFieldValueTooBigError,
-    "IndexDateFormatError": IndexDateFormatError,
+    "IndexTimeSeriesDateFormatError": IndexTimeSeriesDateFormatError,
     "IndexFieldNotActiveError": IndexFieldNotActiveError,
     "IndexIdLimitError": IndexIdLimitError,
     "IndexFieldLimitError": IndexFieldLimitError,
+    "IndexDateFormatError": IndexDateFormatError,
     "IndexFieldStringEmptyValueError": IndexFieldStringEmptyValueError,
     "IndexFieldTimeseriesInvalidParameterError": IndexFieldTimeseriesInvalidParameterError,
     "IndexFieldNumericInvalidValueError": IndexFieldNumericInvalidValueError,
@@ -710,6 +824,8 @@ module.exports = {
     "QueryTimeSeriesInvalidPrecisionSecondsError": QueryTimeSeriesInvalidPrecisionSecondsError,
     "QueryTimeSeriesInvalidPrecisionMinutesError": QueryTimeSeriesInvalidPrecisionMinutesError,
     "QueryTimeSeriesInvalidPrecisionHoursError": QueryTimeSeriesInvalidPrecisionHoursError,
+    "QueryDateFormatError": QueryDateFormatError,
+    "QueryRelativeIntervalError": QueryRelativeIntervalError,
     // Query errors (80 - 109)
     "QueryMissingQueryError": QueryMissingQueryError,
     "QueryInvalidTypeError": QueryInvalidTypeError,
@@ -720,11 +836,8 @@ module.exports = {
     "QueryMissingOperatorError": QueryMissingOperatorError,
     "QueryIncompleteError": QueryIncompleteError,
     "QueryEventCountQueryError": QueryEventCountQueryError,
-    "QueryDateFormatError": QueryDateFormatError,
+    "QueryInvalidMetricError": QueryInvalidMetricError,
     "QueryIntegerError": QueryIntegerError,
-    "QueryFieldLimitError": QueryFieldLimitError,
-    "QueryLevelLimitError": QueryLevelLimitError,
-    "QueryBadAggsFormationError": QueryBadAggsFormationError,
     "QueryFieldLimitError": QueryFieldLimitError,
     "QueryLevelLimitError": QueryLevelLimitError,
     "QueryBadAggsFormationError": QueryBadAggsFormationError,
@@ -735,7 +848,6 @@ module.exports = {
     "QueryContainsNumericError": QueryContainsNumericError,
     "QueryExistsEntityLimitError": QueryExistsEntityLimitError,
     "QueryMultipleFiltersError": QueryMultipleFiltersError,
-    "QueryContainsValueTypeError": QueryContainsValueTypeError,
     "QueryMissingNameParamError": QueryMissingNameParamError,
     "QuerySavedAlreadyExistsError": QuerySavedAlreadyExistsError,
     "QuerySavedNotExistsError": QuerySavedNotExistsError,
@@ -756,6 +868,12 @@ module.exports = {
     "QueryCountInvalidParameterError": QueryCountInvalidParameterError,
     "QueryAggregationInvalidParameterError": QueryAggregationInvalidParameterError,
     "QueryAggregationInvalidFilterQueryError": QueryAggregationInvalidFilterQueryError,
+    "QueryInvalidMinfreqError": QueryInvalidMinfreqError,
+    "QueryExceededMaxNumberQuerysError": QueryExceededMaxNumberQuerysError,
+    "QueryInvalidOperatorUsageError": QueryInvalidOperatorUsageError,
+    "QueryInvalidParameterUsageError": QueryInvalidParameterUsageError,
+    "QueryParameterInvalidFieldUsageError": QueryParameterInvalidFieldUsageError,
+    "QueryInvalidFieldUsageError": QueryInvalidFieldUsageError,
     "FieldCreateInternalError": FieldCreateInternalError,
     // Client errors
     "SlicingDiceClientError": SlicingDiceClientError,
