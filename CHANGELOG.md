@@ -1,5 +1,9 @@
 # Change Log
 
+### Updated
+- Update Api Errors code
+
+
 ## [1.0.0]
 ### Added
 - Thin layers around SlicingDice API endpoints
