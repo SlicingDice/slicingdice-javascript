@@ -40,7 +40,7 @@
         }
     }
 
-    // RequesterBrowser make http requests from the node.js
+    // RequesterNode make http requests from the node.js (with we're not running in a web-browser)
     class RequesterNode {
         run(token, urlReq, reqType, data = null) {
 
@@ -97,6 +97,7 @@
         }
     }
 
+    // Validator for saved queries
     class SavedQueryValidator extends SDBaseQueryValidator {
         constructor(query) {
             super(query)
@@ -105,6 +106,7 @@
                 "aggregation", "top_values"];
         }
 
+        // Check if saved query has valid type
         _has_valid_type(){
             let typeQuery = this.query.type;
             if (!this.listQueryTypes.includes(typeQuery)) {
@@ -113,29 +115,34 @@
             return true;
         }
 
+        // If saved query is valid this returns true
         validator() {
             return this._has_valid_type();
         }
     }
 
+    // Validator for count queries
     class QueryCountValidator extends SDBaseQueryValidator {
         constructor(query){
             super(query)
         }
 
+        // If count query is valid this returns true
         validator() {
             if (Object.keys(this.query).length > 10) {
-                throw new errors.MaxLimitError("The query count entity has a limit of 10 queries peer request.");
+                throw new errors.MaxLimitError("The query count entity has a limit of 10 queries per request.");
             }
             return true;
         }
     }
 
+    // Validator for top values queries
     class QueryTopValuesValidator extends SDBaseQueryValidator{
         constructor(query) {
             super(query)
         }
 
+        // Check query limit
         _exceedsQueriesLimit() {
             if (Object.keys(this.query).length > 5) {
                 return true;
@@ -143,6 +150,7 @@
             return false;
         }
 
+        // Check fields limit
         _exceedsFieldsLimit() {
             for(let key in this.query) {
                 let field = this.query[key];
@@ -152,6 +160,7 @@
             }
         }
 
+        // Check contains limit
         _exceedsValuesContainsLimit() {
             for (let key in this.query){
                 let query = this.query[key];
@@ -161,6 +170,7 @@
             }
         }
 
+        // if top values query is valid this returns true, otherwise false
         validator() {
             this._exceedsFieldsLimit();
             this._exceedsValuesContainsLimit();
@@ -171,17 +181,20 @@
         }
     }
 
+    // Validator for score or result queries
     class QueryDataExtractionValidator extends SDBaseQueryValidator{
         constructor(query) {
             super(query)
         }
 
+        // Check if data extraction query is valid
         validKeys() {
             for(let key in this.query) {
                 let value = this.query.key;
                 if (key == "query") {
                     return true;
                 }
+                // Check fields property, fields should have a maximum of 10 itens
                 if (key == "fields") {
                     if (value.constructor != Array) {
                         throw new errors.InvalidQueryException("The key 'fields' in query has a invalid value.");
@@ -192,6 +205,7 @@
                         }
                     }
                 }
+                // Check limit property, limit should be less or equal than 100
                 if (key == "limit") {
                     if (value.constructor != Number){
                         throw new errors.InvalidQueryError("The key 'limit' in query has a invalid value.");
@@ -207,61 +221,70 @@
             return true;
         }
 
+        // If data extraction query is valid this returns true
         validator() {
             return this.validKeys();
         }
     }
 
+    // Validator for field
     class FieldValidator extends SDBaseQueryValidator{
         constructor(query) {
             super(query)
         }
 
+        // Check field name
         validateName() {
             if (!this.query.hasOwnProperty("name")) {
-                throw new errors.InvalidFieldDescriptionError("The field's description can't be empty/None.");
+                throw new errors.InvalidFieldDescriptionError("The field's name can't be empty/None.");
             }
             else {
                 let name = this.query["name"];
                 if (name.length > 80) {
-                    throw new errors.InvalidFieldDescriptionError("The field's name have a very big name.(Max: 80 chars)");
+                    throw new errors.InvalidFieldDescriptionError("The field's name have a very big content. (Max: 80 chars)");
                 }
             }
         }
 
+        // Check field description
         validateDescription() {
             let description = this.query.description;
             if (description.length > 80){
-                throw new errors.InvalidFieldDescriptionError("The field's description have a very big name.(Max: 300chars)");
+                throw new errors.InvalidFieldDescriptionError("The field's description have a very big content. (Max: 300chars)");
             }
         }
 
-
+        // Check field type
         validateFieldType() {
+            // The field should have a type property
             if (!this.query.hasOwnProperty("type")){
                 throw new errors.InvalidFieldError("The field should have a type.");
             }
         }
 
-        valdiateDecimalPlace() {
+        // If field is decimal check if it has decimal or decimal-time-series type 
+        validateDecimalType() {
             let decimal_types = ["decimal", "decimal-time-series"];
             if (!decimal_types.includes(this.query["decimal-place"])) {
                 throw new errors.InvalidFieldError("This field is only accepted on type 'decimal' or 'decimal-time-series'");
             }
         }
 
+        // Check if string field is valid
         checkStrTypeIntegrity() {
             if (!this.query.hasOwnProperty("cardinality")){
                 throw new errors.InvalidFieldError("The field with type string should have 'cardinality' key.");
             }
         }
 
+        // Check if enumerated field is valid
         validateEnumeratedType() {
             if (!this.query.hasOwnProperty("range")){
                 throw new errors.InvalidFieldError("The 'enumerated' type needs of the 'range' parameter.");
             }
         }
 
+        // If field is valid this returns true
         validator() {
             this.validateName();
             this.validateFieldType();
@@ -275,13 +298,13 @@
                 this.validateDescription();
             }
             if (this.query.hasOwnProperty('decimal-place')) {
-                this.valdiateDecimalPlace();
+                this.validateDecimalType();
             }
             return true;
         }
     }
 
-    // SLICER CLASS AND RESPONSE
+    // Class to handle response from Slicing Dice API
     class SlicerResponse {
         constructor(jsonResponse) {
             this.jsonResponse = JSON.parse(jsonResponse);
@@ -339,9 +362,11 @@
             }
         }
 
-        _setUpRequest(){
-            if (typeof window === 'undefined'){
+        _setUpRequest() {
+            // Check if this script is running on a web-browser 
+            if (typeof window === 'undefined') {
                 this.requester = new RequesterNode();
+                // Get the base URL on an enviroment variable
                 this.BASE_URL = this._getEnviromentSDAddress();
             }
             else{
@@ -382,9 +407,13 @@
             return currentLevelKey[0];
         }
 
+        /* Make request to Slicing Dice API, if objRequest.test is true
+        the request will be sent to test end-point
+        */
         makeRequest(objRequest) {
             let token = this._getAPIKey(objRequest.levelKey);
             let urlReq;
+            // test if the request must be sent to test endpoint
             if (objRequest.test){
                 urlReq = this.BASE_URL + "/test" + objRequest.path;
             } else {
@@ -407,6 +436,11 @@
             }, (err) => { return err;});
         }
 
+        /* Get all projects
+         * 
+         * @param (boolean) test - if true we will use test end-point,
+         * otherwise production end-point
+         */
         getProjects(test = false){
             let path = this._sdRoutes.project;
             return this.makeRequest({
@@ -417,6 +451,11 @@
             });
         }
 
+        /* Get all fields
+         * 
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         getFields(test = false){
             let path = this._sdRoutes.field;
             return this.makeRequest({
@@ -427,6 +466,11 @@
             });
         }
 
+        /* Get all saved queries
+         * 
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         getSavedQueries(test = false) {
             let path = this._sdRoutes.saved;
             return this.makeRequest({
@@ -437,6 +481,12 @@
             });
         }
 
+        /* Delete a saved query
+         * 
+         * @param (string) name - the name of the saved query that will be deleted
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         deleteSavedQuery(name, test = false) {
             let path = this._sdRoutes.saved + name;
             return this.makeRequest({
@@ -447,6 +497,12 @@
             });
         }
 
+        /* Get saved query by name
+         * 
+         * @param (string) name - the name of the saved query that will be retrieved
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         getSavedQuery(name, test = false) {
             let path = this._sdRoutes.saved + name;
             return this.makeRequest({
@@ -457,11 +513,19 @@
             });
         }
 
+        /* Send a index command to the Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) autoCreateFields - if is true Slicing Dice API will
+         * automatically create nonexistent fields
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         index(query, autoCreateFields = false, test = false){
             if (autoCreateFields){
                 query["auto-create-fields"] = true
             }
-            //console.log(query);
+            
             let path = this._sdRoutes.index;
             return this.makeRequest({
                 path: path,
@@ -472,6 +536,12 @@
             });
         }
 
+        /* Create a field on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         createField(query, test = false){
             let path = this._sdRoutes.field;
             let sdValidator = new FieldValidator(query);
@@ -486,6 +556,13 @@
             }
         }
 
+        /* Makes a count query on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (string) path - the path to send the query (count entity or count event path)
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         countQueryWrapper(query, path, test){
             let sdValidator = new QueryCountValidator(query);
             if (sdValidator.validator()){
@@ -499,12 +576,23 @@
             }
         }
 
+        /* Makes a count entity query on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         countEntity(query, test = false){
             let path = this._sdRoutes.countEntity;
             let sdValidator = new QueryCountValidator(query);
             return this.countQueryWrapper(query, path, test);
         }
 
+        /* Makes a total query on Slicing Dice API
+         * 
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         countEntityTotal(test = false) {
             let path  = this._sdRoutes.countEntityTotal;
             return this.makeRequest({
@@ -515,16 +603,28 @@
             })
         }
 
+        /* Makes a count event query on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         countEvent(query, test = false){
             let path = this._sdRoutes.countEvent;
             return this.countQueryWrapper(query, path, test);
         }
 
+        /* Makes a exists query on Slicing Dice API
+         * 
+         * @param (array) ids - the array of ids to check 
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         existsEntity(ids, test = false) {
             if (ids.constructor != Array){
-                throw new errors.WrongTypeError("This methods recieve a Array how parameter");
+                throw new errors.WrongTypeError("This method should receive an array as parameter");
             }
-            if (ids.length > 10){
+            if (ids.length > 100){
                 throw new errors.MaxLimitError("The query exists entity must have up to 100 ids.");
             }
             let path = this._sdRoutes.existsEntity;
@@ -540,6 +640,12 @@
             });
         }
 
+        /* Makes an aggregation query on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         aggregation(query, test = false){
             let path = this._sdRoutes.aggregation;
             return this.makeRequest({
@@ -551,6 +657,12 @@
             });
         }
 
+        /* Makes a top values query on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         topValues(query, test = false) {
             let path = this._sdRoutes.topValues;
             let sdValidator = new QueryTopValuesValidator(query);
@@ -565,6 +677,12 @@
             }
         }
 
+        /* Create a saved query on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         createSavedQuery(query, test) {
             let path = this._sdRoutes.saved;
             let sdValidator = new SavedQueryValidator(query);
@@ -579,6 +697,13 @@
             }
         }
 
+        /* Update a previous saved query on Slicing Dice API
+         * 
+         * @param (string) name - the name of the saved query to update
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         updateSavedQuery(name, query, test = false) {
             let path = this._sdRoutes.saved + name;
             return this.makeRequest({
@@ -590,6 +715,13 @@
             });
         }
 
+        /* Makes a data extraction query (result or score) on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (string) path - the path to send the query (result or score path)
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         dataExtractionWrapper(query, path, test) {
             let sdValidator = new QueryDataExtractionValidator(query);
             if (sdValidator.validator()){
@@ -603,11 +735,23 @@
             }
         }
 
+        /* Makes a result query on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         result(query, test = false) {
             let path = this._sdRoutes.result;
             return this.dataExtractionWrapper(query, path, test);
         }
 
+        /* Makes a score query on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         * @param (boolean) test - if is true we will use test end-point,
+         * otherwise production end-point
+         */
         score(query, test = false) {
             let path = this._sdRoutes.score;
             return this.dataExtractionWrapper(query, path, test);
