@@ -121,7 +121,7 @@
         }
     }
 
-    // Validator for count query
+    // Validator for count queries
     class QueryCountValidator extends SDBaseQueryValidator {
         constructor(query){
             super(query)
@@ -136,7 +136,7 @@
         }
     }
 
-    // Validator for top values query
+    // Validator for top values queries
     class QueryTopValuesValidator extends SDBaseQueryValidator{
         constructor(query) {
             super(query)
@@ -170,7 +170,7 @@
             }
         }
 
-        // if top valus query is valid this returns true, otherwise false
+        // if top values query is valid this returns true, otherwise false
         validator() {
             this._exceedsFieldsLimit();
             this._exceedsValuesContainsLimit();
