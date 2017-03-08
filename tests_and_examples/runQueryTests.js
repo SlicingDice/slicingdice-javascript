@@ -37,9 +37,12 @@ class SlicingDiceTester {
         // Translation table for fields with timestamp
         this.fieldTranslation = {}
 
-        this.sleepTime = 5;  // seconds
-        this.path = 'examples/';  // Directory containing examples to test
-        this.extension = '.json';  // Examples file format
+        // Sleep Time in seconds
+        this.sleepTime = 10;
+        // Directory containing examples to test
+        this.path = 'examples/';
+        // Examples file format
+        this.extension = '.json';
 
         this.numSuccesses = 0;
         this.numFails = 0;
@@ -62,6 +65,10 @@ class SlicingDiceTester {
         };
     }
 
+    /* Run all tests for a determined query type
+     * 
+     * @param (string) queryType - the type of the query to test
+     */
     runTests(queryType, callback) {
         let testData = this.loadTestData(queryType);
         let numTests = testData.length;
@@ -98,15 +105,21 @@ class SlicingDiceTester {
         async.series(tasks, callback);
     }
 
+    // Erase fieldTranslation object
     _emptyFieldTranslation(){
         this.fieldTranslation = {};
     }
 
-    loadTestData(queryType){
+    // Load test data from examples files
+    loadTestData(queryType) {
         let filename = this.path + queryType + this.extension;
         return JSON.parse(fs.readFileSync(filename));
     }
 
+    /* Create fields on Slicing Dice API
+     * 
+     * @param (array) test - the test data containing the field to create
+     */
     createFields(test, callback){
         let isSingular = test['fields'].length == 1;
         let field_or_fields;
@@ -137,6 +150,13 @@ class SlicingDiceTester {
         async.series(tasks, callback);
     }
 
+    /* Append integer timestamp to field name
+     * 
+     * This technique allows the same test suite to be executed over and over
+     * again, since each execution will use different field names.
+     *
+     * @param (array) field - array containing field name
+     */
     _appendTimestampToFieldName(field){
         let oldName = '"{0}"'.format(field['api-name']);
 
@@ -148,10 +168,15 @@ class SlicingDiceTester {
         this.fieldTranslation[oldName] = newName
     }
 
+    // Get actual timestamp in string format
     _getTimestamp(){
         return new Date().getTime().toString();
     }
 
+    /* Index data on Slicing Dice API
+     * 
+     * @param (array) test - the test data containing the data to index on Slicing Dice API
+     */
     indexData(test, callback) {
         let isSingular = test['index'].length == 1;
         let field_or_fields;
@@ -178,6 +203,11 @@ class SlicingDiceTester {
         });
     }
 
+    /* Execute query on Slicing Dice API
+     * 
+     * @param (string) queryType - the type of the query to send
+     * @param (string) test - the test data containing the data to query on Slicing Dice API
+     */
     executeQuery(queryType, test, callback) {
         let result;
         let queryData = this._translateFieldNames(test['query']);
@@ -205,6 +235,10 @@ class SlicingDiceTester {
         })
     }
 
+    /* Translate field name to match field name with timestamp
+     * 
+     * @param (array) jsonData - the json to translate the field name
+     */
     _translateFieldNames(jsonData){
         let dataString = JSON.stringify(jsonData);
         for(var oldName in this.fieldTranslation){
@@ -214,6 +248,11 @@ class SlicingDiceTester {
         return JSON.parse(dataString);
     }
 
+    /* Compare the result received from Slicing Dice API and the expected
+     * 
+     * @param (array) test - the data expected 
+     * @param (array) result - the data received from Slicing Dice API
+     */
     compareResult(test, result){
         let expected = this._translateFieldNames(test['expected']);
         let dataExpected = test['expected'];
@@ -242,6 +281,7 @@ class SlicingDiceTester {
         }
     }
 
+    // Write a file testResult.tmp with the result of the tests
     updateResult() {
         if (process.platform == "win32") {
             return;
@@ -277,6 +317,7 @@ class SlicingDiceTester {
     }
 }
 
+// Show results of the test saved on testResult.tmp file
 function showResults(){
     console.log(fs.readFileSync('testResult.tmp', 'utf8'));
     fs.unlink('testResult.tmp', (err) => {
@@ -296,9 +337,9 @@ function main(){
     let queryTypes = ['count_entity', 'count_event', 'top_values', 'aggregation'];
 
     // Testing class with demo API key
-    // http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys-demo-key
+    // To get a demo api key visit: http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys-demo-key
     let sdTester = new SlicingDiceTester(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiJkZW1vMW0iLCJwZXJtaXNzaW9uX2xldmVsIjozLCJwcm9qZWN0X2lkIjoyMCwiY2xpZW50X2lkIjoxMH0.xRBHeDxTzYAgFyuU94SWFbjITeoxgyRCQGdIee8qrLA',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiJkZW1vNDJtIiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6MjAzLCJjbGllbnRfaWQiOjEwfQ.G537mbBeMOQ673wcp_Yu0ypsAmqYfvFEvqdemmVrATI',
         false);
 
     let tests = [];
