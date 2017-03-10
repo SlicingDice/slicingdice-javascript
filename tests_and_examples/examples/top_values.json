@@ -2242,8 +2242,7 @@
         "query": {
             "enumerated-top-values": {
                 "equals": [
-                    "1000001",
-                    "1000002"
+                    "1000000"
                 ],
                 "enumerated-test-field": 5
             }
@@ -2254,12 +2253,8 @@
                 "enumerated-top-values": {
                     "enumerated-test-field": [
                         {
-                            "value": "1000001",
-                            "quantity": 50
-                        },
-                        {
-                            "value": "1000002",
-                            "quantity": 50
+                            "value": "1000000",
+                            "quantity": 100
                         }
                     ]
                 }
@@ -4522,12 +4517,8 @@
                 "enumerated-top-values": {
                     "enumerated-test-field": [
                         {
-                            "value": "1000001",
-                            "quantity": 25
-                        },
-                        {
-                            "value": "1000002",
-                            "quantity": 25
+                            "value": "1000000",
+                            "quantity": 100
                         }
                     ]
                 }
@@ -6778,7 +6769,7 @@
         "query": {
             "enumerated-top-values": {
                 "contains": [
-                    "1000001",
+                    "1000000",
                     "1000002"
                 ],
                 "enumerated-test-field": 5
@@ -6790,12 +6781,8 @@
                 "enumerated-top-values": {
                     "enumerated-test-field": [
                         {
-                            "value": "1000001",
-                            "quantity": 50
-                        },
-                        {
-                            "value": "1000002",
-                            "quantity": 50
+                            "value": "1000000",
+                            "quantity": 100
                         }
                     ]
                 }
@@ -9062,12 +9049,8 @@
                 "enumerated-top-values": {
                     "enumerated-test-field": [
                         {
-                            "value": "1000001",
-                            "quantity": 50
-                        },
-                        {
-                            "value": "1000002",
-                            "quantity": 50
+                            "value": "1000000",
+                            "quantity": 100
                         }
                     ]
                 }
@@ -11318,8 +11301,7 @@
         "query": {
             "enumerated-top-values": {
                 "starts-with": [
-                    "1234561",
-                    "1234562"
+                    "20000"
                 ],
                 "enumerated-test-field": 5
             }
@@ -11330,12 +11312,8 @@
                 "enumerated-top-values": {
                     "enumerated-test-field": [
                         {
-                            "value": "12345611",
-                            "quantity": 50
-                        },
-                        {
-                            "value": "12345622",
-                            "quantity": 50
+                            "value": "2000000",
+                            "quantity": 100
                         }
                     ]
                 }
@@ -13586,8 +13564,7 @@
         "query": {
             "enumerated-top-values": {
                 "ends-with": [
-                    "123456",
-                    "123456"
+                    "0000"
                 ],
                 "enumerated-test-field": 5
             }
@@ -13598,11 +13575,11 @@
                 "enumerated-top-values": {
                     "enumerated-test-field": [
                         {
-                            "value": "1123456",
+                            "value": "1000000",
                             "quantity": 50
                         },
                         {
-                            "value": "2123456",
+                            "value": "2000000",
                             "quantity": 50
                         }
                     ]
@@ -17321,6 +17298,1241 @@
                         {
                             "value": "value:matched_value_2",
                             "quantity": 50
+                        }
+                    ]
+                }
+            },
+            "took": "ignore"
+        }
+    },
+    {
+        "name": "Test for a \"TOP VALUES\" query using field \"STRING-TIME-SERIES\" and parameter \"CONTAINS\" with different values",
+        "fields": [
+            {
+                "api-name": "time-series-string-test-field",
+                "type": "string-time-series",
+                "name": "time_series_string_test_field"
+            }
+        ],
+        "index": {
+            "24": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "25": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "26": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "27": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "20": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "21": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "22": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "23": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "28": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "29": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "0": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "4": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "8": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "59": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "58": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "55": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "54": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "57": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "56": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "51": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "50": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "53": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "52": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "88": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "89": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "82": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "83": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "80": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "81": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "86": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "87": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "84": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "85": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "3": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "7": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "39": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "38": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "33": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "32": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "31": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "30": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "37": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "36": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "35": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "34": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "60": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "61": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "62": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "63": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "64": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "65": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "66": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "67": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "68": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "69": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "2": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "6": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "99": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "98": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "91": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "90": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "93": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "92": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "95": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "94": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "97": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "96": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "11": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "10": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "13": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "12": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "15": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "14": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "17": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "16": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "19": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "18": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "48": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "49": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "46": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "47": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "44": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "45": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "42": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "43": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "40": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "41": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "1": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "5": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_1_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "9": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:contains_2_value"
+                    }
+                ]
+            },
+            "77": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "76": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "75": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "74": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "73": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "72": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "71": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "70": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "79": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            },
+            "78": {
+                "time-series-string-test-field": [
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:not_contains_3_value"
+                    },
+                    {
+                        "date": "2016-01-01",
+                        "value": "value:gejdtmkjyi"
+                    }
+                ]
+            }
+        },
+        "query": {
+            "time-series-string-top-values": {
+                "time-series-string-test-field": 5,
+                "contains": [
+                    "contains_1",
+                    "contains_2"
+                ]
+            }
+        },
+        "expected": {
+            "status": "ignore",
+            "result": {
+                "time-series-string-top-values": {
+                    "time-series-string-test-field": [
+                        {
+                            "value": "value:contains_2_value",
+                            "quantity": 50
+                        },
+                        {
+                            "value": "value:contains_1_value",
+                            "quantity": 49
                         }
                     ]
                 }
