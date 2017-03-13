@@ -334,7 +334,7 @@ process.on('SIGINT', function() {
 
 function main(){
     // SlicingDice queries to be tested. Must match the JSON file name.
-    let queryTypes = ['count_entity', 'count_event', 'top_values', 'aggregation'];
+    let queryTypes = ['count_entity', 'count_event', 'top_values', 'aggregation', 'result', 'score'];
 
     // Testing class with demo API key
     // To get a demo api key visit: http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys-demo-key
