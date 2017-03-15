@@ -32,7 +32,7 @@ class SlicingDiceTester {
     constructor(api_key, verbose=false) {
         this.client = new SlicingDice({
             masterKey: api_key
-        });
+        }, true);
 
         // Translation table for fields with timestamp
         this.fieldTranslation = {}
