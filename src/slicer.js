@@ -328,7 +328,7 @@
     }
 
     class SlicingDice{
-        constructor(key) {
+        constructor(key, usesTestEndpoint = false) {
             this._key = key;
             this._checkKey(key);
             this._sdRoutes = {
@@ -346,6 +346,7 @@
                 project: '/project/'
             };
             this._setUpRequest();
+            this._usesTestEndpoint = usesTestEndpoint;
         }
 
         get sdAddress() {
@@ -407,14 +408,14 @@
             return currentLevelKey[0];
         }
 
-        /* Make request to Slicing Dice API, if objRequest.test is true
+        /* Make request to Slicing Dice API, if this._usesTestEndpoint is true
         the request will be sent to test end-point
         */
         makeRequest(objRequest) {
             let token = this._getAPIKey(objRequest.levelKey);
             let urlReq;
             // test if the request must be sent to test endpoint
-            if (objRequest.test){
+            if (this._usesTestEndpoint){
                 urlReq = this.BASE_URL + "/test" + objRequest.path;
             } else {
                 urlReq = this.BASE_URL + objRequest.path;
@@ -436,80 +437,59 @@
             }, (err) => { return err;});
         }
 
-        /* Get all projects
-         * 
-         * @param (boolean) test - if true we will use test end-point,
-         * otherwise production end-point
-         */
-        getProjects(test = false){
+        /* Get all projects */
+        getProjects(){
             let path = this._sdRoutes.project;
             return this.makeRequest({
                 path: path,
                 reqType: "GET",
-                levelKey: 2,
-                test: test
+                levelKey: 2
             });
         }
 
-        /* Get all fields
-         * 
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
-         */
-        getFields(test = false){
+        /* Get all fields */
+        getFields(){
             let path = this._sdRoutes.field;
             return this.makeRequest({
                 path: path,
                 reqType: "GET",
-                levelKey: 2,
-                test: test
+                levelKey: 2
             });
         }
 
-        /* Get all saved queries
-         * 
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
-         */
-        getSavedQueries(test = false) {
+        /* Get all saved queries */
+        getSavedQueries() {
             let path = this._sdRoutes.saved;
             return this.makeRequest({
                 path: path,
                 reqType: "GET",
-                levelKey: 2,
-                test: test
+                levelKey: 2
             });
         }
 
         /* Delete a saved query
          * 
          * @param (string) name - the name of the saved query that will be deleted
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        deleteSavedQuery(name, test = false) {
+        deleteSavedQuery(name) {
             let path = this._sdRoutes.saved + name;
             return this.makeRequest({
                 path: path,
                 reqType: "DELETE",
-                levelKey: 2,
-                teste: test
+                levelKey: 2
             });
         }
 
         /* Get saved query by name
          * 
          * @param (string) name - the name of the saved query that will be retrieved
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        getSavedQuery(name, test = false) {
+        getSavedQuery(name) {
             let path = this._sdRoutes.saved + name;
             return this.makeRequest({
                 path: path,
                 reqType: "GET",
-                levelKey: 0,
-                test: test,
+                levelKey: 0
             });
         }
 
@@ -518,10 +498,8 @@
          * @param (array) query - the query to send to Slicing Dice API
          * @param (boolean) autoCreateFields - if is true Slicing Dice API will
          * automatically create nonexistent fields
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        index(query, autoCreateFields = false, test = false){
+        index(query, autoCreateFields = false){
             if (autoCreateFields){
                 query["auto-create-fields"] = true
             }
@@ -531,18 +509,15 @@
                 path: path,
                 reqType: "POST",
                 data: query,
-                levelKey: 1,
-                test: test
+                levelKey: 1
             });
         }
 
         /* Create a field on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        createField(query, test = false){
+        createField(query){
             let path = this._sdRoutes.field;
             let sdValidator = new FieldValidator(query);
             if (sdValidator.validator()){
@@ -550,8 +525,7 @@
                     path: path,
                     reqType: "POST",
                     data: query,
-                    levelKey: 1,
-                    test: test
+                    levelKey: 1
                 });
             }
         }
@@ -560,18 +534,15 @@
          * 
          * @param (array) query - the query to send to Slicing Dice API
          * @param (string) path - the path to send the query (count entity or count event path)
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        countQueryWrapper(query, path, test){
+        countQueryWrapper(query, path){
             let sdValidator = new QueryCountValidator(query);
             if (sdValidator.validator()){
                 return this.makeRequest({
                     path: path,
                     reqType: "POST",
                     data: query,
-                    levelKey: 0,
-                    test: test
+                    levelKey: 0
                 });
             }
         }
@@ -579,48 +550,37 @@
         /* Makes a count entity query on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        countEntity(query, test = false){
+        countEntity(query){
             let path = this._sdRoutes.countEntity;
             let sdValidator = new QueryCountValidator(query);
-            return this.countQueryWrapper(query, path, test);
+            return this.countQueryWrapper(query, path);
         }
 
-        /* Makes a total query on Slicing Dice API
-         * 
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
-         */
-        countEntityTotal(test = false) {
+        /* Makes a total query on Slicing Dice API */
+        countEntityTotal() {
             let path  = this._sdRoutes.countEntityTotal;
             return this.makeRequest({
                 path: path,
                 reqType: "GET",
-                levelKey: 0,
-                test: test
+                levelKey: 0
             })
         }
 
         /* Makes a count event query on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        countEvent(query, test = false){
+        countEvent(query){
             let path = this._sdRoutes.countEvent;
-            return this.countQueryWrapper(query, path, test);
+            return this.countQueryWrapper(query, path);
         }
 
         /* Makes a exists query on Slicing Dice API
          * 
-         * @param (array) ids - the array of ids to check 
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
+         * @param (array) ids - the array of ids to check
          */
-        existsEntity(ids, test = false) {
+        existsEntity(ids) {
             if (ids.constructor != Array){
                 throw new errors.WrongTypeError("This method should receive an array as parameter");
             }
@@ -635,35 +595,29 @@
                 path: path,
                 reqType: "POST",
                 data: query,
-                levelKey: 0,
-                test: test
+                levelKey: 0
             });
         }
 
         /* Makes an aggregation query on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        aggregation(query, test = false){
+        aggregation(query){
             let path = this._sdRoutes.aggregation;
             return this.makeRequest({
                 path: path,
                 reqType: "POST",
                 data: query,
-                levelKey: 0,
-                test: test
+                levelKey: 0
             });
         }
 
         /* Makes a top values query on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        topValues(query, test = false) {
+        topValues(query) {
             let path = this._sdRoutes.topValues;
             let sdValidator = new QueryTopValuesValidator(query);
             if (sdValidator.validator()){
@@ -671,8 +625,7 @@
                     path: path,
                     reqType: "POST",
                     data: query,
-                    levelKey: 0,
-                    test: test
+                    levelKey: 0
                 });
             }
         }
@@ -680,10 +633,8 @@
         /* Create a saved query on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        createSavedQuery(query, test) {
+        createSavedQuery(query) {
             let path = this._sdRoutes.saved;
             let sdValidator = new SavedQueryValidator(query);
             if (sdValidator.validator()){
@@ -691,8 +642,7 @@
                     path: path,
                     reqType: "POST",
                     data: query,
-                    levelKey: 2,
-                    test: test
+                    levelKey: 2
                 });
             }
         }
@@ -701,17 +651,14 @@
          * 
          * @param (string) name - the name of the saved query to update
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        updateSavedQuery(name, query, test = false) {
+        updateSavedQuery(name, query) {
             let path = this._sdRoutes.saved + name;
             return this.makeRequest({
                 path: path,
                 reqType: "PUT",
                 data: query,
-                levelKey: 2,
-                test: test
+                levelKey: 2
             });
         }
 
@@ -719,18 +666,15 @@
          * 
          * @param (array) query - the query to send to Slicing Dice API
          * @param (string) path - the path to send the query (result or score path)
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        dataExtractionWrapper(query, path, test) {
+        dataExtractionWrapper(query, path) {
             let sdValidator = new QueryDataExtractionValidator(query);
             if (sdValidator.validator()){
                 return this.makeRequest({
                     path: path,
                     reqType: "POST",
                     data: query,
-                    levelKey: 0,
-                    test: test
+                    levelKey: 0
                 });
             }
         }
@@ -738,23 +682,19 @@
         /* Makes a result query on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        result(query, test = false) {
+        result(query) {
             let path = this._sdRoutes.result;
-            return this.dataExtractionWrapper(query, path, test);
+            return this.dataExtractionWrapper(query, path);
         }
 
         /* Makes a score query on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) test - if is true we will use test end-point,
-         * otherwise production end-point
          */
-        score(query, test = false) {
+        score(query) {
             let path = this._sdRoutes.score;
-            return this.dataExtractionWrapper(query, path, test);
+            return this.dataExtractionWrapper(query, path);
         }
     }
 
