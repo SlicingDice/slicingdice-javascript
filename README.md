@@ -281,7 +281,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 ids = [
         "user1@slicingdice.com",
@@ -323,7 +323,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 console.log(client.countEntityTotal().then((resp) => {
         console.log(resp);
@@ -355,7 +355,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 query = {
     'corolla-or-fit': [
@@ -412,7 +412,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 query = {
   "test-drives-in-ny": [
@@ -471,7 +471,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 query = {
   "car-year": {
@@ -539,7 +539,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 query = {
   "query": [
@@ -600,7 +600,7 @@ let SlicingDice = require('slicerjs');
 
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY'
-});
+}, usesTestEndpoint = true);
 
 client.getSavedQueries().then((resp) => {
     console.log(resp);
@@ -659,7 +659,7 @@ let SlicingDice = require('slicerjs');
 
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY'
-});
+}, usesTestEndpoint = true);
 
 query = {
   "name": "my-saved-query",
@@ -722,7 +722,7 @@ let SlicingDice = require('slicerjs');
 
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY'
-});
+}, usesTestEndpoint = true);
 
 newQuery = {
   "type": "count/entity",
@@ -784,7 +784,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 client.getSavedQuery("my-saved-query").then((resp) => {
     console.log(resp);
@@ -829,7 +829,7 @@ let SlicingDice = require('slicerjs');
 
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY'
-});
+}, usesTestEndpoint = true);
 
 client.deleteSavedQuery("my-saved-query").then((resp) => {
     console.log(resp);
@@ -874,7 +874,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 query = {
   "query": [
@@ -933,7 +933,7 @@ let SlicingDice = require('slicerjs');
 let client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-});
+}, usesTestEndpoint = true);
 
 query = {
   "query": [
