@@ -91,11 +91,11 @@ let client = new SlicingDice({
   masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = false);
 
-console.log(client.getProjects().then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.getProjects().then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
@@ -133,11 +133,11 @@ let client = new SlicingDice({
     masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = true);
 
-console.log(client.getFields().then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.getFields().then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
@@ -188,11 +188,11 @@ field = {
     "storage": "latest-value"
 };
 
-console.log(client.createField(field).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.createField(field).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
@@ -325,11 +325,11 @@ let client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-console.log(client.countEntityTotal().then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.countEntityTotal().then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
