@@ -33,7 +33,7 @@ var client = new SlicingDice({
   masterKey: 'MASTER_API_KEY',
   writeKey: 'WRITE_API_KEY',
   readKey: 'READ_API_KEY'
-});
+}, usesTestEndpoint = true);
 
 // Indexing data
 var indexData = {
@@ -42,7 +42,7 @@ var indexData = {
     },
     "auto-create-fields": true
 };
-client.index(indexData);
+client.index(indexData, false);
 
 // Querying data
 var queryData = {
@@ -57,7 +57,12 @@ var queryData = {
         }
     ]
 };
-console.log(client.countEntity(queryData));
+
+client.countEntity(queryData).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 ## Reference
@@ -71,7 +76,8 @@ console.log(client.countEntity(queryData));
 ### Constructor
 
 `SlicingDice(key)`
-* `key (String)` - [API key](http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys) to authenticate requests with the SlicingDice API.
+* `key (Object)` - [API key](http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys) to authenticate requests with the SlicingDice API.
+* `usesTestEndpoint (boolean)` - If false the client will send requests to production end-point, otherwise to tests end-point.
 
 ### `getProjects()`
 Get all created projects, both active and inactive ones. This method corresponds to a [GET request at /project](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-project).
@@ -81,11 +87,11 @@ Get all created projects, both active and inactive ones. This method corresponds
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_API_KEY
-});
+var client = new SlicingDice({
+  masterKey: 'MASTER_API_KEY'
+}, usesTestEndpoint = false);
 
-console.log(sd.getProjects().then((resp) => {
+console.log(client.getProjects().then((resp) => {
         console.log(resp);
     }, (err) => {
         console.log(err);
@@ -123,11 +129,11 @@ Get all created fields, both active and inactive ones. This method corresponds t
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_API_KEY
-});
+let client = new SlicingDice({
+    masterKey: 'MASTER_API_KEY'
+}, usesTestEndpoint = true);
 
-console.log(sd.getFields().then((resp) => {
+console.log(client.getFields().then((resp) => {
         console.log(resp);
     }, (err) => {
         console.log(err);
@@ -170,9 +176,9 @@ Create a new field. This method corresponds to a [POST request at /field](http:/
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_API_KEY
-});
+let client = new SlicingDice({
+    masterKey: 'MASTER_API_KEY'
+}, usesTestEndpoint = true);
 
 field = {
     "name": "Year",
@@ -182,7 +188,7 @@ field = {
     "storage": "latest-value"
 };
 
-console.log(sd.createField(field).then((resp) => {
+console.log(client.createField(field).then((resp) => {
         console.log(resp);
     }, (err) => {
         console.log(err);
@@ -206,9 +212,10 @@ Index data to existing entities or create new entities, if necessary. This metho
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_WRITE_API_KEY
-});
+let client = new SlicingDice({
+    masterKey: 'MASTER_API_KEY',
+    writeKey: 'WRITE_API_KEY'
+}, usesTestEndpoint = true);
 
 indexData = {
     "user1@slicingdice.com": {
@@ -245,11 +252,11 @@ indexData = {
     }
 };
 
-console.log(sd.index(indexData).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.index(indexData, autoCreateFields = true).then((resp) => {
+   console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
@@ -271,8 +278,9 @@ Verify which entities exist in a project given a list of entity IDs. This method
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
 ids = [
@@ -281,11 +289,11 @@ ids = [
         "user3@slicingdice.com"
 ];
 
-console.log(sd.existsEntity(ids).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.existsEntity(ids).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
@@ -312,11 +320,12 @@ Count the number of indexed entities. This method corresponds to a [GET request 
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
-console.log(sd.countEntityTotal().then((resp) => {
+console.log(client.countEntityTotal().then((resp) => {
         console.log(resp);
     }, (err) => {
         console.log(err);
@@ -343,51 +352,52 @@ Count the number of entities attending the given query. This method corresponds 
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
 query = {
-    "users-from-ny-or-ca": [
+    'corolla-or-fit': [
         {
-            "state": {
-                "equals": "NY"
+            'car-model': {
+                'equals': 'toyota corolla'
             }
         },
-        "or",
+        'or',
         {
-            "state-origin": {
-                "equals": "CA"
+            'car-model': {
+                'equals': 'honda fit'
             }
         },
     ],
-    "users-from-ny": [
+    'ford-ka': [
         {
-            "state": {
-                "equals": "NY"
+            'car-model': {
+                'equals': 'ford ka'
             }
         }
     ],
-    "bypass-cache": false
+    'bypass-cache': false
 };
 
-console.log(sd.countEntity(query).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.countEntity(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "result": {
-        "users-from-ny-or-ca": 175,
-        "users-from-ny": 296
-    },
-    "took": 0.103
+   "result":{
+      "ford-ka":2,
+      "corolla-or-fit":2
+   },
+   "took":0.083,
+   "status":"success"
 }
 ```
 
@@ -399,55 +409,54 @@ Count the number of occurrences for time-series events attending the given query
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
 query = {
-    "users-from-ny-in-jan": [
-        {
-        "test-field": {
-                "equals": "NY",
-                "between": [
-                    "2016-01-01T00:00:00Z",
-                    "2016-01-31T00:00:00Z"
-                ],
-                "minfreq": 2
-            }
-        }
-    ],
-    "users-from-ny-in-feb": [
-        {
-            "test-field": {
-                "equals": "NY",
-                "between": [
-                    "2016-02-01T00:00:00Z",
-                    "2016-02-28T00:00:00Z"
-                ],
-                "minfreq": 2
-            }
-        }
-    ],
-    "bypass-cache": true
-};
+  "test-drives-in-ny": [
+    {
+      "test-drives": {
+        "equals": "NY",
+        "between": [
+          "2016-08-16T00:00:00Z",
+          "2016-08-18T00:00:00Z"
+        ]
+      }
+    }
+  ],
+  "test-drives-in-ca": [
+    {
+      "test-drives": {
+        "equals": "CA",
+        "between": [
+          "2016-04-04T00:00:00Z",
+          "2016-04-06T00:00:00Z"
+        ]
+      }
+    }
+  ],
+  "bypass-cache": true
+}
 
-console.log(sd.countEvent(query).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.countEvent(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "result": {
-        "users-from-ny-in-jan": 175,
-        "users-from-ny-in-feb": 296
-    },
-    "took": 0.103
+   "result":{
+      "test-drives-in-ny":3,
+      "test-drives-in-ca":0
+   },
+   "took":0.063,
+   "status":"success"
 }
 ```
 
@@ -459,80 +468,63 @@ Return the top values for entities attending the given query. This method corres
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
 query = {
-    "user-gender": {
-        "gender": 2
-    },
-    "operating-systems": {
-        "os": 3
-    },
-    "linux-operating-systems": {
-        "os": 3,
-        "contains": [
-            "linux",
-            "unix"
-        ]
-    }
-};
+  "car-year": {
+    "year": 2
+  },
+  "car models": {
+    "car-model": 3
+  }
+}
 
-console.log(sd.topValues(query).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.topValues(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "result": {
-        "user-gender": {
-            "gender": [
-                {
-                    "quantity": 6.0,
-                    "value": "male"
-                }, {
-                    "quantity": 4.0,
-                    "value": "female"
-                }
-            ]
-        },
-        "operating-systems": {
-            "os": [
-                {
-                    "quantity": 55.0,
-                    "value": "windows"
-                }, {
-                    "quantity": 25.0,
-                    "value": "macos"
-                }, {
-                    "quantity": 12.0,
-                    "value": "linux"
-                }
-            ]
-        },
-        "linux-operating-systems": {
-            "os": [
-                {
-                    "quantity": 12.0,
-                    "value": "linux"
-                }, {
-                    "quantity": 3.0,
-                    "value": "debian-linux"
-                }, {
-                    "quantity": 2.0,
-                    "value": "unix"
-                }
-            ]
-        }
-    },
-    "took": 0.103
+   "result":{
+      "car models":{
+         "car-model":[
+            {
+               "quantity":2,
+               "value":"ford ka"
+            },
+            {
+               "quantity":1,
+               "value":"honda fit"
+            },
+            {
+               "quantity":1,
+               "value":"toyota corolla"
+            }
+         ]
+      },
+      "car-year":{
+         "year":[
+            {
+               "quantity":2,
+               "value":"2016"
+            },
+            {
+               "quantity":1,
+               "value":"2010"
+            }
+         ]
+      }
+   },
+   "took":0.034,
+   "status":"success"
 }
 ```
 
@@ -544,98 +536,57 @@ Return the aggregation of all fields in the given query. This method corresponds
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
 query = {
-    "query": [
-        {
-            "gender": 2
-        },
-        {
-            "os": 2,
-            "equals": [
-                "linux",
-                "macos",
-                "windows"
-            ]
-        },
-        {
-            "browser": 2
-        }
-    ]
+  "query": [
+    {
+      "year": 2
+    },
+    {
+      "car-model": 2,
+      "equals": [
+        "honda fit",
+        "toyota corolla"
+      ]
+    }
+  ]
 };
 
-console.log(sd.aggregation(query).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));let SlicingDice = require('slicerjs');
+client.aggregation(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "result": {
-        "gender": [
-            {
-                "quantity": 6,
-                "value": "male",
-                "os": [
-                    {
-                        "quantity": 5,
-                        "value": "windows",
-                        "browser": [
-                            {
-                                "quantity": 3,
-                                "value": "safari"
-                            }, {
-                                "quantity": 2,
-                                "value": "internet explorer"
-                            }
-                        ]
-                    }, {
-                        "quantity": 1,
-                        "value": "linux",
-                        "browser": [
-                            {
-                                "quantity": 1,
-                                "value": "chrome"
-                            }
-                        ]
-                    }
-                ]
-            }, {
-                "quantity": 4,
-                "value": "female",
-                "os": [
-                    {
-                        "quantity": 3,
-                        "value": "macos",
-                        "browser": [
-                            {
-                                "quantity": 3,
-                                "value": "chrome"
-                            }
-                        ]
-                    }, {
-                        "quantity": 1,
-                        "value": "linux",
-                        "browser": [
-                            {
-                                "quantity": 1,
-                                "value": "chrome"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "took": 0.103
+   "result":{
+      "year":[
+         {
+            "quantity":2,
+            "value":"2016",
+            "car-model":[
+               {
+                  "quantity":1,
+                  "value":"honda fit"
+               }
+            ]
+         },
+         {
+            "quantity":1,
+            "value":"2005"
+         }
+      ]
+   },
+   "took":0.079,
+   "status":"success"
 }
 ```
 
@@ -647,15 +598,15 @@ Get all saved queries. This method corresponds to a [GET request at /query/saved
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY'
 });
 
-console.log(sd.getSavedQueries().then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.getSavedQueries().then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
@@ -706,58 +657,58 @@ Create a saved query at SlicingDice. This method corresponds to a [POST request 
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY'
 });
 
 query = {
-    "name": "my-saved-query",
-    "type": "count/entity",
-    "query": [
-        {
-            "state": {
-                "equals": "NY"
-            }
-        },
-        "or",
-        {
-            "state-origin": {
-                "equals": "CA"
-            }
-        }
-    ],
-    "cache-period": 100
-};
+  "name": "my-saved-query",
+  "type": "count/entity",
+  "query": [
+    {
+      "car-model": {
+        "equals": "honda fit"
+      }
+    },
+    "or",
+    {
+      "car-model": {
+        "equals": "toyota corolla"
+      }
+    }
+  ],
+  "cache-period": 100
+}
 
-console.log(sd.createSavedQuery(query).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.createSavedQuery(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "name": "my-saved-query",
-    "type": "count/entity",
-    "query": [
-        {
-            "state": {
-                "equals": "NY"
-            }
-        },
-        "or",
-        {
-            "state-origin": {
-                "equals": "CA"
-            }
-        }
-    ],
-    "cache-period": 100,
-    "took": 0.103
+   "took":0.053,
+   "query":[
+      {
+         "car-model":{
+            "equals":"honda fit"
+         }
+      },
+      "or",
+      {
+         "car-model":{
+            "equals":"toyota corolla"
+         }
+      }
+   ],
+   "name":"my-saved-query",
+   "type":"count/entity",
+   "cache-period":100,
+   "status":"success"
 }
 ```
 
@@ -769,57 +720,56 @@ Update an existing saved query at SlicingDice. This method corresponds to a [PUT
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY'
 });
 
 newQuery = {
-    "type": "count/entity",
-    "query": [
-        {
-            "state": {
-                "equals": "NY"
-            }
-        },
-        "or",
-        {
-            "state-origin": {
-                "equals": "CA"
-            }
-        }
-    ],
-    "cache-period": 100
+  "type": "count/entity",
+  "query": [
+    {
+      "car-model": {
+        "equals": "ford ka"
+      }
+    },
+    "or",
+    {
+      "car-model": {
+        "equals": "toyota corolla"
+      }
+    }
+  ],
+  "cache-period": 100
 };
 
-console.log(sd.updateSavedQuery("my-saved-query", newQuery).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.updateSavedQuery("my-saved-query", newQuery).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "name": "my-saved-query",
-    "type": "count/entity",
-    "query": [
-        {
-            "state": {
-                "equals": "NY"
-            }
-        },
-        "or",
-        {
-            "state-origin": {
-                "equals": "CA"
-            }
-        }
-    ],
-    "cache-period": 100,
-    "took": 0.103
+   "took":0.037,
+   "query":[
+      {
+         "car-model":{
+            "equals":"ford ka"
+         }
+      },
+      "or",
+      {
+         "car-model":{
+            "equals":"toyota corolla"
+         }
+      }
+   ],
+   "type":"count/entity",
+   "cache-period":100,
+   "status":"success"
 }
 ```
 
@@ -831,40 +781,41 @@ Executed a saved query at SlicingDice. This method corresponds to a [GET request
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
-console.log(sd.getSavedQuery("my-saved-query").then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.getSavedQuery("my-saved-query").then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "type": "count/entity",
-    "query": [
-        {
-            "state": {
-                "equals": "NY"
-            }
-        },
-        "or",
-        {
-            "state-origin": {
-                "equals": "CA"
-            }
-        }
-    ],
-    "result": {
-        "my-saved-query": 175
-    },
-    "took": 0.103
+   "result":{
+      "query":2
+   },
+   "took":0.035,
+   "query":[
+      {
+         "car-model":{
+            "equals":"honda fit"
+         }
+      },
+      "or",
+      {
+         "car-model":{
+            "equals":"toyota corolla"
+         }
+      }
+   ],
+   "type":"count/entity",
+   "status":"success"
 }
 ```
 
@@ -876,38 +827,39 @@ Delete a saved query at SlicingDice. This method corresponds to a [DELETE reques
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY'
 });
 
-console.log(sd.deleteSavedQuery("my-saved-query").then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.deleteSavedQuery("my-saved-query").then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "deleted-query": "my-saved-query",
-    "type": "count/entity",
-    "query": [
-        {
-            "state": {
-                "equals": "NY"
-            }
-        },
-        "or",
-        {
-            "state-origin": {
-                "equals": "CA"
-            }
-        }
-    ],
-    "took": 0.103
+   "took":0.029,
+   "query":[
+      {
+         "car-model":{
+            "equals":"honda fit"
+         }
+      },
+      "or",
+      {
+         "car-model":{
+            "equals":"toyota corolla"
+         }
+      }
+   ],
+   "type":"count/entity",
+   "cache-period":100,
+   "status":"success",
+   "deleted-query":"my-saved-query"
 }
 ```
 
@@ -919,51 +871,54 @@ Retrieve indexed values for entities attending the given query. This method corr
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
 query = {
-    "query": [
-        {
-            "users-from-ny": {
-                "equals": "NY"
-            }
-        },
-        "or",
-        {
-            "users-from-ca": {
-                "equals": "CA"
-            }
-        }
-    ],
-    "fields": ["name", "year"],
-    "limit": 2
+  "query": [
+    {
+      "car-model": {
+        "equals": "ford ka"
+      }
+    },
+    "or",
+    {
+      "car-model": {
+        "equals": "toyota corolla"
+      }
+    }
+  ],
+  "fields": ["car-model", "year"],
+  "limit": 2
 };
 
-console.log(sd.result(query).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.result(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "data": {
-        "user1@slicingdice.com": {
-            "name": "John",
-            "year": 2016
-        },
-        "user2@slicingdice.com": {
-            "name": "Mary",
-            "year": 2005
-        }
-    },
-    "took": 0.103
+   "took":0.113,
+   "next-page":null,
+   "data":{
+      "customer5@mycustomer.com":{
+         "year":"2005",
+         "car-model":"ford ka"
+      },
+      "user1@slicingdice.com":{
+         "year":"2016",
+         "car-model":"ford ka"
+      }
+   },
+   "page":1,
+   "status":"success"
 }
 ```
 
@@ -975,53 +930,56 @@ Retrieve indexed values as well as their relevance for entities attending the gi
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let sd = new SlicingDice({
-    // MASTER_OR_READ_API_KEY
+let client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
 });
 
 query = {
-    "query": [
-        {
-            "users-from-ny": {
-                "equals": "NY"
-            }
-        },
-        "or",
-        {
-            "users-from-ca": {
-                "equals": "CA"
-            }
-        }
-    ],
-    "fields": ["name", "year"],
-    "limit": 2
+  "query": [
+    {
+      "car-model": {
+        "equals": "ford ka"
+      }
+    },
+    "or",
+    {
+      "car-model": {
+        "equals": "toyota corolla"
+      }
+    }
+  ],
+  "fields": ["car-model", "year"],
+  "limit": 2
 };
 
-console.log(sd.score(query).then((resp) => {
-        console.log(resp);
-    }, (err) => {
-        console.log(err);
-    }));
+client.score(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.log(err);
+});
 ```
 
 #### Output example
 
 ```json
 {
-    "status": "success",
-    "data": {
-        "user1@slicingdice.com": {
-            "name": "John",
-            "year": 2016,
-            "score": 2
-        },
-        "user2@slicingdice.com": {
-            "name": "Mary",
-            "year": 2005,
-            "score": 1
-        }
-    },
-    "took": 0.103
+   "took":0.063,
+   "next-page":null,
+   "data":{
+      "user3@slicingdice.com":{
+         "score":1,
+         "year":"2010",
+         "car-model":"toyota corolla"
+      },
+      "user2@slicingdice.com":{
+         "score":1,
+         "year":"2016",
+         "car-model":"honda fit"
+      }
+   },
+   "page":1,
+   "status":"success"
 }
 ```
 

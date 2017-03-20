@@ -135,7 +135,7 @@ class SlicingDiceTester {
             let field = test['fields'][data];
             this._appendTimestampToFieldName(field);
             tasks.push((callback) => {
-                this.client.createField(field, true).then((resp) => {
+                this.client.createField(field).then((resp) => {
                     callback();
                 }, (err) => {
                     this.compareResult(test, err);
@@ -193,7 +193,7 @@ class SlicingDiceTester {
             console.log(indexData);
         }
 
-        this.client.index(indexData, false, true).then(() => {
+        this.client.index(indexData, false).then(() => {
             // Wait a few seconds so the data can be indexed by SlicingDice
             sleep.sleep(this.sleepTime);
             callback();
@@ -226,7 +226,7 @@ class SlicingDiceTester {
             'score': 'score'
         };
 
-        this.client[queryTypeMethodMap[queryType]](queryData, true).then((resp) =>{
+        this.client[queryTypeMethodMap[queryType]](queryData).then((resp) =>{
             this.compareResult(test, resp);
             callback();
         }, (err) =>{
