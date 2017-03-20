@@ -518,6 +518,23 @@
          * @param (array) query - the query to send to Slicing Dice API
          */
         createField(query){
+            if (query instanceof Array) {
+                let promises = [];
+                for (let i = 0; i < query.length; i++) {
+                    promises.push(this.fieldCreate(query[i]));
+                }
+
+                return Promise.all(promises);
+            } else {
+                return this.fieldCreate(query);
+            }
+        }
+
+        /* Create a field on Slicing Dice API
+         * 
+         * @param (array) query - the query to send to Slicing Dice API
+         */
+        fieldCreate(query) {
             let path = this._sdRoutes.field;
             let sdValidator = new FieldValidator(query);
             if (sdValidator.validator()){
