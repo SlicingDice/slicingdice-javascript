@@ -300,16 +300,16 @@
         validateField(query) {
             this.validateName(query);
             this.validateFieldType(query);
-            if (query["type"] == "string") {
+            if (query["type"] === "string") {
                 this.checkStrTypeIntegrity(query);
             }
-            if (query["type"] == "enumerated") {
+            if (query["type"] === "enumerated") {
                 this.validateEnumeratedType(query);
             }
             if (query.hasOwnProperty("description")) {
                 this.validateDescription(query);
             }
-            if (query.hasOwnProperty('decimal-place')) {
+            if (query.hasOwnProperty("decimal-place")) {
                 this.validateDecimalType(query);
             }
         }
