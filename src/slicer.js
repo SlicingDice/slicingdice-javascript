@@ -234,12 +234,12 @@
         }
 
         // Check field name
-        validateName() {
-            if (!this.query.hasOwnProperty("name")) {
+        validateName(query) {
+            if (!query.hasOwnProperty("name")) {
                 throw new errors.InvalidFieldDescriptionError("The field's name can't be empty/None.");
             }
             else {
-                let name = this.query["name"];
+                let name = query["name"];
                 if (name.length > 80) {
                     throw new errors.InvalidFieldDescriptionError("The field's name have a very big content. (Max: 80 chars)");
                 }
@@ -247,60 +247,71 @@
         }
 
         // Check field description
-        validateDescription() {
-            let description = this.query.description;
+        validateDescription(query) {
+            let description = query.description;
             if (description.length > 80){
                 throw new errors.InvalidFieldDescriptionError("The field's description have a very big content. (Max: 300chars)");
             }
         }
 
         // Check field type
-        validateFieldType() {
+        validateFieldType(query) {
             // The field should have a type property
-            if (!this.query.hasOwnProperty("type")){
+            if (!query.hasOwnProperty("type")){
                 throw new errors.InvalidFieldError("The field should have a type.");
             }
         }
 
         // If field is decimal check if it has decimal or decimal-time-series type 
-        validateDecimalType() {
+        validateDecimalType(query) {
             let decimal_types = ["decimal", "decimal-time-series"];
-            if (!decimal_types.includes(this.query["decimal-place"])) {
+            if (!decimal_types.includes(query["decimal-place"])) {
                 throw new errors.InvalidFieldError("This field is only accepted on type 'decimal' or 'decimal-time-series'");
             }
         }
 
         // Check if string field is valid
-        checkStrTypeIntegrity() {
-            if (!this.query.hasOwnProperty("cardinality")){
+        checkStrTypeIntegrity(query) {
+            if (!query.hasOwnProperty("cardinality")){
                 throw new errors.InvalidFieldError("The field with type string should have 'cardinality' key.");
             }
         }
 
         // Check if enumerated field is valid
-        validateEnumeratedType() {
-            if (!this.query.hasOwnProperty("range")){
+        validateEnumeratedType(query) {
+            if (!query.hasOwnProperty("range")){
                 throw new errors.InvalidFieldError("The 'enumerated' type needs of the 'range' parameter.");
             }
         }
 
         // If field is valid this returns true
         validator() {
-            this.validateName();
-            this.validateFieldType();
-            if (this.query["type"] == "string") {
-                this.checkStrTypeIntegrity();
+            if (this.query instanceof Array) {
+                for (let i = 0; i < this.query.length; i++) {
+                    this.validateField(this.query[i]);
+                }
+            } else {
+                this.validateField(this.query);
             }
-            if (this.query["type"] == "enumerated") {
-                this.validateEnumeratedType();
-            }
-            if (this.query.hasOwnProperty("description")) {
-                this.validateDescription();
-            }
-            if (this.query.hasOwnProperty('decimal-place')) {
-                this.validateDecimalType();
-            }
+    
             return true;
+        }
+
+        validateField(query) {
+            this.validateName(query);
+            this.validateFieldType(query);
+            if (query["type"] === "string") {
+                this.checkStrTypeIntegrity(query);
+            }
+            if (query["type"] === "enumerated") {
+                this.validateEnumeratedType(query);
+            }
+            if (query.hasOwnProperty("description")) {
+                this.validateDescription(query);
+            }
+            if (query.hasOwnProperty("decimal-place")) {
+                this.validateDecimalType(query);
+            }
         }
     }
 
