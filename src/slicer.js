@@ -328,9 +328,9 @@
     }
 
     class SlicingDice{
-        constructor(key, usesTestEndpoint = false) {
-            this._key = key;
-            this._checkKey(key);
+        constructor(apiKeys, usesTestEndpoint = false) {
+            this._key = apiKeys;
+            this._checkKey(apiKeys);
             this._sdRoutes = {
                 field: '/field/',
                 index: '/index/',

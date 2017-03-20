@@ -29,23 +29,23 @@ npm install slicerjs
 var SlicingDice = require('slicerjs'); // only required for Node.js
 
 // Configure the client
-let client = new SlicingDice({
+const client = new SlicingDice({
   masterKey: 'MASTER_API_KEY',
   writeKey: 'WRITE_API_KEY',
   readKey: 'READ_API_KEY'
 }, usesTestEndpoint = true);
 
 // Indexing data
-var indexData = {
+const indexData = {
     "user1@slicingdice.com": {
         "age": 22
     },
     "auto-create-fields": true
 };
-client.index(indexData, false);
+client.index(indexData);
 
 // Querying data
-var queryData = {
+const queryData = {
     "users-between-20-and-40": [
         {
             "age": {
@@ -57,11 +57,10 @@ var queryData = {
         }
     ]
 };
-
 client.countEntity(queryData).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.err(err);
 });
 ```
 
@@ -75,8 +74,8 @@ client.countEntity(queryData).then((resp) => {
 
 ### Constructor
 
-`SlicingDice(key)`
-* `key (Object)` - [API key](http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys) to authenticate requests with the SlicingDice API.
+`SlicingDice(apiKeys, usesTestEndpoint)`
+* `apiKeys (Object)` - [API key](http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys) to authenticate requests with the SlicingDice API.
 * `usesTestEndpoint (boolean)` - If false the client will send requests to production end-point, otherwise to tests end-point.
 
 ### `getProjects()`
@@ -87,14 +86,14 @@ Get all created projects, both active and inactive ones. This method corresponds
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
   masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = false);
 
 client.getProjects().then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -129,14 +128,14 @@ Get all created fields, both active and inactive ones. This method corresponds t
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = true);
 
 client.getFields().then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -176,7 +175,7 @@ Create a new field. This method corresponds to a [POST request at /field](http:/
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = true);
 
@@ -191,7 +190,7 @@ field = {
 client.createField(field).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -212,7 +211,7 @@ Index data to existing entities or create new entities, if necessary. This metho
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_API_KEY',
     writeKey: 'WRITE_API_KEY'
 }, usesTestEndpoint = true);
@@ -255,7 +254,7 @@ indexData = {
 client.index(indexData, autoCreateFields = true).then((resp) => {
    console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -278,7 +277,7 @@ Verify which entities exist in a project given a list of entity IDs. This method
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -292,7 +291,7 @@ ids = [
 client.existsEntity(ids).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -320,7 +319,7 @@ Count the number of indexed entities. This method corresponds to a [GET request 
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -328,7 +327,7 @@ let client = new SlicingDice({
 client.countEntityTotal().then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -352,7 +351,7 @@ Count the number of entities attending the given query. This method corresponds 
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -384,7 +383,7 @@ query = {
 client.countEntity(query).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -409,7 +408,7 @@ Count the number of occurrences for time-series events attending the given query
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -443,7 +442,7 @@ query = {
 client.countEvent(query).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -468,7 +467,7 @@ Return the top values for entities attending the given query. This method corres
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -485,7 +484,7 @@ query = {
 client.topValues(query).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -536,7 +535,7 @@ Return the aggregation of all fields in the given query. This method corresponds
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -559,7 +558,7 @@ query = {
 client.aggregation(query).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -598,14 +597,14 @@ Get all saved queries. This method corresponds to a [GET request at /query/saved
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY'
 }, usesTestEndpoint = true);
 
 client.getSavedQueries().then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -657,7 +656,7 @@ Create a saved query at SlicingDice. This method corresponds to a [POST request 
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY'
 }, usesTestEndpoint = true);
 
@@ -683,7 +682,7 @@ query = {
 client.createSavedQuery(query).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -720,7 +719,7 @@ Update an existing saved query at SlicingDice. This method corresponds to a [PUT
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY'
 }, usesTestEndpoint = true);
 
@@ -745,7 +744,7 @@ newQuery = {
 client.updateSavedQuery("my-saved-query", newQuery).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -781,7 +780,7 @@ Executed a saved query at SlicingDice. This method corresponds to a [GET request
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -789,7 +788,7 @@ let client = new SlicingDice({
 client.getSavedQuery("my-saved-query").then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -827,14 +826,14 @@ Delete a saved query at SlicingDice. This method corresponds to a [DELETE reques
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY'
 }, usesTestEndpoint = true);
 
 client.deleteSavedQuery("my-saved-query").then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -871,7 +870,7 @@ Retrieve indexed values for entities attending the given query. This method corr
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -897,7 +896,7 @@ query = {
 client.result(query).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
@@ -930,7 +929,7 @@ Retrieve indexed values as well as their relevance for entities attending the gi
 ```javascript
 let SlicingDice = require('slicerjs');
 
-let client = new SlicingDice({
+const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
@@ -956,7 +955,7 @@ query = {
 client.score(query).then((resp) => {
     console.log(resp);
 }, (err) => {
-    console.log(err);
+    console.error(err);
 });
 ```
 
