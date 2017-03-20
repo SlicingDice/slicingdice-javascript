@@ -357,27 +357,27 @@ const client = new SlicingDice({
 }, usesTestEndpoint = true);
 
 query = {
-    'corolla-or-fit': [
+    "corolla-or-fit": [
         {
-            'car-model': {
-                'equals': 'toyota corolla'
+            "car-model": {
+                "equals": "toyota corolla"
             }
         },
-        'or',
+        "or",
         {
-            'car-model': {
-                'equals': 'honda fit'
+            "car-model": {
+                "equals": "honda fit"
             }
         },
     ],
-    'ford-ka': [
+    "ford-ka": [
         {
-            'car-model': {
-                'equals': 'ford ka'
+            "car-model": {
+                "equals": "ford ka"
             }
         }
     ],
-    'bypass-cache': false
+    "bypass-cache": false
 };
 
 client.countEntity(query).then((resp) => {
