@@ -29,7 +29,7 @@ npm install slicerjs
 var SlicingDice = require('slicerjs'); // only required for Node.js
 
 // Configure the client
-var client = new SlicingDice({
+let client = new SlicingDice({
   masterKey: 'MASTER_API_KEY',
   writeKey: 'WRITE_API_KEY',
   readKey: 'READ_API_KEY'
@@ -87,7 +87,7 @@ Get all created projects, both active and inactive ones. This method corresponds
 ```javascript
 let SlicingDice = require('slicerjs');
 
-var client = new SlicingDice({
+let client = new SlicingDice({
   masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = false);
 
