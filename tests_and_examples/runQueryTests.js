@@ -307,7 +307,7 @@ class SlicingDiceTester {
      * @param (object) result - the data received from Slicing Dice API
      */
     compareJsonValue(expected, result) {
-        for (var key in expected) {
+        for (let key in expected) {
              if (expected.hasOwnProperty(key)) {
                  if (!result.hasOwnProperty(key)) {
                      return false;
@@ -332,11 +332,11 @@ class SlicingDiceTester {
             return false;
         }
 
-        var i = expected.length;
+        let i = expected.length;
 
         while (i--) {
-            var j = result.length;
-            var found = false;
+            let j = result.length;
+            let found = false;
 
             while (!found && j--) {
                 if (this.compareJson(expected[i], result[j])) {
@@ -361,7 +361,7 @@ class SlicingDiceTester {
         let failedTestsStr = "";
 
         if (this.failedTests.length > 0){
-            for(var item in this.failedTests) {
+            for(let item in this.failedTests) {
                 failedTestsStr += "    - {0}\n".format(this.failedTests[item]);
             }
         }
