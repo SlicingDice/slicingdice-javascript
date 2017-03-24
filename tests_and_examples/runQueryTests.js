@@ -253,7 +253,7 @@ class SlicingDiceTester {
      * @param (array) test - the data expected 
      * @param (array) result - the data received from Slicing Dice API
      */
-    compareResult(test, result){
+    compareResult(test, result) {
         let expected = this._translateFieldNames(test['expected']);
         let dataExpected = test['expected'];
 
@@ -263,7 +263,7 @@ class SlicingDiceTester {
                 continue;
             }
 
-            if (JSON.stringify(expected[key]) != JSON.stringify(result[key])){
+            if (!this.compareJson(expected[key], result[key])){
                 this.numFails += 1;
                 this.failedTests.push(test['name']);
 
@@ -281,6 +281,77 @@ class SlicingDiceTester {
         }
     }
 
+    /* Compare two JSON's 
+     * 
+     * @param (object) expected - the data expected 
+     * @param (object) result - the data received from Slicing Dice API
+     */
+    compareJson(expected, result) {
+        if (typeof expected !== typeof result) return false;
+        if (expected.constructor !== result.constructor) return false;
+
+        if (expected instanceof Array) {
+            return this.compareJsonValue(expected, result);
+        }
+
+        if(typeof expected === "object") {
+            return this.arrayEqual(expected, result);
+        }
+
+        return expected === result;
+    }
+
+    /* Compare two JSON's values
+     * 
+     * @param (object) expected - the data expected 
+     * @param (object) result - the data received from Slicing Dice API
+     */
+    compareJsonValue(expected, result) {
+        for (let key in expected) {
+             if (expected.hasOwnProperty(key)) {
+                 if (!result.hasOwnProperty(key)) {
+                     return false;
+                 }
+
+                 if (!this.compareJson(expected[key], result[key])) {
+                     return false;
+                 }
+             }
+        }
+
+        return true;
+    }
+
+    /* Compare two JSON's arrays
+     * 
+     * @param (array) expected - the data expected 
+     * @param (array) result - the data received from Slicing Dice API
+     */
+    arrayEqual(expected, result) {
+        if (expected.length !== result.length) {
+            return false;
+        }
+
+        let i = expected.length;
+
+        while (i--) {
+            let j = result.length;
+            let found = false;
+
+            while (!found && j--) {
+                if (this.compareJson(expected[i], result[j])) {
+                    found = true;
+                }
+            }
+
+            if (!found) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     // Write a file testResult.tmp with the result of the tests
     updateResult() {
         if (process.platform == "win32") {
@@ -290,7 +361,7 @@ class SlicingDiceTester {
         let failedTestsStr = "";
 
         if (this.failedTests.length > 0){
-            for(var item in this.failedTests) {
+            for(let item in this.failedTests) {
                 failedTestsStr += "    - {0}\n".format(this.failedTests[item]);
             }
         }
