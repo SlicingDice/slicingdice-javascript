@@ -758,6 +758,12 @@ class InvalidMethodRequestError extends ExtendableError {
   }
 }
 
+class IndexInvalidRangeException extends ExtendableError {
+  constructor(m) {   
+    super(m);
+  }
+}
+
 module.exports = {
     "AuthMissingHeaderError" : AuthMissingHeaderError,
     "AuthAPIKeyError": AuthAPIKeyError,
@@ -885,5 +891,6 @@ module.exports = {
     "InvalidFieldError": InvalidFieldError,
     "InvalidFieldTypeError": InvalidFieldTypeError,
     "InvalidKeyError": InvalidKeyError,
-    "InvalidMethodRequestError": InvalidMethodRequestError
+    "InvalidMethodRequestError": InvalidMethodRequestError,
+    "IndexInvalidRangeException": IndexInvalidRangeException
 }
