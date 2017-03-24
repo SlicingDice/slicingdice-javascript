@@ -27,6 +27,7 @@ var mappedSDErrors = {
     31: errors["AccountPaymentRequiredError"],
     32: errors["AccountBannedError"],
     33: errors["AccountDisabledError"],
+    39: errors["IndexInvalidRangeException"],
     // Field errors (40 - 59)
     40: errors["FieldMissingParamError"],
     41: errors["FieldTypeError"],
