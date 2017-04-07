@@ -190,10 +190,7 @@
         // Check if data extraction query is valid
         validKeys() {
             for(let key in this.query) {
-                let value = this.query.key;
-                if (key == "query") {
-                    return true;
-                }
+                let value = this.query[key];
                 // Check fields property, fields should have a maximum of 10 itens
                 if (key == "fields") {
                     if (value.constructor != Array) {
@@ -210,12 +207,6 @@
                     if (value.constructor != Number){
                         throw new errors.InvalidQueryError("The key 'limit' in query has a invalid value.");
                     }
-                    else if (value > 100){
-                        throw new errors.InvalidQueryError("The field 'limit' has a value max of 100.");
-                    }
-                }
-                else {
-                    throw new errors.InvalidQueryError("This query have the " + key + " invalid key.");
                 }
             }
             return true;
