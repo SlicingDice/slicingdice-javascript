@@ -1,8 +1,8 @@
 {
   "name": "slicerjs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Official JavaScript client for SlicingDice, Data Warehouse and Analytics Database as a Service.",
-  "main": "dist/slicer.js",
+  "main": "src/slicer.js",
   "scripts": {
     "test": "node tests_and_examples/runQueryTests.js"
   },
