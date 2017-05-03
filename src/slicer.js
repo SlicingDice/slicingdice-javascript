@@ -498,14 +498,8 @@
         /* Send a index command to the Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) autoCreateFields - if is true Slicing Dice API will
-         * automatically create nonexistent fields
          */
-        index(query, autoCreateFields = false){
-            if (autoCreateFields){
-                query["auto-create-fields"] = true
-            }
-            
+        index(query){            
             let path = this._sdRoutes.index;
             return this.makeRequest({
                 path: path,
