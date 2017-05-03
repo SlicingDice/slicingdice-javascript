@@ -193,7 +193,7 @@ class SlicingDiceTester {
             console.log(indexData);
         }
 
-        this.client.index(indexData, false).then(() => {
+        this.client.index(indexData).then(() => {
             // Wait a few seconds so the data can be indexed by SlicingDice
             sleep.sleep(this.sleepTime);
             callback();

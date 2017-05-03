@@ -258,7 +258,7 @@ indexData = {
     }
 };
 
-client.index(indexData, autoCreateFields = true).then((resp) => {
+client.index(indexData).then((resp) => {
    console.log(resp);
 }, (err) => {
     console.error(err);
