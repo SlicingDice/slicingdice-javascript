@@ -53,7 +53,8 @@ client.index(indexData);
 
 // Querying data
 const queryData = {
-    "users-between-20-and-40": [
+    "query-name": "users-between-20-and-40",
+    "query": [
         {
             "age": {
                 "range": [
@@ -363,29 +364,36 @@ const client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-query = {
-    "corolla-or-fit": [
-        {
-            "car-model": {
-                "equals": "toyota corolla"
+query = [
+    {
+        "query-name": "corolla-or-fit",
+        "query": [
+            {
+                "car-model": {
+                    "equals": "toyota corolla"
+                }
+            },
+            "or",
+            {
+                "car-model": {
+                    "equals": "honda fit"
+                }
             }
-        },
-        "or",
-        {
-            "car-model": {
-                "equals": "honda fit"
+        ],
+        "bypass-cache": false
+    },
+    {
+        "query-name": "ford-ka",
+        "query": [
+            {
+                "car-model": {
+                    "equals": "ford ka"
+                }
             }
-        },
-    ],
-    "ford-ka": [
-        {
-            "car-model": {
-                "equals": "ford ka"
-            }
-        }
-    ],
-    "bypass-cache": false
-};
+        ],
+        "bypass-cache": false
+    }
+];
 
 client.countEntity(query).then((resp) => {
     console.log(resp);
@@ -420,31 +428,38 @@ const client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-query = {
-  "test-drives-in-ny": [
+query = [
     {
-      "test-drives": {
-        "equals": "NY",
-        "between": [
-          "2016-08-16T00:00:00Z",
-          "2016-08-18T00:00:00Z"
-        ]
-      }
-    }
-  ],
-  "test-drives-in-ca": [
+        "query-name": "test-drives-in-ny",
+        "query": [
+            {
+                "test-drives": {
+                    "equals": "NY",
+                    "between": [
+                        "2016-08-16T00:00:00Z",
+                        "2016-08-18T00:00:00Z"
+                    ]
+                }
+            }
+        ],
+        "bypass-cache": true
+    },
     {
-      "test-drives": {
-        "equals": "CA",
-        "between": [
-          "2016-04-04T00:00:00Z",
-          "2016-04-06T00:00:00Z"
-        ]
-      }
+        "query-name": "test-drives-in-ca",
+        "query": [
+            {
+                "test-drives": {
+                    "equals": "CA",
+                    "between": [
+                        "2016-04-04T00:00:00Z",
+                        "2016-04-06T00:00:00Z"
+                    ]
+                }
+            }
+        ],
+        "bypass-cache": true
     }
-  ],
-  "bypass-cache": true
-}
+];
 
 client.countEvent(query).then((resp) => {
     console.log(resp);
