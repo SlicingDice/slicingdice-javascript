@@ -36,7 +36,8 @@ Each JSON file contains a list of examples, such as the following excerpt, with 
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "string-test-field": {
                         "equals": "value:matched_value"
@@ -65,17 +66,18 @@ Each JSON file contains a list of examples, such as the following excerpt, with 
         ],
         "index": {
             "1": {
-                "integer-test-field": "1000001"
+                "integer-test-field": 1000001
             },
             "2": {
-                "integer-test-field": "1234567"
+                "integer-test-field": 1234567
             },
             "3": {
-                "integer-test-field": "1000001"
-            },
+                "integer-test-field": 1000001
+            }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "integer-test-field": {
                         "equals": 1000001

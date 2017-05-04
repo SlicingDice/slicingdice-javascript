@@ -1612,7 +1612,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -3245,7 +3246,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-numeric-test-field": {
                         "equals": 1000001,
@@ -4879,7 +4881,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-decimal-test-field": {
                         "equals": 1000001.1,
@@ -6512,7 +6515,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -8145,7 +8149,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -9778,7 +9783,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -11411,7 +11417,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -12744,7 +12751,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -14077,7 +14085,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -15410,7 +15419,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -16743,7 +16753,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -18076,7 +18087,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -19409,7 +19421,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -20742,7 +20755,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -22375,7 +22389,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",
@@ -23708,7 +23723,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "equals": "value:matched_value",

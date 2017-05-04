@@ -640,7 +640,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "string-test-field": {
                         "equals": "value:matched_value"
@@ -1319,7 +1320,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "string-test-field": {
                         "equals": "value:matched_value"
@@ -1997,7 +1999,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "string-test-field": {
                         "equals": "value:matched_value"
@@ -2676,7 +2679,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "string-test-field": {
                         "equals": "value:matched_value"
@@ -3028,7 +3032,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "string-test-field": {
                         "not-equals": "value:matched_value"
@@ -3358,7 +3363,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "integer-test-field": {
                         "not-equals": 1000001
@@ -3689,7 +3695,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "decimal-test-field": {
                         "not-equals": 1000001.1
@@ -4019,7 +4026,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "boolean-test-field": {
                         "not-equals": "true"
@@ -4349,7 +4357,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "date-test-field": {
                         "not-equals": "2016-01-01"
@@ -5005,7 +5014,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "string-test-field": {
@@ -5693,7 +5703,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "string-test-field": {
@@ -7678,7 +7689,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "time-series-string-test-field": {
@@ -9873,7 +9885,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "minfreq": 3,
@@ -11757,7 +11770,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "time-series-integer-test-field": {
@@ -13618,7 +13632,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "time-series-decimal-test-field": {
@@ -15486,7 +15501,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "time-series-integer-test-field": {
@@ -17361,7 +17377,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "time-series-decimal-test-field": {
@@ -19120,7 +19137,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -20865,7 +20883,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -22610,7 +22629,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -24355,7 +24375,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -24789,7 +24810,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "string-test-field": {
                         "equals": "value:matched_value"
@@ -25318,7 +25340,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "string-test-field": {
@@ -27155,7 +27178,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 [
                     {
                         "time-series-numeric-test-field": {
@@ -28608,7 +28632,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -30053,7 +30078,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -31498,7 +31524,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -32943,7 +32970,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -34388,7 +34416,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -35833,7 +35862,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -37278,7 +37308,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -39023,7 +39054,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
@@ -40468,7 +40500,8 @@
             }
         },
         "query": {
-            "test_result_query": [
+            "query-name": "test_result_query",
+            "query": [
                 {
                     "time-series-string-test-field": {
                         "minfreq": 1,
