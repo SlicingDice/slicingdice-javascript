@@ -224,7 +224,7 @@ const client = new SlicingDice({
     writeKey: 'WRITE_API_KEY'
 }, usesTestEndpoint = true);
 
-indexData = {
+const indexData = {
     "user1@slicingdice.com": {
         "car-model": "Ford Ka",
         "year": 2016
@@ -364,7 +364,7 @@ const client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-query = [
+const query = [
     {
         "query-name": "corolla-or-fit",
         "query": [
@@ -428,7 +428,7 @@ const client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-query = [
+const query = [
     {
         "query-name": "test-drives-in-ny",
         "query": [
