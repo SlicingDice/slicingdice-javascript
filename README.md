@@ -47,7 +47,7 @@ const insertData = {
     "user1@slicingdice.com": {
         "age": 22
     },
-    "auto-create-columns": true
+    "auto-create": ["table", "column"]
 };
 client.insert(insertData);
 
