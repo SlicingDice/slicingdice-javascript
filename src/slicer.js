@@ -423,7 +423,7 @@
                 urlReq = this.BASE_URL + objRequest.path;
             }
             let requestMethods = ["POST", "PUT", "GET", "DELETE", "PATCH"];
-            if (requestMethods.insertOf(objRequest.reqType) === -1){
+            if (requestMethods.indexOf(objRequest.reqType) === -1){
                 throw new errors.InvalidMethodRequestError('This method request is invalid.');
             }
             let req = this.requester.run(
