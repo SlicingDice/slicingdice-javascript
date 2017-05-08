@@ -150,12 +150,12 @@
             return false;
         }
 
-        // Check fields limit
-        _exceedsFieldsLimit() {
+        // Check columns limit
+        _exceedsColumnsLimit() {
             for(let key in this.query) {
-                let field = this.query[key];
-                if (Object.keys(field).length > 5){
-                    throw new errors.MaxLimitError("The query " + field + " exceeds the limit of fields per query in request");
+                let column = this.query[key];
+                if (Object.keys(column).length > 5){
+                    throw new errors.MaxLimitError("The query " + column + " exceeds the limit of columns per query in request");
                 }
             }
         }
@@ -172,7 +172,7 @@
 
         // if top values query is valid this returns true, otherwise false
         validator() {
-            this._exceedsFieldsLimit();
+            this._exceedsColumnsLimit();
             this._exceedsValuesContainsLimit();
             if (!this._exceedsQueriesLimit()){
                 return true
@@ -191,14 +191,14 @@
         validKeys() {
             for(let key in this.query) {
                 let value = this.query[key];
-                // Check fields property, fields should have a maximum of 10 itens
-                if (key == "fields") {
+                // Check columns property, columns should have a maximum of 10 itens
+                if (key == "columns") {
                     if (value.constructor != Array) {
-                        throw new errors.InvalidQueryException("The key 'fields' in query has a invalid value.");
+                        throw new errors.InvalidQueryException("The key 'columns' in query has a invalid value.");
                     }
                     else {
                         if (value.length > 10) {
-                           throw new errors.InvalidQueryException("The key 'fields' in data extraction result must have up to 10 fields.");
+                           throw new errors.InvalidQueryException("The key 'columns' in data extraction result must have up to 10 columns.");
                         }
                     }
                 }
@@ -218,79 +218,79 @@
         }
     }
 
-    // Validator for field
-    class FieldValidator extends SDBaseQueryValidator{
+    // Validator for column
+    class ColumnValidator extends SDBaseQueryValidator{
         constructor(query) {
             super(query)
         }
 
-        // Check field name
+        // Check column name
         validateName(query) {
             if (!query.hasOwnProperty("name")) {
-                throw new errors.InvalidFieldDescriptionError("The field's name can't be empty/None.");
+                throw new errors.InvalidColumnDescriptionError("The column's name can't be empty/None.");
             }
             else {
                 let name = query["name"];
                 if (name.length > 80) {
-                    throw new errors.InvalidFieldDescriptionError("The field's name have a very big content. (Max: 80 chars)");
+                    throw new errors.InvalidColumnDescriptionError("The column's name have a very big content. (Max: 80 chars)");
                 }
             }
         }
 
-        // Check field description
+        // Check column description
         validateDescription(query) {
             let description = query.description;
             if (description.length > 80){
-                throw new errors.InvalidFieldDescriptionError("The field's description have a very big content. (Max: 300chars)");
+                throw new errors.InvalidColumnDescriptionError("The column's description have a very big content. (Max: 300chars)");
             }
         }
 
-        // Check field type
-        validateFieldType(query) {
-            // The field should have a type property
+        // Check column type
+        validateColumnType(query) {
+            // The column should have a type property
             if (!query.hasOwnProperty("type")){
-                throw new errors.InvalidFieldError("The field should have a type.");
+                throw new errors.InvalidColumnError("The column should have a type.");
             }
         }
 
-        // If field is decimal check if it has decimal or decimal-time-series type 
+        // If column is decimal check if it has decimal or decimal-time-series type 
         validateDecimalType(query) {
             let decimal_types = ["decimal", "decimal-time-series"];
             if (!decimal_types.includes(query["decimal-place"])) {
-                throw new errors.InvalidFieldError("This field is only accepted on type 'decimal' or 'decimal-time-series'");
+                throw new errors.InvalidColumnError("This column is only accepted on type 'decimal' or 'decimal-time-series'");
             }
         }
 
-        // Check if string field is valid
+        // Check if string column is valid
         checkStrTypeIntegrity(query) {
             if (!query.hasOwnProperty("cardinality")){
-                throw new errors.InvalidFieldError("The field with type string should have 'cardinality' key.");
+                throw new errors.InvalidColumnError("The column with type string should have 'cardinality' key.");
             }
         }
 
-        // Check if enumerated field is valid
+        // Check if enumerated column is valid
         validateEnumeratedType(query) {
             if (!query.hasOwnProperty("range")){
-                throw new errors.InvalidFieldError("The 'enumerated' type needs of the 'range' parameter.");
+                throw new errors.InvalidColumnError("The 'enumerated' type needs of the 'range' parameter.");
             }
         }
 
-        // If field is valid this returns true
+        // If column is valid this returns true
         validator() {
             if (this.query instanceof Array) {
                 for (let i = 0; i < this.query.length; i++) {
-                    this.validateField(this.query[i]);
+                    this.validateColumn(this.query[i]);
                 }
             } else {
-                this.validateField(this.query);
+                this.validateColumn(this.query);
             }
     
             return true;
         }
 
-        validateField(query) {
+        validateColumn(query) {
             this.validateName(query);
-            this.validateFieldType(query);
+            this.validateColumnType(query);
             if (query["type"] === "string") {
                 this.checkStrTypeIntegrity(query);
             }
@@ -334,8 +334,8 @@
             this._key = apiKeys;
             this._checkKey(apiKeys);
             this._sdRoutes = {
-                field: '/field/',
-                index: '/index/',
+                column: '/column/',
+                insert: '/insert/',
                 countEntity: '/query/count/entity/',
                 countEntityTotal: '/query/count/entity/total/',
                 countEvent: '/query/count/event/',
@@ -345,7 +345,7 @@
                 result: '/data_extraction/result/',
                 score: '/data_extraction/score/',
                 saved: '/query/saved/',
-                project: '/project/'
+                database: '/project/'
             };
             this._setUpRequest();
             this._usesTestEndpoint = usesTestEndpoint;
@@ -423,7 +423,7 @@
                 urlReq = this.BASE_URL + objRequest.path;
             }
             let requestMethods = ["POST", "PUT", "GET", "DELETE", "PATCH"];
-            if (requestMethods.indexOf(objRequest.reqType) === -1){
+            if (requestMethods.insertOf(objRequest.reqType) === -1){
                 throw new errors.InvalidMethodRequestError('This method request is invalid.');
             }
             let req = this.requester.run(
@@ -439,9 +439,9 @@
             }, (err) => { return err;});
         }
 
-        /* Get all projects */
-        getProjects(){
-            let path = this._sdRoutes.project;
+        /* Get information about current database */
+        getDatabase(){
+            let path = this._sdRoutes.database;
             return this.makeRequest({
                 path: path,
                 reqType: "GET",
@@ -449,9 +449,9 @@
             });
         }
 
-        /* Get all fields */
-        getFields(){
-            let path = this._sdRoutes.field;
+        /* Get all columns */
+        getColumns(){
+            let path = this._sdRoutes.column;
             return this.makeRequest({
                 path: path,
                 reqType: "GET",
@@ -495,18 +495,18 @@
             });
         }
 
-        /* Send a index command to the Slicing Dice API
+        /* Send a insert command to the Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) autoCreateFields - if is true Slicing Dice API will
-         * automatically create nonexistent fields
+         * @param (boolean) autoCreateColumns - if is true Slicing Dice API will
+         * automatically create nonexistent columns
          */
-        index(query, autoCreateFields = false){
-            if (autoCreateFields){
-                query["auto-create-fields"] = true
+        insert(query, autoCreateColumns = false){
+            if (autoCreateColumns){
+                query["auto-create-columns"] = true
             }
             
-            let path = this._sdRoutes.index;
+            let path = this._sdRoutes.insert;
             return this.makeRequest({
                 path: path,
                 reqType: "POST",
@@ -515,13 +515,13 @@
             });
         }
 
-        /* Create a field on Slicing Dice API
+        /* Create a column on Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
          */
-        createField(query){
-            let path = this._sdRoutes.field;
-            let sdValidator = new FieldValidator(query);
+        createColumn(query){
+            let path = this._sdRoutes.column;
+            let sdValidator = new ColumnValidator(query);
             if (sdValidator.validator()){
                 return this.makeRequest({
                     path: path,

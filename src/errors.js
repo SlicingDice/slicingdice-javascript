@@ -48,13 +48,13 @@ class AuthInvalidRemoteAddrError extends SlicingDiceError {
   }
 }
 
-class CustomkeyInvalidFieldCreationError extends SlicingDiceError {
+class CustomkeyInvalidColumnCreationError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class CustomKeyInvalidPermissionForFieldError extends SlicingDiceError {
+class CustomKeyInvalidPermissionForColumnError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -159,212 +159,212 @@ class AccountDisabledError extends SlicingDiceError {
 }
 
 // FIELD ERRORS
-class FieldMissingParamError extends SlicingDiceError {
+class ColumnMissingParamError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldTypeError extends SlicingDiceError {
+class ColumnTypeError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldIntegerValuesError extends SlicingDiceError {
+class ColumnIntegerValuesError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldAlreadyExistsError extends SlicingDiceError {
+class ColumnAlreadyExistsError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldLimitError extends SlicingDiceError {
+class ColumnLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldTimeSeriesLimitError extends SlicingDiceError {
+class ColumnTimeSeriesLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldTimeSeriesSystemLimitError extends SlicingDiceError {
+class ColumnTimeSeriesSystemLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldDecimalTypeError extends SlicingDiceError {
+class ColumnDecimalTypeError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldStorageValueError extends SlicingDiceError {
+class ColumnStorageValueError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldInvalidApiNameError extends SlicingDiceError {
+class ColumnInvalidApiNameError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldInvalidNameError extends SlicingDiceError {
+class ColumnInvalidNameError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldInvalidDescriptionError extends SlicingDiceError {
+class ColumnInvalidDescriptionError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldExceedDescriptionlengthError extends SlicingDiceError {
+class ColumnExceedDescriptionlengthError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldInvalidCardinalityError extends SlicingDiceError {
+class ColumnInvalidCardinalityError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldDecimalLimitError extends SlicingDiceError {
+class ColumnDecimalLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldRangeLimitError extends SlicingDiceError {
+class ColumnRangeLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldExceededMaxNameLenghtError extends SlicingDiceError {
+class ColumnExceededMaxNameLenghtError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldExceededMaxApiNameLenghtError extends SlicingDiceError {
+class ColumnExceededMaxApiNameLenghtError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldEmptyEntityIdError extends SlicingDiceError {
+class ColumnEmptyEntityIdError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class FieldExceededPermitedValueError extends SlicingDiceError {
+class ColumnExceededPermitedValueError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
 // INDEX ERRORS
-class IndexInvalidDecimalPlacesError extends SlicingDiceError {
+class InsertInvalidDecimalPlacesError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexEntityValueTypeError extends SlicingDiceError {
+class InsertEntityValueTypeError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldNameTypeError extends SlicingDiceError {
+class InsertColumnNameTypeError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldTypeError extends SlicingDiceError {
+class InsertColumnTypeError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexEntityNameTooBigError extends SlicingDiceError {
+class InsertEntityNameTooBigError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldValueTooBigError extends SlicingDiceError {
+class InsertColumnValueTooBigError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexTimeSeriesDateFormatError extends SlicingDiceError {
+class InsertTimeSeriesDateFormatError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldNotActiveError extends SlicingDiceError {
+class InsertColumnNotActiveError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldLimitError extends SlicingDiceError {
+class InsertColumnLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexDateFormatError extends SlicingDiceError {
+class InsertDateFormatError extends SlicingDiceError {
     constructor(m) {
         super(m);
     }
 }
 
-class IndexIdLimitError extends SlicingDiceError {
+class InsertIdLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldStringEmptyValueError extends SlicingDiceError {
+class InsertColumnStringEmptyValueError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldTimeseriesInvalidParameterError extends SlicingDiceError {
+class InsertColumnTimeseriesInvalidParameterError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldNumericInvalidValueError extends SlicingDiceError {
+class InsertColumnNumericInvalidValueError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
 }
 
-class IndexFieldTimeseriesMissingValueError extends SlicingDiceError {
+class InsertColumnTimeseriesMissingValueError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -419,7 +419,7 @@ class QueryMissingTypeParamError extends SlicingDiceError {
   }
 }
 
-class QueryFieldLimitError extends SlicingDiceError {
+class QueryColumnLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -437,7 +437,7 @@ class QueryIncorrectOperatorUsageError extends SlicingDiceError {
   }
 }
 
-class QueryFieldNotActiveError extends SlicingDiceError {
+class QueryColumnNotActiveError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -599,7 +599,7 @@ class QueryDataExtractionPageTokenValueError extends SlicingDiceError {
   }
 }
 
-class QueryDataExtractionFieldLimitError extends SlicingDiceError {
+class QueryDataExtractionColumnLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -671,20 +671,20 @@ class QueryInvalidParameterUsageError extends SlicingDiceError {
     }
 }
 
-class QueryParameterInvalidFieldUsageError extends SlicingDiceError {
+class QueryParameterInvalidColumnUsageError extends SlicingDiceError {
     constructor(m) {
         super(m);
     }
 }
 
-class QueryInvalidFieldUsageError extends SlicingDiceError {
+class QueryInvalidColumnUsageError extends SlicingDiceError {
     constructor(m) {
         super(m);
     }
 }
 
 
-class FieldCreateInternalError extends ExtendableError {
+class ColumnCreateInternalError extends ExtendableError {
   constructor(m) {   
     super(m);
   }
@@ -715,7 +715,7 @@ class InvalidQueryError extends ExtendableError {
   }
 }
 
-class InvalidFieldDescriptionError extends ExtendableError {
+class InvalidColumnDescriptionError extends ExtendableError {
   constructor(m) {   
     super(m);
   }
@@ -734,13 +734,13 @@ class WrongTypeError extends ExtendableError {
   }
 }
 
-class InvalidFieldError extends ExtendableError {
+class InvalidColumnError extends ExtendableError {
   constructor(m) {   
     super(m);
   }
 }
 
-class InvalidFieldTypeError extends ExtendableError {
+class InvalidColumnTypeError extends ExtendableError {
   constructor(m) {   
     super(m);
   }
@@ -758,7 +758,7 @@ class InvalidMethodRequestError extends ExtendableError {
   }
 }
 
-class IndexInvalidRangeException extends ExtendableError {
+class InsertInvalidRangeException extends ExtendableError {
   constructor(m) {   
     super(m);
   }
@@ -770,8 +770,8 @@ module.exports = {
     "AuthInvalidAPIKeyError": AuthInvalidAPIKeyError,
     "AuthIncorrectPermissionError": AuthIncorrectPermissionError,
     "AuthInvalidRemoteAddrError": AuthInvalidRemoteAddrError,
-    "CustomKeyInvalidFieldCreationError": CustomkeyInvalidFieldCreationError,
-    "CustomKeyInvalidPermissionForFieldError": CustomKeyInvalidPermissionForFieldError,
+    "CustomKeyInvalidColumnCreationError": CustomkeyInvalidColumnCreationError,
+    "CustomKeyInvalidPermissionForColumnError": CustomKeyInvalidPermissionForColumnError,
     "CustomKeyInvalidOperationError": CustomKeyInvalidOperationError,
     "CustomKeyNotPermittedError": CustomKeyNotPermittedError,
     "CustomKeyRouteNotPermittedError": CustomKeyRouteNotPermittedError,
@@ -790,43 +790,43 @@ module.exports = {
     "AccountPaymentRequiredError": AccountPaymentRequiredError,
     "AccountBannedError": AccountBannedError,
     "AccountDisabledError": AccountDisabledError,
-    // Field errors (40 - 59)
-    "FieldMissingParamError": FieldMissingParamError,
-    "FieldTypeError": FieldTypeError,
-    "FieldIntegerValuesError": FieldIntegerValuesError,
-    "FieldAlreadyExistsError": FieldAlreadyExistsError,
-    "FieldLimitError": FieldLimitError,
-    "FieldTimeSeriesLimitError": FieldTimeSeriesLimitError,
-    "FieldTimeSeriesSystemLimitError": FieldTimeSeriesSystemLimitError,
-    "FieldDecimalTypeError": FieldDecimalTypeError,
-    "FieldStorageValueError": FieldStorageValueError,
-    "FieldInvalidApiNameError": FieldInvalidApiNameError,
-    "FieldInvalidNameError": FieldInvalidNameError,
-    "FieldInvalidDescriptionError": FieldInvalidDescriptionError,
-    "FieldExceedDescriptionlengthError": FieldExceedDescriptionlengthError,
-    "FieldInvalidCardinalityError": FieldInvalidCardinalityError,
-    "FieldDecimalLimitError": FieldDecimalLimitError,
-    "FieldRangeLimitError": FieldRangeLimitError,
-    "FieldExceededMaxNameLenghtError": FieldExceededMaxNameLenghtError,
-    "FieldExceededMaxApiNameLenghtError": FieldExceededMaxApiNameLenghtError,
-    "FieldEmptyEntityIdError": FieldEmptyEntityIdError,
-    "FieldExceededPermitedValueError": FieldExceededPermitedValueError,
-    // Index errors (60 - 79)
-    "IndexInvalidDecimalPlacesError": IndexInvalidDecimalPlacesError,
-    "IndexEntityValueTypeError": IndexEntityValueTypeError,
-    "IndexFieldNameTypeError": IndexFieldNameTypeError,
-    "IndexFieldTypeError": IndexFieldTypeError,
-    "IndexEntityNameTooBigError": IndexEntityNameTooBigError,
-    "IndexFieldValueTooBigError": IndexFieldValueTooBigError,
-    "IndexTimeSeriesDateFormatError": IndexTimeSeriesDateFormatError,
-    "IndexFieldNotActiveError": IndexFieldNotActiveError,
-    "IndexIdLimitError": IndexIdLimitError,
-    "IndexFieldLimitError": IndexFieldLimitError,
-    "IndexDateFormatError": IndexDateFormatError,
-    "IndexFieldStringEmptyValueError": IndexFieldStringEmptyValueError,
-    "IndexFieldTimeseriesInvalidParameterError": IndexFieldTimeseriesInvalidParameterError,
-    "IndexFieldNumericInvalidValueError": IndexFieldNumericInvalidValueError,
-    "IndexFieldTimeseriesMissingValueError": IndexFieldTimeseriesMissingValueError,
+    // Column errors (40 - 59)
+    "ColumnMissingParamError": ColumnMissingParamError,
+    "ColumnTypeError": ColumnTypeError,
+    "ColumnIntegerValuesError": ColumnIntegerValuesError,
+    "ColumnAlreadyExistsError": ColumnAlreadyExistsError,
+    "ColumnLimitError": ColumnLimitError,
+    "ColumnTimeSeriesLimitError": ColumnTimeSeriesLimitError,
+    "ColumnTimeSeriesSystemLimitError": ColumnTimeSeriesSystemLimitError,
+    "ColumnDecimalTypeError": ColumnDecimalTypeError,
+    "ColumnStorageValueError": ColumnStorageValueError,
+    "ColumnInvalidApiNameError": ColumnInvalidApiNameError,
+    "ColumnInvalidNameError": ColumnInvalidNameError,
+    "ColumnInvalidDescriptionError": ColumnInvalidDescriptionError,
+    "ColumnExceedDescriptionlengthError": ColumnExceedDescriptionlengthError,
+    "ColumnInvalidCardinalityError": ColumnInvalidCardinalityError,
+    "ColumnDecimalLimitError": ColumnDecimalLimitError,
+    "ColumnRangeLimitError": ColumnRangeLimitError,
+    "ColumnExceededMaxNameLenghtError": ColumnExceededMaxNameLenghtError,
+    "ColumnExceededMaxApiNameLenghtError": ColumnExceededMaxApiNameLenghtError,
+    "ColumnEmptyEntityIdError": ColumnEmptyEntityIdError,
+    "ColumnExceededPermitedValueError": ColumnExceededPermitedValueError,
+    // Insert errors (60 - 79)
+    "InsertInvalidDecimalPlacesError": InsertInvalidDecimalPlacesError,
+    "InsertEntityValueTypeError": InsertEntityValueTypeError,
+    "InsertColumnNameTypeError": InsertColumnNameTypeError,
+    "InsertColumnTypeError": InsertColumnTypeError,
+    "InsertEntityNameTooBigError": InsertEntityNameTooBigError,
+    "InsertColumnValueTooBigError": InsertColumnValueTooBigError,
+    "InsertTimeSeriesDateFormatError": InsertTimeSeriesDateFormatError,
+    "InsertColumnNotActiveError": InsertColumnNotActiveError,
+    "InsertIdLimitError": InsertIdLimitError,
+    "InsertColumnLimitError": InsertColumnLimitError,
+    "InsertDateFormatError": InsertDateFormatError,
+    "InsertColumnStringEmptyValueError": InsertColumnStringEmptyValueError,
+    "InsertColumnTimeseriesInvalidParameterError": InsertColumnTimeseriesInvalidParameterError,
+    "InsertColumnNumericInvalidValueError": InsertColumnNumericInvalidValueError,
+    "InsertColumnTimeseriesMissingValueError": InsertColumnTimeseriesMissingValueError,
     "QueryTimeSeriesInvalidPrecisionSecondsError": QueryTimeSeriesInvalidPrecisionSecondsError,
     "QueryTimeSeriesInvalidPrecisionMinutesError": QueryTimeSeriesInvalidPrecisionMinutesError,
     "QueryTimeSeriesInvalidPrecisionHoursError": QueryTimeSeriesInvalidPrecisionHoursError,
@@ -838,13 +838,13 @@ module.exports = {
     "QueryMissingTypeParamError": QueryMissingTypeParamError,
     "QueryInvalidOperatorError": QueryInvalidOperatorError,
     "QueryIncorrectOperatorUsageError": QueryIncorrectOperatorUsageError,
-    "QueryFieldNotActiveError": QueryFieldNotActiveError,
+    "QueryColumnNotActiveError": QueryColumnNotActiveError,
     "QueryMissingOperatorError": QueryMissingOperatorError,
     "QueryIncompleteError": QueryIncompleteError,
     "QueryEventCountQueryError": QueryEventCountQueryError,
     "QueryInvalidMetricError": QueryInvalidMetricError,
     "QueryIntegerError": QueryIntegerError,
-    "QueryFieldLimitError": QueryFieldLimitError,
+    "QueryColumnLimitError": QueryColumnLimitError,
     "QueryLevelLimitError": QueryLevelLimitError,
     "QueryBadAggsFormationError": QueryBadAggsFormationError,
     "QueryInvalidFilterValueError": QueryInvalidFilterValueError,
@@ -866,7 +866,7 @@ module.exports = {
     "QueryDataExtractionLimitValueTooBigError": QueryDataExtractionLimitValueTooBigError,
     "QueryDataExtractionLimitAndPageTokenValueError": QueryDataExtractionLimitAndPageTokenValueError,
     "QueryDataExtractionPageTokenValueError": QueryDataExtractionPageTokenValueError,
-    "QueryDataExtractionFieldLimitError": QueryDataExtractionFieldLimitError,
+    "QueryDataExtractionColumnLimitError": QueryDataExtractionColumnLimitError,
     "QueryExistsEntityEmptyError": QueryExistsEntityEmptyError,
     "QuerySavedInvalidQueryValueError": QuerySavedInvalidQueryValueError,
     "QuerySavedInvalidCachePeriodValueError": QuerySavedInvalidCachePeriodValueError,
@@ -878,19 +878,19 @@ module.exports = {
     "QueryExceededMaxNumberQuerysError": QueryExceededMaxNumberQuerysError,
     "QueryInvalidOperatorUsageError": QueryInvalidOperatorUsageError,
     "QueryInvalidParameterUsageError": QueryInvalidParameterUsageError,
-    "QueryParameterInvalidFieldUsageError": QueryParameterInvalidFieldUsageError,
-    "QueryInvalidFieldUsageError": QueryInvalidFieldUsageError,
-    "FieldCreateInternalError": FieldCreateInternalError,
+    "QueryParameterInvalidColumnUsageError": QueryParameterInvalidColumnUsageError,
+    "QueryInvalidColumnUsageError": QueryInvalidColumnUsageError,
+    "ColumnCreateInternalError": ColumnCreateInternalError,
     // Client errors
     "SlicingDiceClientError": SlicingDiceClientError,
     "InvalidQueryTypeError": InvalidQueryTypeError,
     "MaxLimitError": MaxLimitError,
     "InvalidQueryError": InvalidQueryError,
-    "InvalidFieldDescriptionError": InvalidFieldDescriptionError,
+    "InvalidColumnDescriptionError": InvalidColumnDescriptionError,
     "WrongTypeError": WrongTypeError,
-    "InvalidFieldError": InvalidFieldError,
-    "InvalidFieldTypeError": InvalidFieldTypeError,
+    "InvalidColumnError": InvalidColumnError,
+    "InvalidColumnTypeError": InvalidColumnTypeError,
     "InvalidKeyError": InvalidKeyError,
     "InvalidMethodRequestError": InvalidMethodRequestError,
-    "IndexInvalidRangeException": IndexInvalidRangeException
+    "InsertInvalidRangeException": InsertInvalidRangeException
 }
