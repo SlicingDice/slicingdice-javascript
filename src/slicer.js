@@ -334,8 +334,8 @@
             this._key = apiKeys;
             this._checkKey(apiKeys);
             this._sdRoutes = {
-                column: '/column/',
-                insert: '/insert/',
+                column: '/field/',
+                insert: '/index/',
                 countEntity: '/query/count/entity/',
                 countEntityTotal: '/query/count/entity/total/',
                 countEvent: '/query/count/event/',
