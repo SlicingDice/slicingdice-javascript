@@ -158,7 +158,7 @@ class AccountDisabledError extends SlicingDiceError {
   }
 }
 
-// FIELD ERRORS
+// COLUMN ERRORS
 class ColumnMissingParamError extends SlicingDiceError {
   constructor(m) {   
     super(m);
@@ -279,7 +279,7 @@ class ColumnExceededPermitedValueError extends SlicingDiceError {
   }
 }
 
-// INDEX ERRORS
+// INSERTION ERRORS
 class InsertInvalidDecimalPlacesError extends SlicingDiceError {
   constructor(m) {   
     super(m);
