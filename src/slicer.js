@@ -497,14 +497,8 @@
         /* Send a insert command to the Slicing Dice API
          * 
          * @param (array) query - the query to send to Slicing Dice API
-         * @param (boolean) autoCreateColumns - if is true Slicing Dice API will
-         * automatically create nonexistent columns
          */
-        insert(query, autoCreateColumns = false){
-            if (autoCreateColumns){
-                query["auto-create-columns"] = true
-            }
-            
+        insert(query){
             let path = this._sdRoutes.insert;
             return this.makeRequest({
                 path: path,

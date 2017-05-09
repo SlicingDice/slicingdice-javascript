@@ -247,7 +247,7 @@ const insertData = {
     }
 };
 
-client.insert(insertData, autoCreateColumns = true).then((resp) => {
+client.insert(insertData).then((resp) => {
    console.log(resp);
 }, (err) => {
     console.error(err);

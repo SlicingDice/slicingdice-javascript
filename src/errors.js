@@ -127,7 +127,7 @@ class RequestIncorrectHttpError extends SlicingDiceError {
   }
 }
 
-class RequestExceedLimitError extends SlicingDiceError {
+class RequestExceededLimitError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -231,7 +231,7 @@ class ColumnInvalidDescriptionError extends SlicingDiceError {
   }
 }
 
-class ColumnExceedDescriptionlengthError extends SlicingDiceError {
+class ColumnExceededDescriptionlengthError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -352,7 +352,7 @@ class InsertColumnStringEmptyValueError extends SlicingDiceError {
   }
 }
 
-class InsertColumnTimeseriesInvalidParameterError extends SlicingDiceError {
+class InsertColumnTimeSeriesInvalidParameterError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -364,7 +364,7 @@ class InsertColumnNumericInvalidValueError extends SlicingDiceError {
   }
 }
 
-class InsertColumnTimeseriesMissingValueError extends SlicingDiceError {
+class InsertColumnTimeSeriesMissingValueError extends SlicingDiceError {
   constructor(m) {   
     super(m);
   }
@@ -784,7 +784,7 @@ module.exports = {
     "RequestInvalidHttpMethodError": RequestInvalidHttpMethodError,
     "RequestInvalidEndpointError": RequestInvalidEndpointError,
     "RequestIncorrectHttpError": RequestIncorrectHttpError,
-    "RequestExceedLimitError": RequestExceedLimitError,
+    "RequestExceededLimitError": RequestExceededLimitError,
     // Account Errors (30 - 39)
     "AccountMissingPaymentMethodError": AccountMissingPaymentMethodError,
     "AccountPaymentRequiredError": AccountPaymentRequiredError,
@@ -803,7 +803,7 @@ module.exports = {
     "ColumnInvalidApiNameError": ColumnInvalidApiNameError,
     "ColumnInvalidNameError": ColumnInvalidNameError,
     "ColumnInvalidDescriptionError": ColumnInvalidDescriptionError,
-    "ColumnExceedDescriptionlengthError": ColumnExceedDescriptionlengthError,
+    "ColumnExceededDescriptionlengthError": ColumnExceededDescriptionlengthError,
     "ColumnInvalidCardinalityError": ColumnInvalidCardinalityError,
     "ColumnDecimalLimitError": ColumnDecimalLimitError,
     "ColumnRangeLimitError": ColumnRangeLimitError,
@@ -824,9 +824,9 @@ module.exports = {
     "InsertColumnLimitError": InsertColumnLimitError,
     "InsertDateFormatError": InsertDateFormatError,
     "InsertColumnStringEmptyValueError": InsertColumnStringEmptyValueError,
-    "InsertColumnTimeseriesInvalidParameterError": InsertColumnTimeseriesInvalidParameterError,
+    "InsertColumnTimeSeriesInvalidParameterError": InsertColumnTimeSeriesInvalidParameterError,
     "InsertColumnNumericInvalidValueError": InsertColumnNumericInvalidValueError,
-    "InsertColumnTimeseriesMissingValueError": InsertColumnTimeseriesMissingValueError,
+    "InsertColumnTimeSeriesMissingValueError": InsertColumnTimeSeriesMissingValueError,
     "QueryTimeSeriesInvalidPrecisionSecondsError": QueryTimeSeriesInvalidPrecisionSecondsError,
     "QueryTimeSeriesInvalidPrecisionMinutesError": QueryTimeSeriesInvalidPrecisionMinutesError,
     "QueryTimeSeriesInvalidPrecisionHoursError": QueryTimeSeriesInvalidPrecisionHoursError,
