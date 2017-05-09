@@ -12,7 +12,6 @@
     class RequesterBrowser {
         run(token, url, reqType, data = null) {
             url = url.hostname + url.path;
-            //console.log(data);
             return new Promise(function(resolve, reject) {
                 let req = new XMLHttpRequest();
                 req.open(reqType, url, true);

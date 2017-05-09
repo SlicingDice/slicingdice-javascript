@@ -214,7 +214,7 @@ class SlicingDiceTester {
         console.log('  Querying');
 
         if (this.verbose){
-            console.log('    - {}'.format(query_data));
+            console.log('    - ' + JSON.stringify(queryData));
         }
 
         var queryTypeMethodMap = {
@@ -291,11 +291,11 @@ class SlicingDiceTester {
         if (expected.constructor !== result.constructor) return false;
 
         if (expected instanceof Array) {
-            return this.compareJsonValue(expected, result);
+            return this.arrayEqual(expected, result);
         }
 
         if(typeof expected === "object") {
-            return this.arrayEqual(expected, result);
+            return this.compareJsonValue(expected, result);
         }
 
         return expected === result;
