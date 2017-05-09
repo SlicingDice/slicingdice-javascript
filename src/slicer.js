@@ -334,8 +334,8 @@
             this._key = apiKeys;
             this._checkKey(apiKeys);
             this._sdRoutes = {
-                column: '/field/',
-                insert: '/index/',
+                column: '/column/',
+                insert: '/insert/',
                 countEntity: '/query/count/entity/',
                 countEntityTotal: '/query/count/entity/total/',
                 countEvent: '/query/count/event/',
@@ -345,7 +345,7 @@
                 result: '/data_extraction/result/',
                 score: '/data_extraction/score/',
                 saved: '/query/saved/',
-                database: '/project/'
+                database: '/database/'
             };
             this._setUpRequest();
             this._usesTestEndpoint = usesTestEndpoint;
