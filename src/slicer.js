@@ -314,9 +314,9 @@
         _raiseErrors(error) {
             let codeError = error['code'];
             if (mappedErrors[codeError] === undefined){
-                throw new errors.SlicingDiceClientError(error["message"]);
+                throw new errors.SlicingDiceClientError(error);
             } else {
-                throw new Error(error["message"]);
+                throw new Error(error);
             }
         }
 
