@@ -2,8 +2,8 @@
 Tests SlicingDice endpoints.
 
 This script tests SlicingDice by running tests suites, each composed by:
-    - Creating fields
-    - Indexing data
+    - Creating columns
+    - Inserting data
     - Querying
     - Comparing results
 
@@ -34,8 +34,8 @@ class SlicingDiceTester {
             masterKey: api_key
         }, true);
 
-        // Translation table for fields with timestamp
-        this.fieldTranslation = {}
+        // Translation table for columns with timestamp
+        this.columnTranslation = {}
 
         // Sleep Time in seconds
         this.sleepTime = 10;
@@ -79,7 +79,7 @@ class SlicingDiceTester {
             tasks.push(((i) => (callback) => {
                 try {
                     let test = testData[i];
-                    this._emptyFieldTranslation();
+                    this._emptyColumnTranslation();
                     console.log("({0}/{1}) Executing test \"{2}\"".format(i + 1, numTests, test['name']));
                     if("description" in test){
                         console.log("  Description: {0}".format(test['description']));
@@ -88,10 +88,10 @@ class SlicingDiceTester {
                     console.log("  Query type: {0}".format(queryType));
                     async.series([
                         (callback) => {
-                            this.createFields(test, callback);
+                            this.createColumns(test, callback);
                         },
                         (callback) => {
-                            this.indexData(test, callback);
+                            this.insertData(test, callback);
                         },
                         (callback) => {
                             this.executeQuery(queryType, test, callback);
@@ -105,9 +105,9 @@ class SlicingDiceTester {
         async.series(tasks, callback);
     }
 
-    // Erase fieldTranslation object
-    _emptyFieldTranslation(){
-        this.fieldTranslation = {};
+    // Erase columnTranslation object
+    _emptyColumnTranslation(){
+        this.columnTranslation = {};
     }
 
     // Load test data from examples files
@@ -116,26 +116,26 @@ class SlicingDiceTester {
         return JSON.parse(fs.readFileSync(filename));
     }
 
-    /* Create fields on Slicing Dice API
+    /* Create columns on Slicing Dice API
      * 
-     * @param (array) test - the test data containing the field to create
+     * @param (array) test - the test data containing the column to create
      */
-    createFields(test, callback){
-        let isSingular = test['fields'].length == 1;
-        let field_or_fields;
+    createColumns(test, callback){
+        let isSingular = test['columns'].length == 1;
+        let column_or_columns;
         if (isSingular){
-            field_or_fields = 'field';
+            column_or_columns = 'column';
         } else{
-            field_or_fields = 'fields';
+            column_or_columns = 'columns';
         }
-        console.log("  Creating {0} {1}".format(test['fields'].length, field_or_fields));
+        console.log("  Creating {0} {1}".format(test['columns'].length, column_or_columns));
 
         let tasks = [];
-        for(var data in test['fields']) {
-            let field = test['fields'][data];
-            this._appendTimestampToFieldName(field);
+        for(var data in test['columns']) {
+            let column = test['columns'][data];
+            this._appendTimestampToColumnName(column);
             tasks.push((callback) => {
-                this.client.createField(field).then((resp) => {
+                this.client.createColumn(column).then((resp) => {
                     callback();
                 }, (err) => {
                     this.compareResult(test, err);
@@ -143,29 +143,29 @@ class SlicingDiceTester {
                 });
             });
             if (this.verbose){
-                console.log("    - {0}".format(field['api-name']));
+                console.log("    - {0}".format(column['api-name']));
             }
         }
 
         async.series(tasks, callback);
     }
 
-    /* Append integer timestamp to field name
+    /* Append integer timestamp to column name
      * 
      * This technique allows the same test suite to be executed over and over
-     * again, since each execution will use different field names.
+     * again, since each execution will use different column names.
      *
-     * @param (array) field - array containing field name
+     * @param (array) column - array containing column name
      */
-    _appendTimestampToFieldName(field){
-        let oldName = '"{0}"'.format(field['api-name']);
+    _appendTimestampToColumnName(column){
+        let oldName = '"{0}"'.format(column['api-name']);
 
         let timestamp = this._getTimestamp();
-        field['name'] += timestamp
-        field['api-name'] += timestamp
-        let newName = '"{0}"'.format(field['api-name'])
+        column['name'] += timestamp
+        column['api-name'] += timestamp
+        let newName = '"{0}"'.format(column['api-name'])
 
-        this.fieldTranslation[oldName] = newName
+        this.columnTranslation[oldName] = newName
     }
 
     // Get actual timestamp in string format
@@ -173,28 +173,28 @@ class SlicingDiceTester {
         return new Date().getTime().toString();
     }
 
-    /* Index data on Slicing Dice API
+    /* Insert data on Slicing Dice API
      * 
-     * @param (array) test - the test data containing the data to index on Slicing Dice API
+     * @param (array) test - the test data containing the data to insert on Slicing Dice API
      */
-    indexData(test, callback) {
-        let isSingular = test['index'].length == 1;
-        let field_or_fields;
+    insertData(test, callback) {
+        let isSingular = test['insert'].length == 1;
+        let column_or_columns;
         if (isSingular){
-            field_or_fields = 'entity';
+            column_or_columns = 'entity';
         } else{
-            field_or_fields = 'entities';
+            column_or_columns = 'entities';
         }
-        console.log("  Indexing {0} {1}".format(Object.keys(test['index']).length, field_or_fields));
+        console.log("  Inserting {0} {1}".format(Object.keys(test['insert']).length, column_or_columns));
 
-        let indexData = this._translateFieldNames(test['index']);
+        let insertData = this._translateColumnNames(test['insert']);
 
         if (this.verbose){
-            console.log(indexData);
+            console.log(insertData);
         }
 
-        this.client.index(indexData, false).then(() => {
-            // Wait a few seconds so the data can be indexed by SlicingDice
+        this.client.insert(insertData, false).then(() => {
+            // Wait a few seconds so the data can be inserted by SlicingDice
             sleep.sleep(this.sleepTime);
             callback();
         }, (err) => {
@@ -210,11 +210,11 @@ class SlicingDiceTester {
      */
     executeQuery(queryType, test, callback) {
         let result;
-        let queryData = this._translateFieldNames(test['query']);
+        let queryData = this._translateColumnNames(test['query']);
         console.log('  Querying');
 
         if (this.verbose){
-            console.log('    - {}'.format(query_data));
+            console.log('    - ' + JSON.stringify(queryData));
         }
 
         var queryTypeMethodMap = {
@@ -235,14 +235,14 @@ class SlicingDiceTester {
         })
     }
 
-    /* Translate field name to match field name with timestamp
+    /* Translate column name to match column name with timestamp
      * 
-     * @param (array) jsonData - the json to translate the field name
+     * @param (array) jsonData - the json to translate the column name
      */
-    _translateFieldNames(jsonData){
+    _translateColumnNames(jsonData){
         let dataString = JSON.stringify(jsonData);
-        for(var oldName in this.fieldTranslation){
-            let newName = this.fieldTranslation[oldName];
+        for(var oldName in this.columnTranslation){
+            let newName = this.columnTranslation[oldName];
             dataString = dataString.replaceAll(oldName, newName);
         }
         return JSON.parse(dataString);
@@ -254,7 +254,7 @@ class SlicingDiceTester {
      * @param (array) result - the data received from Slicing Dice API
      */
     compareResult(test, result) {
-        let expected = this._translateFieldNames(test['expected']);
+        let expected = this._translateColumnNames(test['expected']);
         let dataExpected = test['expected'];
 
         for(var key in dataExpected) {
@@ -291,11 +291,11 @@ class SlicingDiceTester {
         if (expected.constructor !== result.constructor) return false;
 
         if (expected instanceof Array) {
-            return this.compareJsonValue(expected, result);
+            return this.arrayEqual(expected, result);
         }
 
         if(typeof expected === "object") {
-            return this.arrayEqual(expected, result);
+            return this.compareJsonValue(expected, result);
         }
 
         return expected === result;

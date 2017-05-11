@@ -9,7 +9,7 @@ Official JavaScript client for [SlicingDice](http://www.slicingdice.com/), Data 
 
 If you are new to SlicingDice, check our [quickstart guide](http://panel.slicingdice.com/docs/#quickstart-guide) and learn to use it in 15 minutes.
 
-Please refer to the [SlicingDice official documentation](http://panel.slicingdice.com/docs/) for more information on [analytics databases](http://panel.slicingdice.com/docs/#analytics-concepts), [data modeling](http://panel.slicingdice.com/docs/#data-modeling), [indexing](http://panel.slicingdice.com/docs/#data-indexing), [querying](http://panel.slicingdice.com/docs/#data-querying), [limitations](http://panel.slicingdice.com/docs/#current-slicingdice-limitations) and [API details](http://panel.slicingdice.com/docs/#api-details).
+Please refer to the [SlicingDice official documentation](http://panel.slicingdice.com/docs/) for more information on [analytics databases](http://panel.slicingdice.com/docs/#analytics-concepts), [data modeling](http://panel.slicingdice.com/docs/#data-modeling), [data insertion](http://panel.slicingdice.com/docs/#data-insertion), [querying](http://panel.slicingdice.com/docs/#data-querying), [limitations](http://panel.slicingdice.com/docs/#current-slicingdice-limitations) and [API details](http://panel.slicingdice.com/docs/#api-details).
 
 ## Tests and Examples
 
@@ -42,18 +42,19 @@ const client = new SlicingDice({
   readKey: 'READ_API_KEY'
 }, usesTestEndpoint = true);
 
-// Indexing data
-const indexData = {
+// Inserting data
+const insertData = {
     "user1@slicingdice.com": {
         "age": 22
     },
-    "auto-create-fields": true
+    "auto-create": ["table", "column"]
 };
-client.index(indexData);
+client.insert(insertData);
 
 // Querying data
 const queryData = {
-    "users-between-20-and-40": [
+    "query-name": "users-between-20-and-40",
+    "query": [
         {
             "age": {
                 "range": [
@@ -85,8 +86,8 @@ client.countEntity(queryData).then((resp) => {
 * `apiKeys (Object)` - [API key](http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys) to authenticate requests with the SlicingDice API.
 * `usesTestEndpoint (boolean)` - If false the client will send requests to production end-point, otherwise to tests end-point.
 
-### `getProjects()`
-Get all created projects, both active and inactive ones. This method corresponds to a [GET request at /project](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-project).
+### `getDatabase()`
+Get information about current database. This method corresponds to a [GET request at /database](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-database).
 
 #### Request example
 
@@ -97,7 +98,7 @@ const client = new SlicingDice({
   masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = false);
 
-client.getProjects().then((resp) => {
+client.getDatabase().then((resp) => {
     console.log(resp);
 }, (err) => {
     console.error(err);
@@ -108,27 +109,15 @@ client.getProjects().then((resp) => {
 
 ```json
 {
-    "active": [
-        {
-            "name": "Project 1",
-            "description": "My first project",
-            "data-expiration": 30,
-            "created-at": "2016-04-05T10:20:30Z"
-        }
-    ],
-    "inactive": [
-        {
-            "name": "Project 2",
-            "description": "My second project",
-            "data-expiration": 90,
-            "created-at": "2016-04-05T10:20:30Z"
-        }
-    ]
+  "name": "Database 1",
+  "description": "My first database",
+  "data-expiration": 30,
+  "created-at": "2016-04-05T10:20:30Z"
 }
 ```
 
-### `getFields()`
-Get all created fields, both active and inactive ones. This method corresponds to a [GET request at /field](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-field).
+### `getColumns()`
+Get all created columns, both active and inactive ones. This method corresponds to a [GET request at /column](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-column).
 
 #### Request example
 
@@ -139,7 +128,7 @@ const client = new SlicingDice({
     masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = true);
 
-client.getFields().then((resp) => {
+client.getColumns().then((resp) => {
     console.log(resp);
 }, (err) => {
     console.error(err);
@@ -174,8 +163,8 @@ client.getFields().then((resp) => {
 }
 ```
 
-### `createField(jsonData)`
-Create a new field. This method corresponds to a [POST request at /field](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-field).
+### `createColumn(jsonData)`
+Create a new column. This method corresponds to a [POST request at /column](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-column).
 
 #### Request example
 
@@ -186,7 +175,7 @@ const client = new SlicingDice({
     masterKey: 'MASTER_API_KEY'
 }, usesTestEndpoint = true);
 
-field = {
+column = {
     "name": "Year",
     "api-name": "year",
     "type": "integer",
@@ -194,7 +183,7 @@ field = {
     "storage": "latest-value"
 };
 
-client.createField(field).then((resp) => {
+client.createColumn(column).then((resp) => {
     console.log(resp);
 }, (err) => {
     console.error(err);
@@ -210,8 +199,8 @@ client.createField(field).then((resp) => {
 }
 ```
 
-### `index(jsonData)`
-Index data to existing entities or create new entities, if necessary. This method corresponds to a [POST request at /index](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-index).
+### `insert(jsonData)`
+Insert data to existing entities or create new entities, if necessary. This method corresponds to a [POST request at /insert](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-insert).
 
 #### Request example
 
@@ -223,7 +212,7 @@ const client = new SlicingDice({
     writeKey: 'WRITE_API_KEY'
 }, usesTestEndpoint = true);
 
-indexData = {
+const insertData = {
     "user1@slicingdice.com": {
         "car-model": "Ford Ka",
         "year": 2016
@@ -258,7 +247,7 @@ indexData = {
     }
 };
 
-client.index(indexData, autoCreateFields = true).then((resp) => {
+client.insert(insertData).then((resp) => {
    console.log(resp);
 }, (err) => {
     console.error(err);
@@ -270,14 +259,14 @@ client.index(indexData, autoCreateFields = true).then((resp) => {
 ```json
 {
     "status": "success",
-    "indexed-entities": 4,
-    "indexed-fields": 10,
+    "inserted-entities": 4,
+    "inserted-columns": 10,
     "took": 0.023
 }
 ```
 
 ### `existsEntity(ids)`
-Verify which entities exist in a project given a list of entity IDs. This method corresponds to a [POST request at /query/exists/entity](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-exists-entity).
+Verify which entities exist in a database given a list of entity IDs. This method corresponds to a [POST request at /query/exists/entity](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-exists-entity).
 
 #### Request example
 
@@ -319,7 +308,7 @@ client.existsEntity(ids).then((resp) => {
 ```
 
 ### `countEntityTotal()`
-Count the number of indexed entities. This method corresponds to a [GET request at /query/count/entity/total](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-count-entity-total).
+Count the number of inserted entities. This method corresponds to a [GET request at /query/count/entity/total](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-count-entity-total).
 
 #### Request example
 
@@ -363,29 +352,36 @@ const client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-query = {
-    "corolla-or-fit": [
-        {
-            "car-model": {
-                "equals": "toyota corolla"
+const query = [
+    {
+        "query-name": "corolla-or-fit",
+        "query": [
+            {
+                "car-model": {
+                    "equals": "toyota corolla"
+                }
+            },
+            "or",
+            {
+                "car-model": {
+                    "equals": "honda fit"
+                }
             }
-        },
-        "or",
-        {
-            "car-model": {
-                "equals": "honda fit"
+        ],
+        "bypass-cache": false
+    },
+    {
+        "query-name": "ford-ka",
+        "query": [
+            {
+                "car-model": {
+                    "equals": "ford ka"
+                }
             }
-        },
-    ],
-    "ford-ka": [
-        {
-            "car-model": {
-                "equals": "ford ka"
-            }
-        }
-    ],
-    "bypass-cache": false
-};
+        ],
+        "bypass-cache": false
+    }
+];
 
 client.countEntity(query).then((resp) => {
     console.log(resp);
@@ -420,31 +416,38 @@ const client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-query = {
-  "test-drives-in-ny": [
+const query = [
     {
-      "test-drives": {
-        "equals": "NY",
-        "between": [
-          "2016-08-16T00:00:00Z",
-          "2016-08-18T00:00:00Z"
-        ]
-      }
-    }
-  ],
-  "test-drives-in-ca": [
+        "query-name": "test-drives-in-ny",
+        "query": [
+            {
+                "test-drives": {
+                    "equals": "NY",
+                    "between": [
+                        "2016-08-16T00:00:00Z",
+                        "2016-08-18T00:00:00Z"
+                    ]
+                }
+            }
+        ],
+        "bypass-cache": true
+    },
     {
-      "test-drives": {
-        "equals": "CA",
-        "between": [
-          "2016-04-04T00:00:00Z",
-          "2016-04-06T00:00:00Z"
-        ]
-      }
+        "query-name": "test-drives-in-ca",
+        "query": [
+            {
+                "test-drives": {
+                    "equals": "CA",
+                    "between": [
+                        "2016-04-04T00:00:00Z",
+                        "2016-04-06T00:00:00Z"
+                    ]
+                }
+            }
+        ],
+        "bypass-cache": true
     }
-  ],
-  "bypass-cache": true
-}
+];
 
 client.countEvent(query).then((resp) => {
     console.log(resp);
@@ -535,7 +538,7 @@ client.topValues(query).then((resp) => {
 ```
 
 ### `aggregation(jsonData)`
-Return the aggregation of all fields in the given query. This method corresponds to a [POST request at /query/aggregation](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-aggregation).
+Return the aggregation of all columns in the given query. This method corresponds to a [POST request at /query/aggregation](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-aggregation).
 
 #### Request example
 
@@ -870,7 +873,7 @@ client.deleteSavedQuery("my-saved-query").then((resp) => {
 ```
 
 ### `result(jsonData)`
-Retrieve indexed values for entities matching the given query. This method corresponds to a [POST request at /data_extraction/result](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-data-extraction-result).
+Retrieve inserted values for entities matching the given query. This method corresponds to a [POST request at /data_extraction/result](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-data-extraction-result).
 
 #### Request example
 
@@ -896,7 +899,7 @@ query = {
       }
     }
   ],
-  "fields": ["car-model", "year"],
+  "columns": ["car-model", "year"],
   "limit": 2
 };
 
@@ -929,7 +932,7 @@ client.result(query).then((resp) => {
 ```
 
 ### `score(jsonData)`
-Retrieve indexed values as well as their relevance for entities matching the given query. This method corresponds to a [POST request at /data_extraction/score](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-data-extraction-score).
+Retrieve inserted values as well as their relevance for entities matching the given query. This method corresponds to a [POST request at /data_extraction/score](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-data-extraction-score).
 
 #### Request example
 
@@ -955,7 +958,7 @@ query = {
       }
     }
   ],
-  "fields": ["car-model", "year"],
+  "columns": ["car-model", "year"],
   "limit": 2
 };
 
