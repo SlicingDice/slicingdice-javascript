@@ -38,31 +38,31 @@ class SlicingDiceClientError extends ExtendableError {
 
 // Specific Errors
 
-class DemoUnavailableException extends SlicingDiceError {
+class DemoUnavailableError extends SlicingDiceError {
   constructor(data) {   
     super(data);
   }
 }
 
-class RequestRateLimitException extends SlicingDiceError {
+class RequestRateLimitError extends SlicingDiceError {
   constructor(data) {   
     super(data);
   }
 }
 
-class RequestBodySizeExceededException extends SlicingDiceError {
+class RequestBodySizeExceededError extends SlicingDiceError {
   constructor(data) {   
     super(data);
   }
 }
 
-class IndexEntitiesLimitException extends SlicingDiceError {
+class IndexEntitiesLimitError extends SlicingDiceError {
   constructor(data) {   
     super(data);
   }
 }
 
-class IndexColumnsLimitException extends SlicingDiceError {
+class IndexColumnsLimitError extends SlicingDiceError {
   constructor(data) {   
     super(data);
   }
@@ -73,9 +73,9 @@ class IndexColumnsLimitException extends SlicingDiceError {
 module.exports = {
     "SlicingDiceError": SlicingDiceError,
     "SlicingDiceClientError": SlicingDiceClientError,
-    "DemoUnavailableException": DemoUnavailableException,
-    "RequestRateLimitException": RequestRateLimitException,
-    "RequestBodySizeExceededException": RequestBodySizeExceededException,
-    "IndexEntitiesLimitException": IndexEntitiesLimitException,
-    "IndexColumnsLimitException": IndexColumnsLimitException,
+    "DemoUnavailableError": DemoUnavailableError,
+    "RequestRateLimitError": RequestRateLimitError,
+    "RequestBodySizeExceededError": RequestBodySizeExceededError,
+    "IndexEntitiesLimitError": IndexEntitiesLimitError,
+    "IndexColumnsLimitError": IndexColumnsLimitError,
 }
