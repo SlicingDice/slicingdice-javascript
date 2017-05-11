@@ -308,7 +308,7 @@ client.existsEntity(ids).then((resp) => {
 ```
 
 ### `countEntityTotal()`
-Count the number of inserted entities. This method corresponds to a [GET request at /query/count/entity/total](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-count-entity-total).
+Count the number of inserted entities. This method corresponds to a [POST request at /query/count/entity/total](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-count-entity-total).
 
 #### Request example
 
@@ -320,7 +320,13 @@ const client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-client.countEntityTotal().then((resp) => {
+const tables = {
+    "tables": [
+        "default"
+    ]
+};
+
+client.countEntityTotal(tables).then((resp) => {
     console.log(resp);
 }, (err) => {
     console.error(err);
