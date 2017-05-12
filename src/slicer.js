@@ -556,15 +556,15 @@
          *
          * @param (array) tables - the tables in which the total query will be performed
          */
-        countEntityTotal(tables = {}) {
-            if(!tables){
-                tables = {};
-            }
+        countEntityTotal(tables = []) {
+            let query = {
+                "tables": tables
+            };
             let path  = this._sdRoutes.countEntityTotal;
             return this.makeRequest({
                 path: path,
                 reqType: "POST",
-                data: tables,
+                data: query,
                 levelKey: 0
             })
         }

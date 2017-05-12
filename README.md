@@ -320,11 +320,39 @@ const client = new SlicingDice({
     readKey: 'READ_KEY'
 }, usesTestEndpoint = true);
 
-const tables = {
-    "tables": [
-        "default"
-    ]
-};
+client.countEntityTotal().then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.error(err);
+});
+```
+
+#### Output example
+
+```json
+{
+    "status": "success",
+    "result": {
+        "total": 42
+    },
+    "took": 0.103
+}
+```
+
+### `countEntityTotal(tables)`
+Count the total number of inserted entities in the given tables. This method corresponds to a [POST request at /query/count/entity/total](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-count-entity-total).
+
+#### Request example
+
+```javascript
+let SlicingDice = require('slicerjs');
+
+const client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
+}, usesTestEndpoint = true);
+
+const tables = ["default"];
 
 client.countEntityTotal(tables).then((resp) => {
     console.log(resp);
