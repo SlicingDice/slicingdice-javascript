@@ -551,13 +551,20 @@
             let sdValidator = new QueryCountValidator(query);
             return this.countQueryWrapper(query, path);
         }
-
-        /* Makes a total query on Slicing Dice API */
-        countEntityTotal() {
+        
+        /* Makes a total query on Slicing Dice API 
+         *
+         * @param (array) tables - the tables in which the total query will be performed
+         */
+        countEntityTotal(tables = []) {
+            let query = {
+                "tables": tables
+            };
             let path  = this._sdRoutes.countEntityTotal;
             return this.makeRequest({
                 path: path,
-                reqType: "GET",
+                reqType: "POST",
+                data: query,
                 levelKey: 0
             })
         }
