@@ -1,6 +1,7 @@
 # Change Log
 
 ### Updated
+- Update `existsEntity()` method to receive `table` as parameter
 - Update Api Errors code
 
 
