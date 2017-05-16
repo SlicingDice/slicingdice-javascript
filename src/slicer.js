@@ -573,25 +573,29 @@
          * 
          * @param (array) query - the query to send to Slicing Dice API
          */
-        countEvent(query){
+        countEvent(query) {
             let path = this._sdRoutes.countEvent;
             return this.countQueryWrapper(query, path);
         }
 
         /* Makes a exists query on Slicing Dice API
          * 
-         * @param (array) ids - the array of ids to check
+         * @param (array) ids - the array of IDs to check
+         * @param (string) table - the table to check for IDs
          */
-        existsEntity(ids) {
-            if (ids.constructor != Array){
+        existsEntity(ids, table = null) {
+            if (ids.constructor != Array) {
                 throw new errors.WrongTypeError("This method should receive an array as parameter");
             }
-            if (ids.length > 100){
+            if (ids.length > 100) {
                 throw new errors.MaxLimitError("The query exists entity must have up to 100 ids.");
             }
             let path = this._sdRoutes.existsEntity;
             let query = {
                 "ids": ids
+            }
+            if (table) {
+                query["table"] = table
             }
             return this.makeRequest({
                 path: path,
