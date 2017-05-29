@@ -7,9 +7,9 @@ Official JavaScript client for [SlicingDice](http://www.slicingdice.com/), Data 
 
 ## Documentation
 
-If you are new to SlicingDice, check our [quickstart guide](http://panel.slicingdice.com/docs/#quickstart-guide) and learn to use it in 15 minutes.
+If you are new to SlicingDice, check our [quickstart guide](https://docs.slicingdice.com/docs/quickstart-guide) and learn to use it in 15 minutes.
 
-Please refer to the [SlicingDice official documentation](http://panel.slicingdice.com/docs/) for more information on [analytics databases](http://panel.slicingdice.com/docs/#analytics-concepts), [data modeling](http://panel.slicingdice.com/docs/#data-modeling), [data insertion](http://panel.slicingdice.com/docs/#data-insertion), [querying](http://panel.slicingdice.com/docs/#data-querying), [limitations](http://panel.slicingdice.com/docs/#current-slicingdice-limitations) and [API details](http://panel.slicingdice.com/docs/#api-details).
+Please refer to the [SlicingDice official documentation](https://docs.slicingdice.com/) for more information on [how to create a database](https://docs.slicingdice.com/docs/how-to-create-a-database), [how to insert data](https://docs.slicingdice.com/docs/how-to-insert-data), [how to make queries](https://docs.slicingdice.com/docs/how-to-make-queries), [how to create columns](https://docs.slicingdice.com/docs/how-to-create-columns), [SlicingDice restrictions](https://docs.slicingdice.com/docs/current-restrictions) and [API details](https://docs.slicingdice.com/docs/api-details).
 
 ## Tests and Examples
 
@@ -74,20 +74,20 @@ client.countEntity(queryData).then((resp) => {
 
 ## Reference
 
-`SlicingDice` encapsulates logic for sending requests to the API. Its methods are thin layers around the [API endpoints](http://panel.slicingdice.com/docs/#api-details-api-endpoints), so their parameters and return values are JSON-like `Object` objects with the same syntax as the [API endpoints](http://panel.slicingdice.com/docs/#api-details-api-endpoints)
+`SlicingDice` encapsulates logic for sending requests to the API. Its methods are thin layers around the [API endpoints](https://docs.slicingdice.com/docs/api-details), so their parameters and return values are JSON-like `Object` objects with the same syntax as the [API endpoints](https://docs.slicingdice.com/docs/api-details)
 
 ### Attributes
 
-* `sdAddress (String)` - [Connection endpoint](http://panel.slicingdice.com/docs/#api-details-api-connection-connection-endpoints) to use when generating requests to SlicingDice.
+* `sdAddress (String)` - [Connection endpoint](https://docs.slicingdice.com/docs/api-keys) to use when generating requests to SlicingDice.
 
 ### Constructor
 
 `SlicingDice(apiKeys, usesTestEndpoint)`
-* `apiKeys (Object)` - [API key](http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys) to authenticate requests with the SlicingDice API.
+* `apiKeys (Object)` - [API key](https://docs.slicingdice.com/docs/api-keys) to authenticate requests with the SlicingDice API.
 * `usesTestEndpoint (boolean)` - If false the client will send requests to production end-point, otherwise to tests end-point.
 
 ### `getDatabase()`
-Get information about current database. This method corresponds to a [GET request at /database](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-database).
+Get information about current database. This method corresponds to a `GET` request at `/database`.
 
 #### Request example
 
@@ -117,7 +117,7 @@ client.getDatabase().then((resp) => {
 ```
 
 ### `getColumns()`
-Get all created columns, both active and inactive ones. This method corresponds to a [GET request at /column](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-column).
+Get all created columns, both active and inactive ones. This method corresponds to a [GET request at /column](https://docs.slicingdice.com/docs/how-to-list-edit-or-delete-columns).
 
 #### Request example
 
@@ -164,7 +164,7 @@ client.getColumns().then((resp) => {
 ```
 
 ### `createColumn(jsonData)`
-Create a new column. This method corresponds to a [POST request at /column](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-column).
+Create a new column. This method corresponds to a [POST request at /column](https://docs.slicingdice.com/docs/how-to-create-columns#section-creating-columns-using-column-endpoint).
 
 #### Request example
 
@@ -200,7 +200,7 @@ client.createColumn(column).then((resp) => {
 ```
 
 ### `insert(jsonData)`
-Insert data to existing entities or create new entities, if necessary. This method corresponds to a [POST request at /insert](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-insert).
+Insert data to existing entities or create new entities, if necessary. This method corresponds to a [POST request at /insert](https://docs.slicingdice.com/docs/how-to-insert-data).
 
 #### Request example
 
@@ -266,7 +266,7 @@ client.insert(insertData).then((resp) => {
 ```
 
 ### `existsEntity(ids, table = null)`
-Verify which entities exist in a table (uses `default` table if not provided) given a list of entity IDs. This method corresponds to a [POST request at /query/exists/entity](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-exists-entity).
+Verify which entities exist in a table (uses `default` table if not provided) given a list of entity IDs. This method corresponds to a [POST request at /query/exists/entity](https://docs.slicingdice.com/docs/exists).
 
 #### Request example
 
@@ -308,7 +308,7 @@ client.existsEntity(ids).then((resp) => {
 ```
 
 ### `countEntityTotal()`
-Count the number of inserted entities in the whole database. This method corresponds to a [POST request at /query/count/entity/total](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-count-entity-total).
+Count the number of inserted entities in the whole database. This method corresponds to a [POST request at /query/count/entity/total](https://docs.slicingdice.com/docs/total).
 
 #### Request example
 
@@ -340,7 +340,7 @@ client.countEntityTotal().then((resp) => {
 ```
 
 ### `countEntityTotal(tables)`
-Count the total number of inserted entities in the given tables. This method corresponds to a [POST request at /query/count/entity/total](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-count-entity-total).
+Count the total number of inserted entities in the given tables. This method corresponds to a [POST request at /query/count/entity/total](https://docs.slicingdice.com/docs/total#section-counting-specific-tables).
 
 #### Request example
 
@@ -374,7 +374,7 @@ client.countEntityTotal(tables).then((resp) => {
 ```
 
 ### `countEntity(jsonData)`
-Count the number of entities matching the given query. This method corresponds to a [POST request at /query/count/entity](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-count-entity).
+Count the number of entities matching the given query. This method corresponds to a [POST request at /query/count/entity](https://docs.slicingdice.com/docs/count-entities).
 
 #### Request example
 
@@ -438,7 +438,7 @@ client.countEntity(query).then((resp) => {
 ```
 
 ### `countEvent(jsonData)`
-Count the number of occurrences for time-series events matching the given query. This method corresponds to a [POST request at /query/count/event](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-count-event).
+Count the number of occurrences for time-series events matching the given query. This method corresponds to a [POST request at /query/count/event](https://docs.slicingdice.com/docs/count-events).
 
 #### Request example
 
@@ -504,7 +504,7 @@ client.countEvent(query).then((resp) => {
 ```
 
 ### `topValues(jsonData)`
-Return the top values for entities matching the given query. This method corresponds to a [POST request at /query/top_values](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-top-values).
+Return the top values for entities matching the given query. This method corresponds to a [POST request at /query/top_values](https://docs.slicingdice.com/docs/top-values).
 
 #### Request example
 
@@ -572,7 +572,7 @@ client.topValues(query).then((resp) => {
 ```
 
 ### `aggregation(jsonData)`
-Return the aggregation of all columns in the given query. This method corresponds to a [POST request at /query/aggregation](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-aggregation).
+Return the aggregation of all columns in the given query. This method corresponds to a [POST request at /query/aggregation](https://docs.slicingdice.com/docs/aggregations).
 
 #### Request example
 
@@ -634,7 +634,7 @@ client.aggregation(query).then((resp) => {
 ```
 
 ### `getSavedQueries()`
-Get all saved queries. This method corresponds to a [GET request at /query/saved](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-saved).
+Get all saved queries. This method corresponds to a [GET request at /query/saved](https://docs.slicingdice.com/docs/saved-queries).
 
 #### Request example
 
@@ -693,7 +693,7 @@ client.getSavedQueries().then((resp) => {
 ```
 
 ### `createSavedQuery(jsonData)`
-Create a saved query at SlicingDice. This method corresponds to a [POST request at /query/saved](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-query-saved).
+Create a saved query at SlicingDice. This method corresponds to a [POST request at /query/saved](https://docs.slicingdice.com/docs/saved-queries).
 
 #### Request example
 
@@ -756,7 +756,7 @@ client.createSavedQuery(query).then((resp) => {
 ```
 
 ### `updateSavedQuery(queryName, jsonData)`
-Update an existing saved query at SlicingDice. This method corresponds to a [PUT request at /query/saved/QUERY_NAME](http://panel.slicingdice.com/docs/#api-details-api-endpoints-put-query-saved-query-name).
+Update an existing saved query at SlicingDice. This method corresponds to a [PUT request at /query/saved/QUERY_NAME](https://docs.slicingdice.com/docs/saved-queries).
 
 #### Request example
 
@@ -817,7 +817,7 @@ client.updateSavedQuery("my-saved-query", newQuery).then((resp) => {
 ```
 
 ### `getSavedQuery(queryName)`
-Executed a saved query at SlicingDice. This method corresponds to a [GET request at /query/saved/QUERY_NAME](http://panel.slicingdice.com/docs/#api-details-api-endpoints-get-query-saved-query-name).
+Executed a saved query at SlicingDice. This method corresponds to a [GET request at /query/saved/QUERY_NAME](https://docs.slicingdice.com/docs/saved-queries).
 
 #### Request example
 
@@ -863,7 +863,7 @@ client.getSavedQuery("my-saved-query").then((resp) => {
 ```
 
 ### `deleteSavedQuery(queryName)`
-Delete a saved query at SlicingDice. This method corresponds to a [DELETE request at /query/saved/QUERY_NAME](http://panel.slicingdice.com/docs/#api-details-api-endpoints-delete-query-saved-query-name).
+Delete a saved query at SlicingDice. This method corresponds to a [DELETE request at /query/saved/QUERY_NAME](https://docs.slicingdice.com/docs/saved-queries).
 
 #### Request example
 
@@ -907,7 +907,7 @@ client.deleteSavedQuery("my-saved-query").then((resp) => {
 ```
 
 ### `result(jsonData)`
-Retrieve inserted values for entities matching the given query. This method corresponds to a [POST request at /data_extraction/result](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-data-extraction-result).
+Retrieve inserted values for entities matching the given query. This method corresponds to a [POST request at /data_extraction/result](https://docs.slicingdice.com/docs/result-extraction).
 
 #### Request example
 
@@ -966,7 +966,7 @@ client.result(query).then((resp) => {
 ```
 
 ### `score(jsonData)`
-Retrieve inserted values as well as their relevance for entities matching the given query. This method corresponds to a [POST request at /data_extraction/score](http://panel.slicingdice.com/docs/#api-details-api-endpoints-post-data-extraction-score).
+Retrieve inserted values as well as their relevance for entities matching the given query. This method corresponds to a [POST request at /data_extraction/score](https://docs.slicingdice.com/docs/score-extraction).
 
 #### Request example
 
