@@ -27,7 +27,7 @@ npm install slicerjs
 
 The following code snippet is an example of how to add and query data
 using the SlicingDice javascript client. We entry data informing
-'user1@slicingdice.com' has age 22 and then query the database for
+`user1@slicingdice.com` has age 22 and then query the database for
 the number of users with age between 20 and 40 years old.
 If this is the first register ever entered into the system,
  the answer should be 1.
