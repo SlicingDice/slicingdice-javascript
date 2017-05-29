@@ -6,14 +6,14 @@ In this directory, you find unitary and regression tests for SlicingDice client.
 2. Provide regression tests that can be executed by anyone with one simple command
 
 ## Data
-The `examples/` directory contains one file for each [SlicingDice query](http://panel.slicingdice.com/docs/#data-querying) in JSON format.
+The `examples/` directory contains one file for each [SlicingDice query](https://docs.slicingdice.com/docs/how-to-make-queries) in JSON format.
 
 Each JSON file contains a list of examples, such as the following excerpt, with the following elements:
 
 * `name`: Test name, as it will be printed on screen.
-* `columns`: [Columns](http://panel.slicingdice.com/docs/#data-modeling-columns) that will be created for this test.
-* `insert`: Data that will be [inserted](http://panel.slicingdice.com/docs/#data-insertion) in this test.
-* `query`: [Query](http://panel.slicingdice.com/docs/#data-querying) that will extract some information for the inserted data.
+* `columns`: [Columns](https://docs.slicingdice.com/docs/how-to-create-columns) that will be created for this test.
+* `insert`: Data that will be [inserted](https://docs.slicingdice.com/docs/how-to-insert-data) in this test.
+* `query`: [Query](https://docs.slicingdice.com/docs/how-to-make-queries) that will extract some information for the inserted data.
 * `expected`: Expected result message after SlicingDice executes the query. Values marked as `"ignore"` won't be taken into account to determine whether the test has passed or failed.
 
 ```json
