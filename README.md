@@ -109,13 +109,14 @@ client.getDatabase().then((resp) => {
 
 ```json
 {
-	"tables": [
-		"users"
-	],
-	"updated-at": "2017-05-19T14:27:47.417415",
-	"created-at": "2017-05-12T02:23:34.231418",
-	"name": "Database 1",
-	"description": "My first database"
+    "name": "Database 1",
+    "description": "My first database",
+    "tables": [
+    	"default",
+        "users"
+    ],
+    "updated-at": "2017-05-19T14:27:47.417415",
+    "created-at": "2017-05-12T02:23:34.231418"
 }
 ```
 
