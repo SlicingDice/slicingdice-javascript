@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.0.1]
+### Updated
+- Correct data extraction validator to accept columns: all
+
 ## [2.0.0]
 ### Updated
 - Update `existsEntity()` method to receive `table` as parameter
