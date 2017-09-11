@@ -193,7 +193,9 @@
                 // Check columns property, columns should have a maximum of 10 itens
                 if (key == "columns") {
                     if (value.constructor != Array) {
-                        throw new errors.InvalidQueryException("The key 'columns' in query has a invalid value.");
+                        if (value != 'all') {
+                            throw new errors.InvalidQueryException("The key 'columns' in query has a invalid value.");
+                        }
                     }
                     else {
                         if (value.length > 10) {
