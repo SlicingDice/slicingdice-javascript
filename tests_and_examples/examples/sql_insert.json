@@ -1,0 +1,150 @@
+[
+  {
+    "user1@slicingdice.com": {
+      "gender": "female",
+      "state": "NY",
+      "city": "New York",
+      "country": "USA",
+      "age": 19,
+      "table": "users",
+      "name": "joao",
+      "browser": "firefox",
+      "os": "Linux",
+      "clicks": [
+        {
+          "value": "Pay Now",
+          "date": "2017-05-28T00:00:00Z"
+        }
+      ],
+      "purchase-values": [
+        {
+          "value": 10.5,
+          "date": "2017-05-28T00:00:00Z"
+        }
+      ],
+      "purchased-products": [
+        {
+          "value": 5,
+          "date": "2017-05-28T00:00:00Z"
+        }
+      ],
+      "visited-page-events": [
+        {
+          "value": "visited-page",
+          "date": "2017-05-27T00:00:00Z"
+        }
+      ]
+    },
+    "user2@slicingdice.com": {
+      "gender": "male",
+      "state": "RN",
+      "city": "Natal",
+      "country": "Brazil",
+      "age": 21,
+      "table": "users",
+      "name": "eduardo",
+      "browser": "chrome",
+      "os": "Windows",
+      "clicks": [
+        {
+          "value": "Buy",
+          "date": "2017-05-23T00:00:00Z"
+        }
+      ],
+      "purchase-values": [
+        {
+          "value": 15.45,
+          "date": "2017-05-24T00:00:00Z"
+        }
+      ],
+      "purchased-products": [
+        {
+          "value": 10,
+          "date": "2017-05-22T00:00:00Z"
+        }
+      ],
+      "visited-page-events": [
+        {
+          "value": "index",
+          "date": "2017-05-27T00:00:00Z"
+        }
+      ]
+    },
+    "user3@slicingdice.com": {
+      "gender": "female",
+      "state": "BA",
+      "city": "Salvador",
+      "country": "Brazil",
+      "age": 17,
+      "table": "users",
+      "name": "gabriela",
+      "browser": "safari",
+      "os": "mac",
+      "clicks": [
+        {
+          "value": "Buy",
+          "date": "2017-05-28T00:00:00Z"
+        }
+      ],
+      "purchase-values": [
+        {
+          "value": 7.654,
+          "date": "2017-05-28T00:00:00Z"
+        }
+      ],
+      "purchased-products": [
+        {
+          "value": 25,
+          "date": "2017-05-28T00:00:00Z"
+        }
+      ],
+      "visited-page-events": [
+        {
+          "value": "login",
+          "date": "2017-05-27T00:00:00Z"
+        }
+      ]
+    },
+    "auto-create": [
+      "table",
+      "column"
+    ]
+  },
+  {
+    "1": {
+      "user": "user1@slicingdice.com",
+      "salary": 2350.50,
+      "age": 19,
+      "admission": "2017-07-17",
+      "table": "jobs"
+    },
+    "auto-create": [
+      "table",
+      "column"
+    ]
+  },
+  {
+    "1": {
+      "somecollumn": 1,
+      "str": "john",
+      "dec": 105.5,
+      "ts": {
+        "value": "doe",
+        "date": "2017-08-18T00:00:00Z"
+      },
+      "tsd": {
+        "value": 15.10,
+        "date": "2017-08-18T00:00:00Z"
+      },
+      "tsi": {
+        "value": 15,
+        "date": "2017-08-18T00:00:00Z"
+      },
+      "table": "inserttest"
+    },
+    "auto-create": [
+      "table",
+      "column"
+    ]
+  }
+]

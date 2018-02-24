@@ -1,0 +1,1555 @@
+[
+  {
+    "query": "SELECT COUNT(*) FROM users",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 3
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #1"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE name='Eduardo' OR age='19'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 2
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #2"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE name='Joao' AND [clicks.value]='Pay Now' AND [clicks.date] BETWEEN '2017-05-14' AND '2017-05-29'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #3"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE name='Joao'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #4"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE age BETWEEN 0 AND 49",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 3
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #5"
+  },
+  {
+    "query": "SELECT [purchased-products.value] FROM users WHERE country='USA' GROUP BY [purchased-products.value] HAVING [purchased-products.date] BETWEEN '2017-05-09T00:00:00' AND '2017-05-29T00:00:00'",
+    "expected": {
+      "result": [
+        {
+          "purchased-products.value": 5
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #6"
+  },
+  {
+    "query": "SELECT browser FROM users GROUP BY browser LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "browser": "chrome"
+        },
+        {
+          "browser": "firefox"
+        },
+        {
+          "browser": "safari"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #7"
+  },
+  {
+    "query": "SELECT os, browser FROM users GROUP BY os, browser LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "os": "windows",
+          "browser": "chrome"
+        },
+        {
+          "os": "mac",
+          "browser": "safari"
+        },
+        {
+          "os": "linux",
+          "browser": "firefox"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #8"
+  },
+  {
+    "query": "SELECT AVG(age) FROM users",
+    "expected": {
+      "result": [
+        {
+          "AVG": 19.0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #9"
+  },
+  {
+    "query": "SELECT os, browser, AVG(age) FROM users GROUP BY os, browser LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "AVG": 21.0,
+          "os": "windows",
+          "browser": "chrome"
+        },
+        {
+          "AVG": 17.0,
+          "os": "mac",
+          "browser": "safari"
+        },
+        {
+          "AVG": 19.0,
+          "os": "linux",
+          "browser": "firefox"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #10"
+  },
+  {
+    "query": "SELECT os, browser, AVG(age), MIN(age), MAX(age) FROM users GROUP BY os, browser LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "AVG": 21.0,
+          "MIN": 21,
+          "os": "windows",
+          "MAX": 21,
+          "browser": "chrome"
+        },
+        {
+          "AVG": 17.0,
+          "MIN": 17,
+          "os": "mac",
+          "MAX": 17,
+          "browser": "safari"
+        },
+        {
+          "AVG": 19.0,
+          "MIN": 19,
+          "os": "linux",
+          "MAX": 19,
+          "browser": "firefox"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #11"
+  },
+  {
+    "query": "SELECT AVG(age) FROM users WHERE country='USA'",
+    "expected": {
+      "result": [
+        {
+          "AVG": 19.0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #12"
+  },
+  {
+    "query": "SELECT MAX([purchase-values.value]) FROM users HAVING [purchase-values.date] BETWEEN '2017-05-19' AND '2017-05-30'",
+    "expected": {
+      "result": [
+        {
+          "MAX": 15.450000
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #13"
+  },
+  {
+    "query": "SELECT MAX([purchase-values.value]) FROM users WHERE country='USA' HAVING [purchase-values.date] BETWEEN '2017-05-19' AND '2017-05-30'",
+    "expected": {
+      "result": [
+        {
+          "MAX": 10.500000
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #14"
+  },
+  {
+    "query": "SELECT browser, COUNT(browser) AS browser_count FROM users GROUP BY browser ORDER BY browser_count ASC",
+    "expected": {
+      "result": [
+        {
+          "browser": "chrome",
+          "browser_count": 1
+        },
+        {
+          "browser": "firefox",
+          "browser_count": 1
+        },
+        {
+          "browser": "safari",
+          "browser_count": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #15"
+  },
+  {
+    "query": "SELECT * FROM users",
+    "expected": {
+      "result": [
+        {
+          "age": 21,
+          "browser": "chrome",
+          "city": "natal",
+          "country": "brazil",
+          "entity-id": "user2@slicingdice.com",
+          "gender": "male",
+          "name": "eduardo",
+          "os": "windows",
+          "state": "rn",
+          "score": 1.0
+        },
+        {
+          "age": 19,
+          "browser": "firefox",
+          "city": "new york",
+          "country": "usa",
+          "entity-id": "user1@slicingdice.com",
+          "gender": "female",
+          "name": "joao",
+          "os": "linux",
+          "state": "ny",
+          "score": 1.0
+        },
+        {
+          "age": 17,
+          "browser": "safari",
+          "city": "salvador",
+          "country": "brazil",
+          "entity-id": "user3@slicingdice.com",
+          "gender": "female",
+          "name": "gabriela",
+          "os": "mac",
+          "state": "ba",
+          "score": 1.0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #16"
+  },
+  {
+    "query": "SELECT [entity-id] FROM users WHERE age BETWEEN 17 AND 24 LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "entity-id": "user2@slicingdice.com"
+        },
+        {
+          "entity-id": "user1@slicingdice.com"
+        },
+        {
+          "entity-id": "user3@slicingdice.com"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #17"
+  },
+  {
+    "query": "SELECT name FROM users WHERE age BETWEEN 17 AND 24 LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "name": "eduardo"
+        },
+        {
+          "name": "joao"
+        },
+        {
+          "name": "gabriela"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #18"
+  },
+  {
+    "query": "SELECT * FROM users WHERE age BETWEEN 17 AND 24 LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "age": 21,
+          "browser": "chrome",
+          "city": "natal",
+          "country": "brazil",
+          "entity-id": "user2@slicingdice.com",
+          "gender": "male",
+          "name": "eduardo",
+          "os": "windows",
+          "state": "rn",
+          "score": 1.0
+        },
+        {
+          "age": 19,
+          "browser": "firefox",
+          "city": "new york",
+          "country": "usa",
+          "entity-id": "user1@slicingdice.com",
+          "gender": "female",
+          "name": "joao",
+          "os": "linux",
+          "state": "ny",
+          "score": 1.0
+        },
+        {
+          "age": 17,
+          "browser": "safari",
+          "city": "salvador",
+          "country": "brazil",
+          "entity-id": "user3@slicingdice.com",
+          "gender": "female",
+          "name": "gabriela",
+          "os": "mac",
+          "state": "ba",
+          "score": 1.0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #19"
+  },
+  {
+    "query": "SELECT AVG([purchase-values.value]) FROM users WHERE age BETWEEN 17 AND 24 AND [purchase-values.date] BETWEEN '2017-05-14T00:00:00' AND '2017-05-29T00:00:00' LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "AVG": 11.201333
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #20"
+  },
+  {
+    "query": "SELECT score FROM users WHERE age BETWEEN 17 AND 24 LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0
+        },
+        {
+          "score": 1.0
+        },
+        {
+          "score": 1.0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #21"
+  },
+  {
+    "query": "SELECT name, score FROM users WHERE age BETWEEN 17 AND 24 LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0,
+          "name": "gabriela"
+        },
+        {
+          "score": 1.0,
+          "name": "eduardo"
+        },
+        {
+          "score": 1.0,
+          "name": "joao"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #22"
+  },
+  {
+    "query": "SELECT * FROM users WHERE age BETWEEN 17 AND 24 LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "age": 21,
+          "browser": "chrome",
+          "city": "natal",
+          "country": "brazil",
+          "entity-id": "user2@slicingdice.com",
+          "gender": "male",
+          "name": "eduardo",
+          "os": "windows",
+          "state": "rn",
+          "score": 1.0
+        },
+        {
+          "age": 19,
+          "browser": "firefox",
+          "city": "new york",
+          "country": "usa",
+          "entity-id": "user1@slicingdice.com",
+          "gender": "female",
+          "name": "joao",
+          "os": "linux",
+          "state": "ny",
+          "score": 1.0
+        },
+        {
+          "age": 17,
+          "browser": "safari",
+          "city": "salvador",
+          "country": "brazil",
+          "entity-id": "user3@slicingdice.com",
+          "gender": "female",
+          "name": "gabriela",
+          "os": "mac",
+          "state": "ba",
+          "score": 1.0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #23"
+  },
+  {
+    "query": "SELECT AVG([purchase-values.value]), score FROM users WHERE age BETWEEN 17 AND 24 HAVING [purchase-values.date] BETWEEN '2017-05-14T00:00:00' AND '2017-05-29T00:00:00' LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0,
+          "AVG": 7.654000
+        },
+        {
+          "score": 1.0,
+          "AVG": 15.450000
+        },
+        {
+          "score": 1.0,
+          "AVG": 10.500000
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #24"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE age = 21",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #25"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE [visited-page-events.value]='visited-page' AND [visited-page-events.date] BETWEEN '2017-05-14T00:00:00' AND '2017-05-28T00:00:00'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #26"
+  },
+  {
+    "query": "SELECT os FROM users WHERE os IN ('linux', 'mac', 'windows') GROUP BY os LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        },
+        {
+          "os": "mac"
+        },
+        {
+          "os": "windows"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #27"
+  },
+  {
+    "query": "SELECT city, state FROM users WHERE state = 'NY' LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #28"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE age != 25",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 3
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #29"
+  },
+  {
+    "query": "SELECT os FROM users WHERE os NOT IN ('mac', 'windows') GROUP BY os LIMIT 2",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #30"
+  },
+  {
+    "query": "SELECT city, state FROM users WHERE state != 'NY' LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "city": "salvador",
+          "state": "ba"
+        },
+        {
+          "city": "natal",
+          "state": "rn"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #31"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE age BETWEEN 18 AND 24",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 2
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #32"
+  },
+  {
+    "query": "SELECT os FROM users WHERE age BETWEEN 18 AND 24 GROUP BY os LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        },
+        {
+          "os": "windows"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #33"
+  },
+  {
+    "query": "SELECT city, state FROM users WHERE age BETWEEN 18 AND 24 LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "city": "natal",
+          "state": "rn"
+        },
+        {
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #34"
+  },
+  {
+    "query": "SELECT MAX([purchase-values.value]) FROM users GROUP BY INTERVAL([purchase-values.value])='days' HAVING [purchase-values.date] BETWEEN '2017-05-09' AND '2017-05-30'",
+    "expected": {
+      "result": [
+        {
+          "MAX": 15.450000
+        },
+        {
+          "MAX": 10.500000
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #35"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE age > 17",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 2
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #36"
+  },
+  {
+    "query": "SELECT os FROM users WHERE age > 17 GROUP BY os LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        },
+        {
+          "os": "windows"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #37"
+  },
+  {
+    "query": "SELECT city, state FROM users WHERE age > 17 LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "city": "natal",
+          "state": "rn"
+        },
+        {
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #38"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE age >= 18",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 2
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #39"
+  },
+  {
+    "query": "SELECT os FROM users WHERE age >= 18 GROUP BY os LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        },
+        {
+          "os": "windows"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #40"
+  },
+  {
+    "query": "SELECT city, state FROM users WHERE age >= 18 LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "city": "natal",
+          "state": "rn"
+        },
+        {
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #41"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE age < 25",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 3
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #42"
+  },
+  {
+    "query": "SELECT os FROM users WHERE age < 25 GROUP BY os LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        },
+        {
+          "os": "mac"
+        },
+        {
+          "os": "windows"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #43"
+  },
+  {
+    "query": "SELECT city, state FROM users WHERE age < 25 LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "city": "salvador",
+          "state": "ba"
+        },
+        {
+          "city": "natal",
+          "state": "rn"
+        },
+        {
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #44"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE age <= 24",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 3
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #45"
+  },
+  {
+    "query": "SELECT os FROM users WHERE age <= 24 GROUP BY os LIMIT 5",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        },
+        {
+          "os": "mac"
+        },
+        {
+          "os": "windows"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #46"
+  },
+  {
+    "query": "SELECT city, state FROM users WHERE age <= 24 LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "city": "salvador",
+          "state": "ba"
+        },
+        {
+          "city": "natal",
+          "state": "rn"
+        },
+        {
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #47"
+  },
+  {
+    "query": "SELECT os FROM users GROUP BY os ORDER BY os ASC LIMIT 2",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        },
+        {
+          "os": "mac"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #48"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE [clicks.value] = 'Pay Now' AND [clicks.date] BETWEEN '2017-05-14' AND '2017-05-29'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #49"
+  },
+  {
+    "query": "SELECT city, state FROM users WHERE state = 'NY' OR state = 'CA' LIMIT 3 ",
+    "expected": {
+      "result": [
+        {
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #50"
+  },
+  {
+    "query": "SELECT city, state FROM users",
+    "expected": {
+      "result": [
+        {
+          "city": "salvador",
+          "state": "ba"
+        },
+        {
+          "city": "natal",
+          "state": "rn"
+        },
+        {
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #51"
+  },
+  {
+    "query": "SELECT * FROM users WHERE state='NY' OR state='CA' LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "age": 19,
+          "browser": "firefox",
+          "city": "new york",
+          "country": "usa",
+          "entity-id": "user1@slicingdice.com",
+          "gender": "female",
+          "name": "joao",
+          "os": "linux",
+          "state": "ny",
+          "score": 1.0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #52"
+  },
+  {
+    "query": "SELECT city, state, AVG([purchased-products.value]) FROM users WHERE state = 'NY' OR state='CA' HAVING [purchased-products.date] BETWEEN '2017-05-24' AND '2017-05-30'",
+    "expected": {
+      "result": [
+        {
+          "AVG": 5.0,
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #53"
+  },
+  {
+    "query": "SELECT city, state, score FROM users",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0,
+          "city": "salvador",
+          "state": "ba"
+        },
+        {
+          "score": 1.0,
+          "city": "natal",
+          "state": "rn"
+        },
+        {
+          "score": 1.0,
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #55"
+  },
+  {
+    "query": "SELECT * FROM users WHERE state='NY' OR state='CA' LIMIT 3",
+    "expected": {
+      "result": [
+        {
+          "age": 19,
+          "browser": "firefox",
+          "city": "new york",
+          "country": "usa",
+          "entity-id": "user1@slicingdice.com",
+          "gender": "female",
+          "name": "joao",
+          "os": "linux",
+          "state": "ny",
+          "score": 1.0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #56"
+  },
+  {
+    "query": "SELECT city, state, AVG([purchased-products.value]), score FROM users WHERE state = 'NY' OR state='CA' HAVING [purchased-products.date] BETWEEN '2017-05-24' AND '2017-05-30'",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0,
+          "AVG": 5.0,
+          "city": "new york",
+          "state": "ny"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #57"
+  },
+  {
+    "query": "SELECT name, country, age FROM users WHERE gender = 'female' ORDER BY name DESC, age DESC",
+    "expected": {
+      "result": [
+        {
+          "country": "usa",
+          "name": "joao",
+          "age": 19
+        },
+        {
+          "country": "brazil",
+          "name": "gabriela",
+          "age": 17
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #58"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE name LIKE '%joao%'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #59"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE name LIKE 'joao%'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #60"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE name LIKE '%joao'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #61"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE name NOT LIKE '%joao%'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 2
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #62"
+  },
+  {
+    "query": "SELECT age FROM users WHERE name LIKE '%joao%' LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "age": 19
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #63"
+  },
+  {
+    "query": "SELECT age, score FROM users WHERE name LIKE '%joao%' LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0,
+          "age": 19
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #64"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE [visited-page-events.value] LIKE 'visit%' AND [visited-page-events.date] BETWEEN '2017-05-25' AND '2017-06-08'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #65"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE [visited-page-events.value] LIKE '%visit%' AND [visited-page-events.date] BETWEEN '2017-05-25' AND '2017-06-08'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #66"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE [visited-page-events.value] NOT LIKE '%visit%' AND [visited-page-events.date] BETWEEN '2017-05-25' AND '2017-06-08'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 2
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #67"
+  },
+  {
+    "query": "SELECT os FROM users WHERE os LIKE 'linu%' GROUP BY os LIMIT 2",
+    "expected": {
+      "result": [
+        {
+          "os": "linux"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #68"
+  },
+  {
+    "query": "SELECT os FROM users WHERE os LIKE '%linu' GROUP BY os LIMIT 2",
+    "expected": {
+      "result": [],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #69"
+  },
+  {
+    "query": "SELECT os FROM users WHERE os NOT LIKE '%linu%' GROUP BY os LIMIT 2",
+    "expected": {
+      "result": [
+        {
+          "os": "mac"
+        },
+        {
+          "os": "windows"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #70"
+  },
+  {
+    "query": "SELECT browser FROM users WHERE os LIKE 'win%' GROUP BY browser LIMIT 2",
+    "expected": {
+      "result": [
+        {
+          "browser": "chrome"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #71"
+  },
+  {
+    "query": "SELECT browser FROM users WHERE os LIKE '%win%' GROUP BY browser LIMIT 2",
+    "expected": {
+      "result": [
+        {
+          "browser": "chrome"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #72"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE [visited-page-events.value] NOT LIKE '%visit%' AND [visited-page-events.date] BETWEEN '2017-05-25' AND '2017-06-08' AND  (age = 21 OR name LIKE 'j%')",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #73"
+  },
+  {
+    "query": "SELECT COUNT(*) FROM users WHERE [visited-page-events.value] NOT LIKE '%visit%' AND [visited-page-events.date] BETWEEN '2017-05-25' AND '2017-06-08' AND [clicks.value] = 'Pay Now' AND [clicks.date] BETWEEN '2017-05-25' AND '2017-06-08'",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #74"
+  },
+  {
+    "query": "SELECT COUNT(DISTINCT name) FROM users",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 3
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #75"
+  },
+  {
+    "query": "SELECT [clicks.value], COUNT(DISTINCT name) FROM users GROUP BY [clicks.value] HAVING [clicks.date]  BETWEEN '2017-05-22' AND '2017-06-08' LIMIT 2",
+    "expected": {
+      "result": [
+        {
+          "clicks.value": "buy",
+          "COUNT": 2
+        },
+        {
+          "clicks.value": "pay now",
+          "COUNT": 1
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #76"
+  },
+  {
+    "query": "SELECT [clicks.value], COUNT(DISTINCT name), COUNT(age) FROM users GROUP BY [clicks.value] HAVING [clicks.date] BETWEEN '2017-05-22' AND '2017-06-08' LIMIT 2",
+    "expected": {
+      "result": [
+        {
+          "COUNT_DISTINCT_name": 2,
+          "COUNT_age": 2,
+          "clicks.value": "buy"
+        },
+        {
+          "COUNT_DISTINCT_name": 1,
+          "COUNT_age": 1,
+          "clicks.value": "pay now"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #77"
+  },
+  {
+    "query": "SELECT name, age, MAX(age), AVG([purchased-products.value]) FROM users WHERE [purchased-products.date] BETWEEN '2017-05-22' AND '2017-06-08' LIMIT 100",
+    "expected": {
+      "result": [
+        {
+          "AVG": 25.0,
+          "MAX": 17,
+          "name": "gabriela",
+          "age": 17
+        },
+        {
+          "AVG": 10.0,
+          "MAX": 21,
+          "name": "eduardo",
+          "age": 21
+        },
+        {
+          "AVG": 5.0,
+          "MAX": 19,
+          "name": "joao",
+          "age": 19
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #78"
+  },
+  {
+    "query": "SELECT COUNT([entity-id]) FROM users WHERE [clicks.value] = 'Add to Cart' AND [clicks.date] BETWEEN '2017-05-14T00:00:00Z' AND '2017-05-28T00:00:00Z' HAVING COUNT([clicks.value]) > 5\n",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #79"
+  },
+  {
+    "query": "SELECT COUNT([entity-id]) FROM users WHERE [clicks.value] = 'pay now' AND [clicks.date] BETWEEN '2017-05-14T00:00:00Z' AND '2017-05-28T00:00:00Z' AND [clicks.value] = 'add to cart' AND [clicks.date] BETWEEN '2017-05-14T00:00:00Z' AND '2017-05-28T00:00:00Z' HAVING COUNT([clicks.value]) > 4",
+    "expected": {
+      "result": [
+        {
+          "COUNT": 0
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #80"
+  },
+  {
+    "query": "SELECT jobs.* FROM jobs WHERE DATEPART('dd', jobs.admission) = '17'",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0,
+          "admission": "2017-07-17",
+          "salary": 2350.5,
+          "user": "user1@slicingdice.com",
+          "age": 19,
+          "entity-id": "1"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #81"
+  },
+  {
+    "query": "SELECT jobs.* FROM jobs WHERE DATEPART('dd', jobs.admission) = '18'",
+    "expected": {
+      "result": [],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #82"
+  },
+  {
+    "query": "SELECT jobs.* FROM jobs WHERE DATEPART('mm', jobs.admission) = '7'",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0,
+          "admission": "2017-07-17",
+          "salary": 2350.500000,
+          "user": "user1@slicingdice.com",
+          "age": 19,
+          "entity-id": "1"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #83"
+  },
+  {
+    "query": "SELECT jobs.* FROM jobs WHERE DATEPART('mm', jobs.admission) = '8'",
+    "expected": {
+      "result": [],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #84"
+  },
+  {
+    "query": "SELECT jobs.* FROM jobs WHERE DATEPART('yy', jobs.admission) = '2017'",
+    "expected": {
+      "result": [
+        {
+          "score": 1.0,
+          "admission": "2017-07-17",
+          "salary": 2350.500000,
+          "user": "user1@slicingdice.com",
+          "age": 19,
+          "entity-id": "1"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #85"
+  },
+  {
+    "query": "SELECT jobs.* FROM jobs WHERE DATEPART('mm', jobs.admission) = '2017'",
+    "expected": {
+      "result": [],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #86"
+  },
+  {
+    "query": "SELECT CASE WHEN age > 19 THEN 'adult' ELSE 'child' END FROM users",
+    "expected": {
+      "result": [
+        {
+          "CASE": "child"
+        },
+        {
+          "CASE": "adult"
+        },
+        {
+          "CASE": "child"
+        }
+      ],
+      "took": "ignore",
+      "count": "ignore",
+      "status": "ignore"
+    },
+    "name": "Test #87"
+  }
+]

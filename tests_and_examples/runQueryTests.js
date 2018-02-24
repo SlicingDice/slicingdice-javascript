@@ -28,17 +28,17 @@ var sleep = require('sleep');
 
 var HAS_FAILED_TESTS = false;
 
+var perTestInsertion;
+
 class SlicingDiceTester {
     constructor(api_key, verbose=false) {
-        this.client = new SlicingDice({
-            masterKey: api_key
-        }, true);
+        this.client = new SlicingDice({masterKey: api_key});
 
         // Translation table for columns with timestamp
         this.columnTranslation = {}
 
         // Sleep Time in seconds
-        this.sleepTime = 10;
+        this.sleepTime = 5;
         // Directory containing examples to test
         this.path = 'examples/';
         // Examples file format
@@ -49,6 +49,8 @@ class SlicingDiceTester {
         this.failedTests = [];
 
         this.verbose = verbose;
+
+        this.perTestInsertion;
 
         String.prototype.replaceAll = function(search, replacement) {
             var target = this;
@@ -74,6 +76,25 @@ class SlicingDiceTester {
         let numTests = testData.length;
         let result;
 
+        this.perTestInsertion = testData[0].hasOwnProperty("insert");
+
+        if (!this.perTestInsertion) {
+            let insertData = this.loadTestData(queryType, "_insert");
+            for (let i = 0; i < insertData.length; i++) {
+                async.series([
+                    (callback) => {
+                        this.client.insert(insertData[i], false).then(() => {
+                            // Wait a few seconds so the data can be inserted by SlicingDice
+                            callback();
+                        }, (err) => {
+                            callback();
+                        });
+                    }
+                ]);
+            }
+            sleep.sleep(this.sleepTime);
+        }
+
         let tasks = [];
         for(let i = 0; i < numTests; i++){
             tasks.push(((i) => (callback) => {
@@ -86,13 +107,18 @@ class SlicingDiceTester {
                     }
 
                     console.log("  Query type: {0}".format(queryType));
+
+                    if (this.perTestInsertion) {
+                        async.series([
+                            (callback) => {
+                                this.createColumns(test, callback);
+                            },
+                            (callback) => {
+                                this.insertData(test, callback);
+                            }
+                        ], callback);
+                    }
                     async.series([
-                        (callback) => {
-                            this.createColumns(test, callback);
-                        },
-                        (callback) => {
-                            this.insertData(test, callback);
-                        },
                         (callback) => {
                             this.executeQuery(queryType, test, callback);
                         }
@@ -111,8 +137,8 @@ class SlicingDiceTester {
     }
 
     // Load test data from examples files
-    loadTestData(queryType) {
-        let filename = this.path + queryType + this.extension;
+    loadTestData(queryType, suffix = "") {
+        let filename = this.path + queryType + suffix + this.extension;
         return JSON.parse(fs.readFileSync(filename));
     }
 
@@ -210,7 +236,12 @@ class SlicingDiceTester {
      */
     executeQuery(queryType, test, callback) {
         let result;
-        let queryData = this._translateColumnNames(test['query']);
+        let queryData;
+        if (this.perTestInsertion) {
+            queryData = this._translateColumnNames(test['query']);
+        } else {
+            queryData = test['query'];
+        }
         console.log('  Querying');
 
         if (this.verbose){
@@ -223,7 +254,8 @@ class SlicingDiceTester {
             'top_values': 'topValues',
             'aggregation': 'aggregation',
             'result': 'result',
-            'score': 'score'
+            'score': 'score',
+            'sql': 'sql'
         };
 
         this.client[queryTypeMethodMap[queryType]](queryData).then((resp) =>{
@@ -254,7 +286,13 @@ class SlicingDiceTester {
      * @param (array) result - the data received from Slicing Dice API
      */
     compareResult(test, result) {
-        let expected = this._translateColumnNames(test['expected']);
+        let expected;
+        if (this.perTestInsertion) {
+            expected = this._translateColumnNames(test['expected']);
+        } else {
+            expected = test['expected'];
+        }
+        
         let dataExpected = test['expected'];
 
         for(var key in dataExpected) {
@@ -405,13 +443,20 @@ process.on('SIGINT', function() {
 
 function main(){
     // SlicingDice queries to be tested. Must match the JSON file name.
-    let queryTypes = ['count_entity', 'count_event', 'top_values', 'aggregation', 'result', 'score'];
+    let queryTypes = [
+        'count_entity', 
+        'count_event', 
+        'top_values',
+        'aggregation',
+        'result',
+        'score',
+        'sql'
+        ];
 
     // Testing class with demo API key
     // To get a demo api key visit: http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys-demo-key
     let sdTester = new SlicingDiceTester(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiJkZW1vNDJtIiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6MjAzLCJjbGllbnRfaWQiOjEwfQ.G537mbBeMOQ673wcp_Yu0ypsAmqYfvFEvqdemmVrATI',
-        false);
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiIxNTE4NjA3ODQ0NDAzIiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6NDY5NjYsImNsaWVudF9pZCI6OTUxfQ.S6LCWQDcLS1DEFy3lsqk2jTGIe5rJ5fsQIvWuuFBdkw',true);
 
     let tests = [];
     for(let i = 0; i < queryTypes.length; i++) {
