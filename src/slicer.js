@@ -10,13 +10,21 @@
 
     // RequesterBrowser make http requests from the browser
     class RequesterBrowser {
-        run(token, url, reqType, data = null) {
+        run(token, url, reqType, data = null, sql) {
             url = url.hostname + url.path;
+            let content_type;
+
+            if (sql) {
+                content_type = 'application/sql';
+            } else {
+                content_type = 'application/json';
+            }
+
             return new Promise(function(resolve, reject) {
                 let req = new XMLHttpRequest();
                 req.open(reqType, url, true);
                 req.setRequestHeader("Authorization", token);
-                req.setRequestHeader('Content-Type', 'application/json');
+                req.setRequestHeader('Content-Type', content_type);
                 req.setRequestHeader('Access-Control-Allow-Origin', '*');
                 req.setRequestHeader('Access-Control-Allow-Credentials', true);
                 req.setRequestHeader('Accept', "application/json");
@@ -41,7 +49,7 @@
 
     // RequesterNode make http requests from the node.js (with we're not running in a web-browser)
     class RequesterNode {
-        run(token, urlReq, reqType, data = null) {
+        run(token, urlReq, reqType, data = null, sql) {
 
             return new Promise((resolve, reject) => {
                 let port;
@@ -52,13 +60,24 @@
                 } else{
                     port = urlData.port;
                 }
+
+                let content_type;
+
+                if (sql) {
+                    content_type = 'application/sql';
+                } else {
+                    content_type = 'application/json';
+                }
+
                 let headers = {
-                    'Content-type': 'application/json',
+                    'Content-type': content_type,
                     'Authorization': token
                 }
-                if (data !== null) {
+                if (data !== null && !sql) {
                     jsonToSend = JSON.stringify(data);
                     headers['Content-Length'] = Buffer.byteLength(jsonToSend);
+                } else {
+                    jsonToSend = data;
                 }
                 let options = {
                     hostname: urlData.hostname,
@@ -331,7 +350,7 @@
     }
 
     class SlicingDice{
-        constructor(apiKeys, usesTestEndpoint = false) {
+        constructor(apiKeys) {
             this._key = apiKeys;
             this._checkKey(apiKeys);
             this._sdRoutes = {
@@ -346,10 +365,10 @@
                 result: '/data_extraction/result/',
                 score: '/data_extraction/score/',
                 saved: '/query/saved/',
-                database: '/database/'
+                database: '/database/',
+                sql: '/query/sql/'
             };
             this._setUpRequest();
-            this._usesTestEndpoint = usesTestEndpoint;
         }
 
         get sdAddress() {
@@ -411,18 +430,11 @@
             return currentLevelKey[0];
         }
 
-        /* Make request to Slicing Dice API, if this._usesTestEndpoint is true
-        the request will be sent to test end-point
+        /* Make request to Slicing Dice API 
         */
-        makeRequest(objRequest) {
+        makeRequest(objRequest, sql = false) {
             let token = this._getAPIKey(objRequest.levelKey);
-            let urlReq;
-            // test if the request must be sent to test endpoint
-            if (this._usesTestEndpoint){
-                urlReq = this.BASE_URL + "/test" + objRequest.path;
-            } else {
-                urlReq = this.BASE_URL + objRequest.path;
-            }
+            let urlReq = this.BASE_URL + objRequest.path;
             let requestMethods = ["POST", "PUT", "GET", "DELETE", "PATCH"];
             if (requestMethods.indexOf(objRequest.reqType) === -1){
                 throw new errors.InvalidMethodRequestError('This method request is invalid.');
@@ -431,7 +443,8 @@
                 token,
                 urlReq,
                 objRequest.reqType,
-                objRequest.data);
+                objRequest.data,
+                sql);
             
             return req.then((resp) => {
                 let slicerResponse = new SlicerResponse(resp);
@@ -548,7 +561,7 @@
          * 
          * @param (array) query - the query to send to Slicing Dice API
          */
-        countEntity(query){
+        countEntity(query) {
             let path = this._sdRoutes.countEntity;
             let sdValidator = new QueryCountValidator(query);
             return this.countQueryWrapper(query, path);
@@ -703,6 +716,16 @@
         score(query) {
             let path = this._sdRoutes.score;
             return this.dataExtractionWrapper(query, path);
+        }
+
+        sql(query) {
+            let path  = this._sdRoutes.sql;
+            return this.makeRequest({
+                path: path,
+                reqType: "POST",
+                data: query,
+                levelKey: 0
+            }, true);
         }
     }
 
