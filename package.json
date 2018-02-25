@@ -1,6 +1,6 @@
 {
   "name": "slicerjs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Official JavaScript client for SlicingDice, Data Warehouse and Analytics Database as a Service.",
   "main": "src/slicer.js",
   "scripts": {
