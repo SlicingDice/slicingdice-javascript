@@ -569,11 +569,11 @@
         
         /* Makes a total query on Slicing Dice API 
          *
-         * @param (array) tables - the tables in which the total query will be performed
+         * @param (array) dimensions - the dimensions in which the total query will be performed
          */
-        countEntityTotal(tables = []) {
+        countEntityTotal(dimensions = []) {
             let query = {
-                "tables": tables
+                "dimensions": dimensions
             };
             let path  = this._sdRoutes.countEntityTotal;
             return this.makeRequest({
@@ -596,9 +596,9 @@
         /* Makes a exists query on Slicing Dice API
          * 
          * @param (array) ids - the array of IDs to check
-         * @param (string) table - the table to check for IDs
+         * @param (string) dimension - the dimension to check for IDs
          */
-        existsEntity(ids, table = null) {
+        existsEntity(ids, dimension = null) {
             if (ids.constructor != Array) {
                 throw new errors.WrongTypeError("This method should receive an array as parameter");
             }
@@ -609,8 +609,8 @@
             let query = {
                 "ids": ids
             }
-            if (table) {
-                query["table"] = table
+            if (dimension) {
+                query["dimension"] = dimension
             }
             return this.makeRequest({
                 path: path,
