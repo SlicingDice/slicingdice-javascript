@@ -40,14 +40,14 @@ const client = new SlicingDice({
   masterKey: 'MASTER_API_KEY',
   writeKey: 'WRITE_API_KEY',
   readKey: 'READ_API_KEY'
-}, usesTestEndpoint = true);
+});
 
 // Inserting data
 const insertData = {
     "user1@slicingdice.com": {
         "age": 22
     },
-    "auto-create": ["table", "column"]
+    "auto-create": ["dimension", "column"]
 };
 client.insert(insertData);
 
@@ -76,15 +76,10 @@ client.countEntity(queryData).then((resp) => {
 
 `SlicingDice` encapsulates logic for sending requests to the API. Its methods are thin layers around the [API endpoints](https://docs.slicingdice.com/docs/api-details), so their parameters and return values are JSON-like `Object` objects with the same syntax as the [API endpoints](https://docs.slicingdice.com/docs/api-details)
 
-### Attributes
-
-* `sdAddress (String)` - [Connection endpoint](https://docs.slicingdice.com/docs/api-keys) to use when generating requests to SlicingDice.
-
 ### Constructor
 
-`SlicingDice(apiKeys, usesTestEndpoint)`
+`SlicingDice(apiKeys)`
 * `apiKeys (Object)` - [API key](https://docs.slicingdice.com/docs/api-keys) to authenticate requests with the SlicingDice API.
-* `usesTestEndpoint (boolean)` - If false the client will send requests to production end-point, otherwise to tests end-point.
 
 ### `getDatabase()`
 Get information about current database. This method corresponds to a `GET` request at `/database`.
@@ -96,7 +91,7 @@ let SlicingDice = require('slicerjs');
 
 const client = new SlicingDice({
   masterKey: 'MASTER_API_KEY'
-}, usesTestEndpoint = false);
+});
 
 client.getDatabase().then((resp) => {
     console.log(resp);
@@ -111,7 +106,7 @@ client.getDatabase().then((resp) => {
 {
     "name": "Database 1",
     "description": "My first database",
-    "tables": [
+    "dimensions": [
     	"default",
         "users"
     ],
@@ -130,7 +125,7 @@ let SlicingDice = require('slicerjs');
 
 const client = new SlicingDice({
     masterKey: 'MASTER_API_KEY'
-}, usesTestEndpoint = true);
+});
 
 client.getColumns().then((resp) => {
     console.log(resp);
@@ -177,7 +172,7 @@ let SlicingDice = require('slicerjs');
 
 const client = new SlicingDice({
     masterKey: 'MASTER_API_KEY'
-}, usesTestEndpoint = true);
+});
 
 column = {
     "name": "Year",
@@ -214,7 +209,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_API_KEY',
     writeKey: 'WRITE_API_KEY'
-}, usesTestEndpoint = true);
+});
 
 const insertData = {
     "user1@slicingdice.com": {
@@ -269,8 +264,8 @@ client.insert(insertData).then((resp) => {
 }
 ```
 
-### `existsEntity(ids, table = null)`
-Verify which entities exist in a table (uses `default` table if not provided) given a list of entity IDs. This method corresponds to a [POST request at /query/exists/entity](https://docs.slicingdice.com/docs/exists).
+### `existsEntity(ids, dimension = null)`
+Verify which entities exist in a tabdimensionle (uses `default` dimension if not provided) given a list of entity IDs. This method corresponds to a [POST request at /query/exists/entity](https://docs.slicingdice.com/docs/exists).
 
 #### Request example
 
@@ -280,7 +275,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 ids = [
         "user1@slicingdice.com",
@@ -322,7 +317,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 client.countEntityTotal().then((resp) => {
     console.log(resp);
@@ -343,8 +338,8 @@ client.countEntityTotal().then((resp) => {
 }
 ```
 
-### `countEntityTotal(tables)`
-Count the total number of inserted entities in the given tables. This method corresponds to a [POST request at /query/count/entity/total](https://docs.slicingdice.com/docs/total#section-counting-specific-tables).
+### `countEntityTotal(dimensions)`
+Count the total number of inserted entities in the given dimensions. This method corresponds to a [POST request at /query/count/entity/total](https://docs.slicingdice.com/docs/total#section-counting-specific-tables).
 
 #### Request example
 
@@ -354,11 +349,11 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
-const tables = ["default"];
+const dimensions = ["default"];
 
-client.countEntityTotal(tables).then((resp) => {
+client.countEntityTotal(dimensions).then((resp) => {
     console.log(resp);
 }, (err) => {
     console.error(err);
@@ -388,7 +383,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 const query = [
     {
@@ -452,7 +447,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 const query = [
     {
@@ -518,7 +513,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 query = {
   "car-year": {
@@ -586,7 +581,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 query = {
   "query": [
@@ -647,7 +642,7 @@ let SlicingDice = require('slicerjs');
 
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY'
-}, usesTestEndpoint = true);
+});
 
 client.getSavedQueries().then((resp) => {
     console.log(resp);
@@ -706,7 +701,7 @@ let SlicingDice = require('slicerjs');
 
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY'
-}, usesTestEndpoint = true);
+});
 
 query = {
   "name": "my-saved-query",
@@ -769,7 +764,7 @@ let SlicingDice = require('slicerjs');
 
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY'
-}, usesTestEndpoint = true);
+});
 
 newQuery = {
   "type": "count/entity",
@@ -831,7 +826,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 client.getSavedQuery("my-saved-query").then((resp) => {
     console.log(resp);
@@ -876,7 +871,7 @@ let SlicingDice = require('slicerjs');
 
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY'
-}, usesTestEndpoint = true);
+});
 
 client.deleteSavedQuery("my-saved-query").then((resp) => {
     console.log(resp);
@@ -921,7 +916,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 query = {
   "query": [
@@ -980,7 +975,7 @@ let SlicingDice = require('slicerjs');
 const client = new SlicingDice({
     masterKey: 'MASTER_KEY',
     readKey: 'READ_KEY'
-}, usesTestEndpoint = true);
+});
 
 query = {
   "query": [
@@ -1026,6 +1021,41 @@ client.score(query).then((resp) => {
       }
    },
    "page":1,
+   "status":"success"
+}
+```
+
+### `sql(query)`
+Retrieve inserted values using a SQL syntax. This method corresponds to a POST request at /query/sql.
+
+#### Request example
+
+```javascript
+let SlicingDice = require('slicerjs');
+
+const client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
+});
+
+query = "SELECT COUNT(*) FROM default WHERE age BETWEEN 0 AND 49";
+
+client.sql(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.error(err);
+});
+```
+
+#### Output example
+
+```json
+{
+   "took":0.063,
+   "result":[
+       {"COUNT": 3}
+   ],
+   "count":1,
    "status":"success"
 }
 ```

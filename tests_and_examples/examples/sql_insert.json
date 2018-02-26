@@ -6,7 +6,7 @@
       "city": "New York",
       "country": "USA",
       "age": 19,
-      "table": "users",
+      "dimension": "users",
       "name": "joao",
       "browser": "firefox",
       "os": "Linux",
@@ -41,7 +41,7 @@
       "city": "Natal",
       "country": "Brazil",
       "age": 21,
-      "table": "users",
+      "dimension": "users",
       "name": "eduardo",
       "browser": "chrome",
       "os": "Windows",
@@ -76,7 +76,7 @@
       "city": "Salvador",
       "country": "Brazil",
       "age": 17,
-      "table": "users",
+      "dimension": "users",
       "name": "gabriela",
       "browser": "safari",
       "os": "mac",
@@ -106,7 +106,7 @@
       ]
     },
     "auto-create": [
-      "table",
+      "dimension",
       "column"
     ]
   },
@@ -116,10 +116,10 @@
       "salary": 2350.50,
       "age": 19,
       "admission": "2017-07-17",
-      "table": "jobs"
+      "dimension": "jobs"
     },
     "auto-create": [
-      "table",
+      "dimension",
       "column"
     ]
   },
@@ -140,10 +140,10 @@
         "value": 15,
         "date": "2017-08-18T00:00:00Z"
       },
-      "table": "inserttest"
+      "dimension": "inserttest"
     },
     "auto-create": [
-      "table",
+      "dimension",
       "column"
     ]
   }
