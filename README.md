@@ -1028,7 +1028,7 @@ client.score(query).then((resp) => {
 ### `sql(query)`
 Retrieve inserted values using a SQL syntax. This method corresponds to a POST request at /query/sql.
 
-#### Request example
+#### Query statement
 
 ```javascript
 let SlicingDice = require('slicerjs');
@@ -1039,6 +1039,24 @@ const client = new SlicingDice({
 });
 
 query = "SELECT COUNT(*) FROM default WHERE age BETWEEN 0 AND 49";
+
+client.sql(query).then((resp) => {
+    console.log(resp);
+}, (err) => {
+    console.error(err);
+});
+```
+
+#### Insert statement
+```javascript
+let SlicingDice = require('slicerjs');
+
+const client = new SlicingDice({
+    masterKey: 'MASTER_KEY',
+    readKey: 'READ_KEY'
+});
+
+query = "INSERT INTO default([entity-id], name, age) VALUES(1, 'john', 10)";
 
 client.sql(query).then((resp) => {
     console.log(resp);
