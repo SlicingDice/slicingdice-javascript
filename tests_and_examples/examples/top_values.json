@@ -1553,7 +1553,7 @@
             },
             "78": {
                 "string-test-column": "value:matched_value_1"
-            }
+            }, "auto-create":["column", "dimension"]
         },
         "query": {
             "string-top-values": {
@@ -12802,11 +12802,11 @@
             "24": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12814,11 +12814,11 @@
             "25": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12826,11 +12826,11 @@
             "26": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12838,11 +12838,11 @@
             "27": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12850,11 +12850,11 @@
             "20": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12862,11 +12862,11 @@
             "21": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12874,11 +12874,11 @@
             "22": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12886,11 +12886,11 @@
             "23": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12898,11 +12898,11 @@
             "28": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12910,11 +12910,11 @@
             "29": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12922,11 +12922,11 @@
             "0": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12934,11 +12934,11 @@
             "4": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12946,11 +12946,11 @@
             "8": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -12958,11 +12958,11 @@
             "59": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -12970,11 +12970,11 @@
             "58": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -12982,11 +12982,11 @@
             "55": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -12994,11 +12994,11 @@
             "54": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13006,11 +13006,11 @@
             "57": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13018,11 +13018,11 @@
             "56": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13030,11 +13030,11 @@
             "51": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13042,11 +13042,11 @@
             "50": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13054,11 +13054,11 @@
             "53": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13066,11 +13066,11 @@
             "52": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13078,11 +13078,11 @@
             "88": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13090,11 +13090,11 @@
             "89": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13102,11 +13102,11 @@
             "82": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13114,11 +13114,11 @@
             "83": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13126,11 +13126,11 @@
             "80": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13138,11 +13138,11 @@
             "81": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13150,11 +13150,11 @@
             "86": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13162,11 +13162,11 @@
             "87": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13174,11 +13174,11 @@
             "84": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13186,11 +13186,11 @@
             "85": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13198,11 +13198,11 @@
             "3": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13210,11 +13210,11 @@
             "7": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13222,11 +13222,11 @@
             "39": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13234,11 +13234,11 @@
             "38": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13246,11 +13246,11 @@
             "33": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13258,11 +13258,11 @@
             "32": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13270,11 +13270,11 @@
             "31": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13282,11 +13282,11 @@
             "30": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13294,11 +13294,11 @@
             "37": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13306,11 +13306,11 @@
             "36": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13318,11 +13318,11 @@
             "35": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13330,11 +13330,11 @@
             "34": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13342,11 +13342,11 @@
             "60": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13354,11 +13354,11 @@
             "61": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13366,11 +13366,11 @@
             "62": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13378,11 +13378,11 @@
             "63": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13390,11 +13390,11 @@
             "64": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13402,11 +13402,11 @@
             "65": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13414,11 +13414,11 @@
             "66": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13426,11 +13426,11 @@
             "67": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13438,11 +13438,11 @@
             "68": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13450,11 +13450,11 @@
             "69": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13462,11 +13462,11 @@
             "2": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13474,11 +13474,11 @@
             "6": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13486,11 +13486,11 @@
             "99": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13498,11 +13498,11 @@
             "98": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13510,11 +13510,11 @@
             "91": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13522,11 +13522,11 @@
             "90": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13534,11 +13534,11 @@
             "93": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13546,11 +13546,11 @@
             "92": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13558,11 +13558,11 @@
             "95": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13570,11 +13570,11 @@
             "94": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13582,11 +13582,11 @@
             "97": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13594,11 +13594,11 @@
             "96": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13606,11 +13606,11 @@
             "11": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13618,11 +13618,11 @@
             "10": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13630,11 +13630,11 @@
             "13": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13642,11 +13642,11 @@
             "12": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13654,11 +13654,11 @@
             "15": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13666,11 +13666,11 @@
             "14": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13678,11 +13678,11 @@
             "17": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13690,11 +13690,11 @@
             "16": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13702,11 +13702,11 @@
             "19": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13714,11 +13714,11 @@
             "18": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13726,11 +13726,11 @@
             "48": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13738,11 +13738,11 @@
             "49": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13750,11 +13750,11 @@
             "46": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13762,11 +13762,11 @@
             "47": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13774,11 +13774,11 @@
             "44": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13786,11 +13786,11 @@
             "45": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13798,11 +13798,11 @@
             "42": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13810,11 +13810,11 @@
             "43": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13822,11 +13822,11 @@
             "40": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13834,11 +13834,11 @@
             "41": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13846,11 +13846,11 @@
             "1": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13858,11 +13858,11 @@
             "5": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13870,11 +13870,11 @@
             "9": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_1"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:matched_value_2"
                     }
                 ]
@@ -13882,11 +13882,11 @@
             "77": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13894,11 +13894,11 @@
             "76": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13906,11 +13906,11 @@
             "75": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13918,11 +13918,11 @@
             "74": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13930,11 +13930,11 @@
             "73": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13942,11 +13942,11 @@
             "72": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13954,11 +13954,11 @@
             "71": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13966,11 +13966,11 @@
             "70": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13978,11 +13978,11 @@
             "79": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
@@ -13990,11 +13990,11 @@
             "78": {
                 "time-series-string-test-column": [
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:not_matched_value"
                     },
                     {
-                        "date": "2016-01-01T00:00:00+03:00",
+                        "date": "2016-01-01T04:00:00+03:00",
                         "value": "value:mtubsummsz"
                     }
                 ]
