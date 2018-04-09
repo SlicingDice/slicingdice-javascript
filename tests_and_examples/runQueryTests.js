@@ -52,6 +52,8 @@ class SlicingDiceTester {
 
         this.perTestInsertion;
 
+        this.insertSqlData = false;
+
         String.prototype.replaceAll = function(search, replacement) {
             var target = this;
             return target.replace(new RegExp(search, 'g'), replacement);
@@ -78,7 +80,7 @@ class SlicingDiceTester {
 
         this.perTestInsertion = testData[0].hasOwnProperty("insert");
 
-        if (!this.perTestInsertion) {
+        if (!this.perTestInsertion && this.insertSqlData) {
             let insertData = this.loadTestData(queryType, "_insert");
             for (let i = 0; i < insertData.length; i++) {
                 async.series([
@@ -460,7 +462,7 @@ function main(){
     // Testing class with demo API key
     // To get a demo api key visit: http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys-demo-key
     let sdTester = new SlicingDiceTester(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiJkZW1vMjIyM20iLCJwZXJtaXNzaW9uX2xldmVsIjozLCJwcm9qZWN0X2lkIjoyMjIyMywiY2xpZW50X2lkIjoxMH0.qu7SYr35tR3LULCP3j6CgLYwWL2uFL_DHvNAMz4UvOU", false);
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiIxNTIzMDY1ODQyNjU4IiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6MzA1MDgsImNsaWVudF9pZCI6MjAzfQ.R3oKwcA9XoQcW_QBxcvqUNJS44AqCKjoK2Hz5uBnxmU", false);
 
     let tests = [];
     for(let i = 0; i < queryTypes.length; i++) {
