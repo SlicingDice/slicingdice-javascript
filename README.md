@@ -1,9 +1,12 @@
 # SlicingDice Official JavaScript Client (v2.0.1)
-### Build Status: [![CircleCI](https://circleci.com/gh/SlicingDice/slicingdice-javascript.svg?style=svg)](https://circleci.com/gh/SlicingDice/slicingdice-javascript)
 
-Official JavaScript client for [SlicingDice](http://www.slicingdice.com/), Data Warehouse and Analytics Database as a Service.  
+Official JavaScript client for [SlicingDice - Data Warehouse and Analytics Database as a Service](https://www.slicingdice.com/).
 
-[SlicingDice](http://www.slicingdice.com/) is a serverless, API-based, easy-to-use and really cost-effective alternative to Amazon Redshift and Google BigQuery.
+[SlicingDice](http://www.slicingdice.com/) is a serverless, SQL & API-based, easy-to-use and really cost-effective alternative to Amazon Redshift and Google BigQuery.
+
+### Build Status: [![CircleCI](https://circleci.com/gh/SlicingDice/slicingdice-javascript/tree/master.svg?style=svg)](https://circleci.com/gh/SlicingDice/slicingdice-javascript/tree/master)
+
+### Code Quality: [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67f731bdb3cb4eb08624240d17280a26)](https://www.codacy.com/app/SimbioseVentures/slicingdice-javascript?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SlicingDice/slicingdice-javascript&amp;utm_campaign=Badge_Grade)
 
 ## Documentation
 
