@@ -38,7 +38,7 @@ class SlicingDiceTester {
         this.columnTranslation = {}
 
         // Sleep Time in seconds
-        this.sleepTime = 5;
+        this.sleepTime = 10;
         // Directory containing examples to test
         this.path = 'examples/';
         // Examples file format
