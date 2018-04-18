@@ -366,7 +366,7 @@
                 score: '/data_extraction/score/',
                 saved: '/query/saved/',
                 database: '/database/',
-                sql: '/query/sql/'
+                sql: '/sql/'
             };
             this._setUpRequest();
         }

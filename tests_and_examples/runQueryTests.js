@@ -462,7 +462,7 @@ function main(){
     // Testing class with demo API key
     // To get a demo api key visit: http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys-demo-key
     let sdTester = new SlicingDiceTester(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiJkZW1vOTk4MW0iLCJwZXJtaXNzaW9uX2xldmVsIjozLCJwcm9qZWN0X2lkIjoyOTk4MSwiY2xpZW50X2lkIjoxMH0.Kqf0TendA94Kq17neWVf6V8aVoEtYnL0vDZZjg3iyKE", false);
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiIxNTI0MDE4ODE2MTgyIiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6MzAwMTIsImNsaWVudF9pZCI6MTF9.wU342zmDSlodrsPfYG4pTIcXoF8BBVAx9FOpqkCBJyc", false);
 
     let tests = [];
     for(let i = 0; i < queryTypes.length; i++) {
