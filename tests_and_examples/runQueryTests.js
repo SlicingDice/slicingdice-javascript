@@ -190,12 +190,12 @@ class SlicingDiceTester {
      * @param (array) column - array containing column name
      */
     _appendTimestampToColumnName(column){
-        let oldName = '"{0}'.format(column['api-name']);
+        let oldName = '"{0}"'.format(column['api-name']);
 
         let timestamp = this._getTimestamp();
         column['name'] += timestamp
         column['api-name'] += timestamp
-        let newName = '"{0}'.format(column['api-name'])
+        let newName = '"{0}"'.format(column['api-name'])
 
         this.columnTranslation[oldName] = newName
     }
