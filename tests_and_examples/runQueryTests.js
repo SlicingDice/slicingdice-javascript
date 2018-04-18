@@ -38,7 +38,7 @@ class SlicingDiceTester {
         this.columnTranslation = {}
 
         // Sleep Time in seconds
-        this.sleepTime = 5;
+        this.sleepTime = 10;
         // Directory containing examples to test
         this.path = 'examples/';
         // Examples file format
@@ -51,6 +51,8 @@ class SlicingDiceTester {
         this.verbose = verbose;
 
         this.perTestInsertion;
+
+        this.insertSqlData = false;
 
         String.prototype.replaceAll = function(search, replacement) {
             var target = this;
@@ -78,7 +80,7 @@ class SlicingDiceTester {
 
         this.perTestInsertion = testData[0].hasOwnProperty("insert");
 
-        if (!this.perTestInsertion) {
+        if (!this.perTestInsertion && this.insertSqlData) {
             let insertData = this.loadTestData(queryType, "_insert");
             for (let i = 0; i < insertData.length; i++) {
                 async.series([
@@ -188,12 +190,12 @@ class SlicingDiceTester {
      * @param (array) column - array containing column name
      */
     _appendTimestampToColumnName(column){
-        let oldName = '"{0}'.format(column['api-name']);
+        let oldName = '"{0}"'.format(column['api-name']);
 
         let timestamp = this._getTimestamp();
         column['name'] += timestamp
         column['api-name'] += timestamp
-        let newName = '"{0}'.format(column['api-name'])
+        let newName = '"{0}"'.format(column['api-name'])
 
         this.columnTranslation[oldName] = newName
     }
@@ -460,7 +462,7 @@ function main(){
     // Testing class with demo API key
     // To get a demo api key visit: http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys-demo-key
     let sdTester = new SlicingDiceTester(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiIxNTE4NjA3ODQ0NDAzIiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6NDY5NjYsImNsaWVudF9pZCI6OTUxfQ.S6LCWQDcLS1DEFy3lsqk2jTGIe5rJ5fsQIvWuuFBdkw', false);
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiIxNTI0MDE4ODE2MTgyIiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6MzAwMTIsImNsaWVudF9pZCI6MTF9.wU342zmDSlodrsPfYG4pTIcXoF8BBVAx9FOpqkCBJyc", false);
 
     let tests = [];
     for(let i = 0; i < queryTypes.length; i++) {
