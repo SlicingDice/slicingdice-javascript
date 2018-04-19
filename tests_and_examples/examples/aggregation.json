@@ -7251,14 +7251,6 @@
                         "value": 438744
                     }
                 ]
-            },
-            "78": {
-                "time-series-integer-test-column": [
-                    {
-                        "date": "2016-01-01",
-                        "value": 438744
-                    }
-                ]
             }
         },
         "query": {
@@ -7277,7 +7269,7 @@
             "result": {
                 "time-series-integer-test-column": [
                     {
-                        "value": "438744",
+                        "value": "1000001",
                         "quantity": 50
                     }
                 ]
@@ -57385,14 +57377,6 @@
                     }
                 ]
             },
-            "9": {
-                "time-series-integer-test-column": [
-                    {
-                        "date": "2016-01-01T00:00:00Z",
-                        "value": 1000001
-                    }
-                ]
-            },
             "77": {
                 "time-series-integer-test-column": [
                     {
@@ -58205,14 +58189,6 @@
                 ]
             },
             "1": {
-                "time-series-integer-test-column": [
-                    {
-                        "date": "2016-01-01T00:00:00-03:00",
-                        "value": 1000001
-                    }
-                ]
-            },
-            "5": {
                 "time-series-integer-test-column": [
                     {
                         "date": "2016-01-01T00:00:00-03:00",
@@ -59877,14 +59853,6 @@
                     }
                 ]
             },
-            "5": {
-                "time-series-integer-test-column": [
-                    {
-                        "date": "2016-01-01T00:00:00+03:00",
-                        "value": 1000001
-                    }
-                ]
-            },
             "9": {
                 "time-series-integer-test-column": [
                     {
@@ -60720,14 +60688,6 @@
                     }
                 ]
             },
-            "9": {
-                "time-series-integer-test-column": [
-                    {
-                        "date": "2016-01-01T00:00:00Z",
-                        "value": 1000001
-                    }
-                ]
-            },
             "77": {
                 "time-series-integer-test-column": [
                     {
@@ -61446,13 +61406,6 @@
                 ]
             },
             "41": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
-            "1": {
                 "time-series-integer-test-column": [
                     {
                         "value": 1000001
@@ -62201,13 +62154,6 @@
                     }
                 ]
             },
-            "9": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
             "77": {
                 "time-series-integer-test-column": [
                     {
@@ -62923,13 +62869,6 @@
                 ]
             },
             "1": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
-            "5": {
                 "time-series-integer-test-column": [
                     {
                         "value": 1000001
@@ -63664,13 +63603,6 @@
                     }
                 ]
             },
-            "5": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
             "9": {
                 "time-series-integer-test-column": [
                     {
@@ -64399,13 +64331,6 @@
                     }
                 ]
             },
-            "5": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
             "9": {
                 "time-series-integer-test-column": [
                     {
@@ -65128,13 +65053,6 @@
                 ]
             },
             "1": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
-            "5": {
                 "time-series-integer-test-column": [
                     {
                         "value": 1000001
@@ -65876,13 +65794,6 @@
                     }
                 ]
             },
-            "9": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
             "77": {
                 "time-series-integer-test-column": [
                     {
@@ -66598,13 +66509,6 @@
                 ]
             },
             "1": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
-            "5": {
                 "time-series-integer-test-column": [
                     {
                         "value": 1000001
@@ -67435,14 +67339,6 @@
                     }
                 ]
             },
-            "9": {
-                "time-series-integer-test-column": [
-                    {
-                        "date": "2016-01-06T00:00:00+03:00",
-                        "value": 1000001
-                    }
-                ]
-            },
             "77": {
                 "time-series-integer-test-column": [
                     {
@@ -68270,14 +68166,6 @@
                     }
                 ]
             },
-            "9": {
-                "time-series-integer-test-column": [
-                    {
-                        "date": "2016-01-06T00:00:00Z",
-                        "value": 1000001
-                    }
-                ]
-            },
             "77": {
                 "time-series-integer-test-column": [
                     {
@@ -69010,13 +68898,6 @@
                 ]
             },
             "5": {
-                "time-series-integer-test-column": [
-                    {
-                        "value": 1000001
-                    }
-                ]
-            },
-            "9": {
                 "time-series-integer-test-column": [
                     {
                         "value": 1000001

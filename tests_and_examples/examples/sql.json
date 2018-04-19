@@ -916,7 +916,7 @@
     "name": "Test #47"
   },
   {
-    "query": "SELECT os FROM users GROUP BY os ORDER BY os ASC LIMIT 2",
+    "query": "SELECT os FROM users ORDER BY os ASC LIMIT 3",
     "expected": {
       "result": [
         {
@@ -924,6 +924,9 @@
         },
         {
           "os": "mac"
+        },
+        {
+          "os": "windows"
         }
       ],
       "took": "ignore",
