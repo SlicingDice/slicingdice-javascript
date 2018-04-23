@@ -1338,60 +1338,6 @@
     "name": "Test #74"
   },
   {
-    "query": "SELECT COUNT(DISTINCT name) FROM users",
-    "expected": {
-      "result": [
-        {
-          "COUNT": 3
-        }
-      ],
-      "took": "ignore",
-      "count": "ignore",
-      "status": "ignore"
-    },
-    "name": "Test #75"
-  },
-  {
-    "query": "SELECT [clicks.value], COUNT(DISTINCT name) FROM users GROUP BY [clicks.value] HAVING [clicks.date]  BETWEEN '2017-05-22' AND '2017-06-08' LIMIT 2",
-    "expected": {
-      "result": [
-        {
-          "clicks.value": "buy",
-          "COUNT": 2
-        },
-        {
-          "clicks.value": "pay now",
-          "COUNT": 1
-        }
-      ],
-      "took": "ignore",
-      "count": "ignore",
-      "status": "ignore"
-    },
-    "name": "Test #76"
-  },
-  {
-    "query": "SELECT [clicks.value], COUNT(DISTINCT name), COUNT(age) FROM users GROUP BY [clicks.value] HAVING [clicks.date] BETWEEN '2017-05-22' AND '2017-06-08' LIMIT 2",
-    "expected": {
-      "result": [
-        {
-          "COUNT_DISTINCT_name": 2,
-          "COUNT_age": 2,
-          "clicks.value": "buy"
-        },
-        {
-          "COUNT_DISTINCT_name": 1,
-          "COUNT_age": 1,
-          "clicks.value": "pay now"
-        }
-      ],
-      "took": "ignore",
-      "count": "ignore",
-      "status": "ignore"
-    },
-    "name": "Test #77"
-  },
-  {
     "query": "SELECT name, age, MAX(age), AVG([purchased-products.value]) FROM users WHERE [purchased-products.date] BETWEEN '2017-05-22' AND '2017-06-08' LIMIT 100",
     "expected": {
       "result": [
