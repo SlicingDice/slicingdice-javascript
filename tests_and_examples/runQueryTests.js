@@ -338,11 +338,19 @@ class SlicingDiceTester {
             return this.arrayEqual(expected, result);
         }
 
-        if(typeof expected === "object") {
+        if (typeof expected === "object") {
             return this.compareJsonValue(expected, result);
         }
 
-        return expected === result;
+        if (isNaN(expected)) {
+            return expected === result;    
+        }
+        
+        return this.numberIsClose(expected, result);
+    }
+
+    numberIsClose(a, b, rel_tol=1e-09, abs_tol=0.0) {
+        return Math.abs(a - b) <= Math.max(rel_tol * Math.max(Math.abs(a), Math.abs(b)), abs_tol);
     }
 
     /* Compare two JSON's values
