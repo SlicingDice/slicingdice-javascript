@@ -366,7 +366,9 @@
                 score: '/data_extraction/score/',
                 saved: '/query/saved/',
                 database: '/database/',
-                sql: '/sql/'
+                sql: '/sql/',
+                delete: '/delete/',
+                update: '/update/'
             };
             this._setUpRequest();
         }
@@ -726,6 +728,34 @@
                 data: query,
                 levelKey: 0
             }, true);
+        }
+
+        /* Make a delete request
+         * 
+         * @param (array) query - The query that represents the data to be deleted
+         */
+        delete(query) {
+            let path = this._sdRoutes.delete;
+            return this.makeRequest({
+                path: path,
+                reqType: "POST",
+                data: query,
+                levelKey: 2
+            });
+        }
+
+        /* Make a update request
+         * 
+         * @param (array) query - The query that represents the data to be updated
+         */
+        update(query) {
+            let path = this._sdRoutes.update;
+            return this.makeRequest({
+                path: path,
+                reqType: "POST",
+                data: query,
+                levelKey: 2
+            });
         }
     }
 

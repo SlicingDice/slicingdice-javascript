@@ -1,0 +1,239 @@
+[
+  {
+    "name": "Test for an UPDATE on a specific column.",
+    "description": "In this test we will update a single column from a record.",
+    "columns": [
+      {
+        "type": "string",
+        "cardinality": "high",
+        "storage": "latest-value",
+        "name": "string_test_column",
+        "api-name": "string-test-column"
+      },
+      {
+        "storage": "latest-value",
+        "type": "boolean",
+        "name": "boolean_test_column",
+        "api-name": "boolean-test-column"
+      },
+      {
+        "storage": "latest-value",
+        "type": "integer",
+        "name": "integer_test_column",
+        "api-name": "integer-test-column"
+      },
+      {
+        "storage": "latest-value",
+        "type": "datetime",
+        "name": "datetime_test_column",
+        "api-name": "datetime-test-column"
+      }
+    ],
+    "insert": {
+      "Entity1": {
+        "string-test-column": "value:matched_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity2": {
+        "string-test-column": "value:matched_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity3": {
+        "string-test-column": "value:matched_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity4": {
+        "string-test-column": "value:garbage_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity5": {
+        "string-test-column": "value:garbage_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity6": {
+        "string-test-column": "value:garbage_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      }
+    },
+    "additional_operation": {
+       "query":[
+          {
+             "string-test-column":{
+                "equals":"value:garbage_value"
+             }
+          }
+       ],
+       "set":{
+          "integer-test-column":2000002
+       }
+    },
+    "result_additional": {
+      "status": "ignore",
+      "result": {
+        "updated": 3
+      },
+      "took": "ignore"
+    },
+    "query": {
+      "query-name": "updated_query",
+      "query": [
+        {
+          "integer-test-column": {
+            "equals": 2000002
+          }
+        }
+      ]
+    },
+    "expected": {
+      "status": "ignore",
+      "result": {
+        "updated_query": 3
+      },
+      "took": "ignore"
+    }
+  },
+  {
+    "name": "Test for a UPDATE that changes multiple values.",
+    "description": "In this test we will update a record changing all the 4 values indexed.",
+    "columns": [
+      {
+        "type": "string",
+        "cardinality": "high",
+        "storage": "latest-value",
+        "name": "string_test_column",
+        "api-name": "string-test-column"
+      },
+      {
+        "storage": "latest-value",
+        "type": "boolean",
+        "name": "boolean_test_column",
+        "api-name": "boolean-test-column"
+      },
+      {
+        "storage": "latest-value",
+        "type": "integer",
+        "name": "integer_test_column",
+        "api-name": "integer-test-column"
+      },
+      {
+        "storage": "latest-value",
+        "type": "datetime",
+        "name": "datetime_test_column",
+        "api-name": "datetime-test-column"
+      }
+    ],
+    "insert": {
+      "Entity1": {
+        "string-test-column": "value:matched_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity2": {
+        "string-test-column": "value:matched_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity3": {
+        "string-test-column": "value:matched_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000001,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity4": {
+        "string-test-column": "value:garbage_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000002,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity5": {
+        "string-test-column": "value:garbage_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000002,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      },
+      "Entity6": {
+        "string-test-column": "value:garbage_value",
+        "boolean-test-column": "true",
+        "integer-test-column": 1000002,
+        "datetime-test-column": "2018-01-21T00:50:00Z"
+      }
+    },
+    "additional_operation": {
+       "query":[
+          {
+             "string-test-column":{
+                "equals":"value:garbage_value"
+             }
+          },
+          "and",
+          {
+             "integer-test-column":{
+                "equals":1000002
+             }
+          }
+       ],
+       "set":{
+        "string-test-column": "value:another_garbage_value",
+        "boolean-test-column": "false",
+        "integer-test-column": 3000003,
+        "datetime-test-column": "2018-01-24T10:50:00Z"
+      }
+    },
+    "result_additional": {
+      "status": "ignore",
+      "result": {
+        "updated": 3
+      },
+      "took": "ignore"
+    },
+    "query": {
+      "query-name": "updated",
+      "query": [
+        {
+          "string-test-column": {
+            "equals": "value:another_garbage_value"
+          }
+        },
+        "and",
+        {
+          "boolean-test-column": {
+            "equals": "false"
+          }
+        },
+        "and",
+        {
+          "integer-test-column": {
+            "equals": 3000003
+          }
+        },
+        "and",
+        {
+          "datetime-test-column": {
+            "equals": "2018-01-24T10:50:00Z"
+          }
+        }
+      ]
+    },
+    "expected": {
+      "status": "ignore",
+      "result": {
+        "updated": 3
+      },
+      "took": "ignore"
+    }
+  }
+]
