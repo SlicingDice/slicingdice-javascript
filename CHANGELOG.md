@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.1.0]
+### Added
+- UPDATE support
+- DELETE support
+
 ## [2.0.2]
 ### Updated
 - Change SQL endpoint from `/query/sql` to `sql`

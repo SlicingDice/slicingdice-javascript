@@ -99,6 +99,7 @@ class SlicingDiceTester {
 
         let tasks = [];
         for(let i = 0; i < numTests; i++){
+            let _queryType = queryType;
             tasks.push(((i) => (callback) => {
                 try {
                     let test = testData[i];
@@ -119,8 +120,8 @@ class SlicingDiceTester {
                                 this.insertData(test, callback);
                             },
                             (callback) => {
-                                this.executeQuery(queryType, test, callback);
-                            }
+                                this._runAdditionalOperations(queryType, test, callback);
+                            }   
                         ], callback);
                     } else {
                         async.series([
@@ -135,6 +136,84 @@ class SlicingDiceTester {
             })(i));
         }
         async.series(tasks, callback);
+    }
+
+    // Method used to run delete and update operations, this operations
+    // are executed before the query and the result comparison
+    _runAdditionalOperations(queryType, test, callback) {
+        if (queryType === "delete" || queryType === "update") {
+            let queryData = this._translateColumnNames(test['additional_operation']);
+
+            if (queryType == "delete") {
+                console.log("  Deleting");
+            } else {
+                console.log("  Updating");
+            }
+
+            if (this.verbose){
+                console.log("    - {0}".format(queryData));
+            }
+
+            if (queryType == "delete") {
+                async.series([(callback) => {
+                    this.client.delete(queryData).then((resp) => {
+                        this.compareResultAndMakeQuery('count_entity', test, callback, resp).then((resp) => {
+                            callback();
+                        }, (err) => {
+                            throw "An error occurred";
+                        });
+                    }, (err) => {
+                        throw "An error occurred";
+                    })
+                }], callback);
+            } else if (queryType == "update") {
+                async.series([(callback) => {
+                    this.client.update(queryData).then((resp) => {
+                        this.compareResultAndMakeQuery('count_entity', test, callback, resp).then((resp) => {
+                            callback();
+                        }, (err) => {
+                            throw "An error occurred";
+                        });
+                    }, (err) => {
+                        throw "An error occurred";
+                    })
+                }], callback);
+            }
+        } else {
+            async.series([(callback) => {
+                this.executeQuery(queryType, test, callback);
+            }], callback);
+        }
+    }
+
+    compareResultAndMakeQuery(queryType, test, callback, result) {
+        async.series([(callback) => {
+            let expected = this._translateColumnNames(test['result_additional']);
+            for(var key in expected) {
+                let value = expected[key];
+                if (value === 'ignore') {
+                    continue;
+                }
+
+                if (!this.compareJson(expected[key], result[key])){
+                    this.numFails += 1;
+                    this.failedTests.push(test['name']);
+
+                    console.log("  Expected: \"{0}\": {1}".format(key, JSON.stringify(expected[key])));
+                    console.log("  Result:   \"{0}\": {1}".format(key, JSON.stringify(result[key])));
+                    console.log("  Status: Failed\n");
+                    this.updateResult();
+                    return;
+                }
+
+                this.numSuccesses += 1;
+
+                console.log('  Status: Passed\n');
+                this.updateResult();
+            }
+
+            this.executeQuery(queryType, test, callback);
+        }], callback);
     }
 
     // Erase columnTranslation object
@@ -464,13 +543,19 @@ function main(){
         'aggregation',
         'result',
         'score',
-        'sql'
+        'sql',
+        'delete',
+        'update'
         ];
+
+    let apiKey = process.env.SD_API_KEY;
+    if (apiKey === undefined){
+        apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiIxNTI0MjQ4NzIwNzg2IiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6MzAwMjksImNsaWVudF9pZCI6MTF9.SaRJX3Li_0AcrfDFaMOPHJNS9oGxYPjkYmpEza00IMk";
+    }
 
     // Testing class with demo API key
     // To get a demo api key visit: http://panel.slicingdice.com/docs/#api-details-api-connection-api-keys-demo-key
-    let sdTester = new SlicingDiceTester(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfX3NhbHQiOiIxNTI0MjQ4NzIwNzg2IiwicGVybWlzc2lvbl9sZXZlbCI6MywicHJvamVjdF9pZCI6MzAwMjksImNsaWVudF9pZCI6MTF9.SaRJX3Li_0AcrfDFaMOPHJNS9oGxYPjkYmpEza00IMk", false);
+    let sdTester = new SlicingDiceTester(apiKey, false);
 
     let tests = [];
     for(let i = 0; i < queryTypes.length; i++) {
