@@ -24,8 +24,6 @@
                 req.open(reqType, url, true);
                 req.setRequestHeader("Authorization", token);
                 req.setRequestHeader('Content-Type', content_type);
-                req.setRequestHeader('Access-Control-Allow-Origin', '*');
-                req.setRequestHeader('Access-Control-Allow-Credentials', true);
                 req.setRequestHeader('Accept', "application/json");
                 req.onload = function() {
                     if (req.status == 200) {
