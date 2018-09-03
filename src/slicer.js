@@ -11,7 +11,6 @@
     // RequesterBrowser make http requests from the browser
     class RequesterBrowser {
         run(token, url, reqType, data = null, sql) {
-            url = url.hostname + url.path;
             let content_type;
 
             if (sql) {
