@@ -39,7 +39,7 @@
                 req.onerror = function() {
                     reject(Error("Network Error"));
                 };
-                req.send(JSON.stringify(data));
+                req.send(sql ? data : JSON.stringify(data));
             });
         }
     }
