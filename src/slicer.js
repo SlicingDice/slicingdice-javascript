@@ -11,7 +11,6 @@
     // RequesterBrowser make http requests from the browser
     class RequesterBrowser {
         run(token, url, reqType, data = null, sql) {
-            url = url.hostname + url.path;
             let content_type;
 
             if (sql) {
@@ -25,8 +24,6 @@
                 req.open(reqType, url, true);
                 req.setRequestHeader("Authorization", token);
                 req.setRequestHeader('Content-Type', content_type);
-                req.setRequestHeader('Access-Control-Allow-Origin', '*');
-                req.setRequestHeader('Access-Control-Allow-Credentials', true);
                 req.setRequestHeader('Accept', "application/json");
                 req.onload = function() {
                     if (req.status == 200) {
@@ -42,7 +39,7 @@
                 req.onerror = function() {
                     reject(Error("Network Error"));
                 };
-                req.send(JSON.stringify(data));
+                req.send(sql ? data : JSON.stringify(data));
             });
         }
     }
