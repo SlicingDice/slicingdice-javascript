@@ -8,47 +8,39 @@
         "cardinality": "high",
         "storage": "latest-value",
         "name": "string_test_column",
-        "api-name": "string-test-column",
-        "dimension": "delete-test"
+        "api-name": "string-test-column"
       },
       {
         "storage": "latest-value",
         "type": "integer",
         "name": "integer_test_column",
-        "api-name": "integer-test-column",
-        "dimension": "delete-test"
+        "api-name": "integer-test-column"
       }
     ],
     "insert": {
       "Entity1": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity2": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity3": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity4": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity5": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity6": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       }
     },
     "additional_operation": {
@@ -58,8 +50,7 @@
               "equals":"Entity3"
             }
           }
-        ],
-        "dimension": "delete-test"
+        ]
     },
     "result_additional": {
       "status": "ignore",
@@ -76,8 +67,7 @@
             "equals": "value:deleted_entity"
           }
         }
-      ],
-      "dimension": "delete-test"
+      ]
     },
     "expected": {
       "status": "ignore",
@@ -96,47 +86,39 @@
         "cardinality": "high",
         "storage": "latest-value",
         "name": "string_test_column",
-        "api-name": "string-test-column",
-        "dimension": "delete-test"
+        "api-name": "string-test-column"
       },
       {
         "storage": "latest-value",
         "type": "integer",
         "name": "integer_test_column",
-        "api-name": "integer-test-column",
-        "dimension": "delete-test"
+        "api-name": "integer-test-column"
       }
     ],
     "insert": {
       "Entity1": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity2": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity3": {
         "string-test-column": "value:deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity4": {
         "string-test-column": "value:not_deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity5": {
         "string-test-column": "value:not_deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       },
       "Entity6": {
         "string-test-column": "value:not_deleted_entity",
-        "integer-test-column": 1000001,
-        "dimension": "delete-test"
+        "integer-test-column": 1000001
       }
     },
     "additional_operation": {
@@ -146,8 +128,7 @@
             "equals":"value:deleted_entity"
           }
         }
-      ],
-        "dimension": "delete-test"
+      ]
     },
     "result_additional": {
       "status": "ignore",
@@ -164,8 +145,7 @@
             "equals": "value:deleted_entity"
           }
         }
-      ],
-        "dimension": "delete-test"
+      ]
     },
     "expected": {
       "status": "ignore",

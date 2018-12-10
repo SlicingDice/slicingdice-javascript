@@ -272,9 +272,9 @@
 
         // If column is decimal check if it has decimal or decimal-time-series type 
         validateDecimalType(query) {
-            let decimal_types = ["decimal", "decimal-time-series"];
+            let decimal_types = ["decimal", "decimal-event"];
             if (!decimal_types.includes(query["decimal-place"])) {
-                throw new errors.InvalidColumnError("This column is only accepted on type 'decimal' or 'decimal-time-series'");
+                throw new errors.InvalidColumnError("This column is only accepted on type 'decimal' or 'decimal-event'");
             }
         }
 
